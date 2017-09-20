@@ -1,0 +1,71 @@
+{{!-- this user track object; action will send to this.user.category --}}
+<div class="w3-row">
+    <div class="w3-half w3-container">
+        <form action="/search" method="get" class="w3-container">
+            {{!-- for an actual user, will only display the tracks/goals they've signed up for; populate with goals table category --}}
+            <h4>1. Select your track:</h4>
+            <select name="category" id="trackName">
+                <option value="" disabled selected>Choose your track</option>
+                <option value="vegetables">Veggies</option>
+                <option value="fruits">Fruits</option>
+            </select>
+        <button type="submit">submit category</button>
+        </form>
+        <div class="display w3-container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>item</th>
+                        <th>category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each foods}}
+                        <tr>
+                            <td>{{id}}</td>
+                            {{!-- <td>Bg_join</td> --}}
+                            <td>{{item}}</td>
+                            {{!-- option to edit? --}}
+                            <td>{{category}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+            {{!-- get the food options for this category --}}
+            {{!-- if user selects veggie option, show veggie foods in suggestions (same for fruits) --}}
+    </div>
+    <div class="w3-half w3-container">
+        <div class="w3-row" id="bloodhound">
+            <form action="/search" class="w3-container">
+            {{#if foods}}
+            <h4>2. What did you eat today?</h4>
+            <input list="foods" name="q" autocomplete="off" placeholder="Type your entry">
+            <datalist id="foods">
+                {{#each foods}}
+                    <option value="{{this.item}}">{{this.item}}</option>
+                {{/each}}
+            </datalist>
+            {{!-- https://css-tricks.com/relevant-dropdowns-polyfill-for-datalist/ datalist isn't safari compatible..possible workaround --}}
+            <button type="submit">search</button>
+            {{/if}}         
+            {{!-- display food suggestions based on the selection from the tracks query --}}
+            </form>
+        </div>
+        <div>
+            {{#if choice}}
+                {{#each choice}}
+                <form action="/addItem/{{this.item}}" method="post">
+                    <h4>You selected {{this.item}}. Add to your log?</h4>
+                    <input type="hidden" name="item" value="{{this.item}}">
+                    <input type="hidden" name="count" value="1">
+                    <input type="hidden" name="user" value="this userId">
+                    <button>Add this item</button>
+                </form>
+                {{/each}}
+            {{/if}}
+        </div>
+    </div>
+</div>
+
