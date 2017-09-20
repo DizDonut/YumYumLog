@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/DizDonut/YumYumLog#readme",
   "dependencies": {
+    "body-parser": "^1.18.1",
     "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.10",
+    "method-override": "^2.3.9",
     "mysql": "^2.14.1",
     "sequelize-cli": "^3.0.0-3"
   }
