@@ -7,4 +7,9 @@ module.exports = function(app) {
         res.render("index")
     })
 
+
+    app.get("/user", function(req,res) {
+        res.render("user")
+    })
+
 }
