@@ -53,7 +53,7 @@ module.exports = function(app) {
                 category: req.params.category,
                 goal: req.params.goal,
                 week: req.params.week,
-                userId: req.params.id
+                UserId: req.params.id
             }).then(function(dbGoal) {   
         //     debugger;
         //update the track with the current week
@@ -71,7 +71,7 @@ module.exports = function(app) {
             item: req.params.item,
             count: req.params.count,
             week: req.params.week,
-            userId: req.params.id,
+            UserId: req.params.id,
             goalId: req.params.goalId
         }).then(function(dbGoal) { 
             res.json(dbGoal);
