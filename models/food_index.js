@@ -16,3 +16,5 @@ module.exports = function(sequelize, DataTypes) {
 
       return Food;
   };
+
+  //add recommended serving size, and some baseline nutrition, maybe calories
