@@ -78,6 +78,9 @@ module.exports = function(app) {
         })
     })
     //get the food items by category, display by category in handlebars
+
+
+    //find all goals, sum the associated log counts, store as count in goals
 }
 //export routes for server.js to use
 // module.exports = router;

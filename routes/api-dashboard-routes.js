@@ -2,7 +2,9 @@ var db = require("../models");
 
 module.exports = function(app) {
     app.get("/dashboard", function(req,res) {
-        db.goal.findAll({order: db.sequelize.col('week')}).then(function(dbgoal) {
+        db.goal.findAll({
+            include: [{model: db.log}],
+            order: [['week', 'DESC']]}).then(function(dbgoal) {
             res.json(dbgoal);
             // var hbsObj = {
             //     dashboard : dbgoal
@@ -13,7 +15,12 @@ module.exports = function(app) {
     })
 
     app.get("/dashboard/:id", function(req,res) {
-        db.goal.findAll({where: {UserId: req.params.id}}, {order: db.sequelize.col('week')}).then(function(dbgoal) {
+        //find all goals, sum the associated log counts, store as count in goals
+        db.goal.findAll({
+            where: {UserId: req.params.id},
+            include: [{model: db.log}],
+            order : [['week', 'DESC']]
+        }).then(function(dbgoal) {
             res.json(dbgoal);
             // var hbsObj = {
             //     dashboard : dbgoal
