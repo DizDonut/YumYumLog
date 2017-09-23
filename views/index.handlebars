@@ -1,1 +1,44 @@
-{{!-- landing page for site? --}}
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-blue">
+    <h1 class="w3-jumbo w3-animate-top w3-center">Yum Yum Log</h1>
+    <h4 class="w3-animate-top w3-center">Choose a Track.  Set a Goal.  Achieve Results.</h4>
+    <div class="w3-row">
+        <div class="w3-col s6 w3-mobile">
+          <!-- action="/" method="POST" -->
+            <form class="w3-panel w3-card-4">
+              <h2 style="text-align: center">Returning User?</h2>
+                <h3><label>Username</label></h3>
+                    <input class="w3-input" type="text" id="username" name="user" pattern="[a-zA-Z\s]{0,30}" title="Alphabet Characters Only" required>
+                <h3><label>Password</label></h3>
+                    <input class="w3-input" type="text" id="password" name="pwd" pattern="[a-zA-Z\s]{0,30}" title="Alphabet Characters Only" required>
+                <button type="submit" class="w3-button w3-red loginBtn">Login</button>
+            </form>
+        </div>
+        <div class="w3-col s6 w3-mobile">
+          <!-- action="/" method="POST" -->
+          <form class="w3-panel w3-card-4">
+            <h2 style="text-align: center">New User?</h2>
+            <h3><label>First Name</label></h3>
+              <input class="w3-input" type="text" id="reg_fn" name="reg_first" pattern="[a-zA-Z\s]{0,30}" title="Alphabet Characters Only" required>
+              <h3><label>Last Name</label></h3>
+                <input class="w3-input" type="text" id="reg_ln" name="reg_last" pattern="[a-zA-Z\s]{0,30}" title="Alphabet Characters Only" required>
+            <h3><label>Username</label></h3>
+              <input class="w3-input" type="text" id="reg_username" name="reg_user" pattern="[a-zA-Z\s]{0,30}" title="Alphabet Characters Only" required>
+            <h3><label>Password</label></h3>
+              <input class="w3-input" type="text" id="reg_password" name="reg_pwd" pattern="[a-zA-Z\s]{0,30}" title="Alphabet Characters Only" required>
+            <h3><label>Confirm Password</label></h3>
+              <input class="w3-input" type="text" id="reg_password" name="reg_pwd_conf" pattern="[a-zA-Z\s]{0,30}" title="Alphabet Characters Only" required>
+            <button type="submit" class="w3-button w3-red regBtn">Register</button>
+          </form>
+        </div>
+    </div>
+</div>
+<footer class="w3-center">
+    <a href="https://github.com/DizDonut/YumYumLog" target="_blank">GitHub Repo</a>
+    <a class="github-button" href="https://github.com/dizDonut/YumYumLog/subscription" data-show-count="true" aria-label="Watch dizDonut/YumYumLog on GitHub">Watch</a>
+  <ul>
+    <a class="github-button" href="https://github.com/dizDonut" data-show-count="true" aria-label="Follow @dizDonut on GitHub">Follow @dizDonut</a>
+    <a class="github-button" href="https://github.com/jbcurrie" data-show-count="true" aria-label="Follow @jbcurrie on GitHub">Follow @jbcurrie</a>
+    <a class="github-button" href="https://github.com/travjbarnes" data-show-count="true" aria-label="Follow @travjbarnes on GitHub">Follow @travjbarnes</a>
+    <a class="github-button" href="https://github.com/buikevin96" data-show-count="true" aria-label="Follow @buikevin96 on GitHub">Follow @buikevin96</a>
+  </ul>
+</footer>

@@ -4,6 +4,11 @@ module.exports = function(app) {
 
         //currently not exporting because the same route passes through authentication (don't want to serve this route w/out authentication)
     app.get("/", function(req,res) {
+        res.render("index")
+    })
+
+
+    app.get("/user", function(req,res) {
         res.render("user")
     })
 
