@@ -1,55 +1,50 @@
-<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
-  <button class="w3-bar-item w3-button w3-large" onclick="sideBar_Close()">Close &times;</button>
-  <a href="/userInputs" class="w3-bar-item w3-button">Choose a Track</a>
-  <a href="/userInputs" class="w3-bar-item w3-button">Input Today's Data</a>
-  <a href="#" class="w3-bar-item w3-button">See the Community Dashboard</a>
-</div>
 
-<div zclass="w3-main" id="sidebar">
-
-  <div class="w3-jumbo">
-    <button class="w3-button w3-bisque w3-large" onclick="sideBar_Open()">&#9776;</button>
-    <div class="w3-container">
-      <h2>Welcome Back <!-- {/{userObj.userID}/} -->!</h2>
-      <span class="w3-badge w3-xlarge w3-blue">RANK</span>
+<div class="w3-container">
+  <div class="w3-row">
+    <div class="w3-display-topmiddle">
+      <h3>Yum Yum Log!</h3>
+      <h4>Choose a track.  Set a Goal.  Achieve Results</h4>
+    </div> <!-- end top middle class -->
+  </div> <!-- end first row of container -->
+  <div class="w3-row">
+    <div class="w3-container w3-third w3-teal">
+      <h2>User Login</h2>
     </div>
+    <form action="/authenticate" method="post" class="w3-container">
+
+      <label class="w3-text-teal"><b>username</b></label>
+      <input class="w3-input w3-border w3-light-grey" id="username" name="username" placeholder="Username" type="text">
+
+      <label class="w3-text-teal"><b>password</b></label>
+      <input class="w3-input w3-border w3-light-grey" id="password" name="password" placeholder="Password" type="password">
+
+      <button type="submit" class="w3-btn w3-blue-grey">Login</button>
+      <a href="/signup">Not Registered?</a>
+    </form>
+    {{!-- register --}}
   </div>
+</div> <!-- end container -->
+<footer>
+    <a href="https://github.com/DizDonut/YumYumLog" target="_blank">GitHub Repo</a>
+    <a class="github-button" href="https://github.com/dizDonut/YumYumLog/subscription" data-show-count="true" aria-label="Watch dizDonut/YumYumLog on GitHub">Watch</a>
+  <ul>
+    <a class="github-button" href="https://github.com/dizDonut" data-show-count="true" aria-label="Follow @dizDonut on GitHub">Follow @dizDonut</a>
+    <a class="github-button" href="https://github.com/jbcurrie" data-show-count="true" aria-label="Follow @jbcurrie on GitHub">Follow @jbcurrie</a>
+    <a class="github-button" href="https://github.com/travjbarnes" data-show-count="true" aria-label="Follow @travjbarnes on GitHub">Follow @travjbarnes</a>
+    <a class="github-button" href="https://github.com/buikevin96" data-show-count="true" aria-label="Follow @buikevin96 on GitHub">Follow @buikevin96</a>
+  </ul>
+</footer>
 
-  <br>
-  <br>
-
-  <div class="w3-container">
-    <div class="w3-row">
-      <div class="w3=responsive">
-        <table class="w3-table-all w3-hoverable">
-          <thead>
-            <tr class="w3-blue">
-              <th>Food Track</th>
-              <th>Servings Goal</th>
-              <th>Week</th>
-              <th>Progress</th>
-              <th>Completed</th>
-            </tr>
-            <tr>
-              <td>User Name Goes Here</td> <!-- {/{userObj.userID}/} -->
-              <td>"Current Food Track"</td> <!-- {/{userObj.currTrack}/} -->
-              <td>Current week of the year</td> <!-- {/{userObj.currWeek}/} -->
-              <td onload="progress_Bar()">
-                <div class="w3-light-grey">
-                  <div id="curr_prog" class="w3-container w3-blue" style="height:20px; width:0px">
-                    <!-- {/{foodObj.count}/} -->
-                  </div>
-                </div>
-              </td>
-              <td onload="check_Star()"></td>
-            </tr>
-          </thead>
-        </table>
+    {{!-- <form action="/authenticate" method="post">
+        <label>Username</label>
+        <input  id="username" name="username" placeholder="Username" type="text"  class="span12"/>
+        <a class="reset-password" href="#">Forgot your password?</a>
+        <label>Password</label>
+        <input id="password" name="password" placeholder="Password" type="password" class="span12">
+        <div class="form-actions">
+  <a class="btn btn-primary" href="/signup"> Sign Up!</a> 
+          <button type="submit" class="btn btn-success pull-right">Sign In</button>
+          <div class="clearfix"></div>
       </div>
-    </div>
-  </div>
+    </form> --}}
 
-
-
-
-</div>

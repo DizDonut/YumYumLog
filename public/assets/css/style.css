@@ -1,3 +1,4 @@
+
 body,h1,h2,div,form,input,label,h3,a {font-family: 'Dosis', sans-serif;}
 body, html {height: 100%}
 body:before {
@@ -36,3 +37,8 @@ body:before {
 .w3-button {
   margin: 15px;
 }
+
+/* h1,h2,h3,h4 {
+    color: red
+} */
+
