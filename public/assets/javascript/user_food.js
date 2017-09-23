@@ -1,4 +1,30 @@
-console.log('im working');
+// console.log('im working');
+
+//for now, we have one js file for all client side js. add it below
+
+
+//user login
+    //
+//registration
+    //
+
+//add a goal/user_track
+    //
+
+//log food to the log model
+    //
+
+//community dashboard
+    //grab the count values from the weekly objects, and tally them on the client side to display in a column header for progress ('tallly of counts' / 'db.obj.goal' repr. as a %)
+        //OR  create an alias attribute in sequelize that returns the tally (or the progress %) for each user's goal
+//user dashboard
+    //same tally procredure as above
+
+//user more details
+    //display the food items for the selected 'week'
+
+//styling and rendering
+
 
 
 // momentjs sample code
