@@ -9,16 +9,16 @@
     <div class="w3-container w3-third w3-teal">
       <h2>User Login</h2>
     </div>
-    <form class="w3-container">
+    <form action="/authenticate" method="post" class="w3-container">
 
-      <label class="w3-text-teal"><b>First Name</b></label>
-      <input class="w3-input w3-border w3-light-grey" type="text">
+      <label class="w3-text-teal"><b>username</b></label>
+      <input class="w3-input w3-border w3-light-grey" id="username" name="username" placeholder="Username" type="text">
 
-      <label class="w3-text-teal"><b>Last Name</b></label>
-      <input class="w3-input w3-border w3-light-grey" type="text">
+      <label class="w3-text-teal"><b>password</b></label>
+      <input class="w3-input w3-border w3-light-grey" id="password" name="password" placeholder="Password" type="password">
 
-      <button class="w3-btn w3-blue-grey">Login</button>
-
+      <button type="submit" class="w3-btn w3-blue-grey">Login</button>
+      <a href="/signup">Not Registered?</a>
     </form>
     {{!-- register --}}
   </div>
@@ -33,3 +33,16 @@
     <a class="github-button" href="https://github.com/buikevin96" data-show-count="true" aria-label="Follow @buikevin96 on GitHub">Follow @buikevin96</a>
   </ul>
 </footer>
+
+    {{!-- <form action="/authenticate" method="post">
+        <label>Username</label>
+        <input  id="username" name="username" placeholder="Username" type="text"  class="span12"/>
+        <a class="reset-password" href="#">Forgot your password?</a>
+        <label>Password</label>
+        <input id="password" name="password" placeholder="Password" type="password" class="span12">
+        <div class="form-actions">
+  <a class="btn btn-primary" href="/signup"> Sign Up!</a> 
+          <button type="submit" class="btn btn-success pull-right">Sign In</button>
+          <div class="clearfix"></div>
+      </div>
+    </form> --}}

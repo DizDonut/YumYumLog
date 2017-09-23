@@ -17,8 +17,13 @@ module.exports = function(sequelize, DataTypes) {
 
     Log.associate = function(models) {
         // When a food item is deleted
-        Log.belongsTo(models.user);
-        Log.belongsTo(models.timeline);
+        Log.belongsTo(models.User);
+        Log.belongsTo(models.goal, {
+            foreignKey: {
+              allowNull: false
+            }
+        });
+        // Log.belongsTo(models.timeline);
     }
       return Log;
   };
