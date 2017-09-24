@@ -17,10 +17,11 @@ module.exports = function(sequelize, DataTypes) {
         Goal.belongsTo(models.User, {
           foreignKey: {
             allowNull: false
-          }
+          },
+          onDelete: "CASCADE"
         });
         Goal.hasMany(models.log, {
-          onDelete: "cascade"
+          onDelete: "CASCADE"
         })
         //create an association between current track and all food entries? 
       }

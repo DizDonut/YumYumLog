@@ -31,12 +31,8 @@ module.exports = function(sequelize, DataTypes) {
         // User.hasOne(models.password, {
         //     onDelete: "cascade"
         // })
-        User.hasMany(models.log, {
-            onDelete: "cascade"
-        });
-        User.hasMany(models.goal, {
-            onDelete: "cascade"
-        });
+        User.hasMany(models.log);
+        User.hasMany(models.goal);
     };
     //encryption occurs here before password logged to database
     User.hook('beforeCreate', function(user, fn){
