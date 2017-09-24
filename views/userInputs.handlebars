@@ -2,8 +2,11 @@
 <div class="w3-row">
     <div class="w3-half w3-container">
         <div class="user">
-            <h4>{{username}}</h4>
+            {{#if user}}
+            <h4>{{user.username}}</h4>
+            {{/if}}
         </div>
+        {{!-- replaced /search with track --}}
         <form action="/search" method="get" class="w3-container">
             {{!-- for an actual user, will only display the tracks/goals they've signed up for; populate with goals table category --}}
             <h4>1. Select your track:</h4>

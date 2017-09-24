@@ -1,8 +1,10 @@
 <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large" onclick="sideBar_Close()">Close &times;</button>
-  <a href="/userInputs" class="w3-bar-item w3-button">Choose a Track</a>
-  <a href="/userInputs" class="w3-bar-item w3-button">Input Today's Data</a>
+  {{#if username}}
+  <a href="/trackPage/{{username}}" class="w3-bar-item w3-button">Choose a Track</a>
+  <a href="/addLog/{{username}}" class="w3-bar-item w3-button">Input Today's Data</a>
   <a href="#" class="w3-bar-item w3-button">See the Community Dashboard</a>
+  {{/if}}
 </div>
 
 <div zclass="w3-main" id="sidebar">
@@ -10,7 +12,9 @@
   <div class="w3-jumbo">
     <button class="w3-button w3-bisque w3-large" onclick="sideBar_Open()">&#9776;</button>
     <div class="w3-container">
+      {{#if username}}
       <h2>Welcome Back {{username}}!</h2>
+      {{/if}}
       <span class="w3-badge w3-xlarge w3-blue">RANK</span>
     </div>
   </div>

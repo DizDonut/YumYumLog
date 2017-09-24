@@ -11,6 +11,7 @@ var passport = require('passport');
 var passportConfig = require('./config/passport')
 var application = application = require('./routes/application');
 
+
 //determines encryption
 SALT_WORK_FACTOR = 12;
 
@@ -50,12 +51,14 @@ app.use(methodOverride("_method"));
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
+require('./public/assets/javascript/handlebars.js')(exphbs);
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 require("./routes/api-food-entries.js")(app);
 require("./routes/api-user.js")(app);
 require("./routes/api-dashboard-routes.js")(app);
+require("./routes/public-routes.js")(app);
 // Import routes and give the server access to them.
 // var routes = require("./routes");
 // app.use("/", routes);
@@ -107,7 +110,7 @@ app.post('/register', function(req, res){
 });
 //listener
 db
-.sequelize.sync({force:true})//
+.sequelize.sync()//{force:true}
   // .then(function() {
   //     app.listen(PORT, function() {
   //         console.log("App listening on PORT: " + PORT);

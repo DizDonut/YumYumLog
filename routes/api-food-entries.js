@@ -7,9 +7,9 @@ var application = application = require('./application');
 
 module.exports = function(app) {
     //get the webpage
-    // app.get("/userInputs/search", function(req,res) {
-    //     res.render("userInputs")
-    // })
+    app.get("/userInputs/search", function(req,res) {
+        res.render("userInputs")
+    })
     // search for food by category
     
 
@@ -48,16 +48,17 @@ module.exports = function(app) {
         }
     });
     //post a new goal
-    app.post("/createTrack/:id/:category/:goal/:week", function(req,res) {
+    app.post("/addTrack/:username",application.IsAuthenticated, function(req,res) {
+        // /createTrack/:id/:category/:goal/:week
         debugger;
         //find all tracks for this user, pass them to an object...
             //then, if this user is trying to create a track that exists, return a message string saying, ''track exists
             //if the track doesn't exists. create it
             db.goal.create({
-                category: req.params.category,
-                goal: req.params.goal,
-                week: req.params.week,
-                UserId: req.params.id
+                category: req.body.category,
+                goal: req.body.goal,
+                week: req.body.week,
+                UserId: req.body.UserId
             }).then(function(dbGoal) {   
         //     debugger;
         //update the track with the current week
@@ -82,7 +83,13 @@ module.exports = function(app) {
         })
     })
     //get the food items by category, display by category in handlebars
-
+    app.get("/getTracks/:UserId",application.IsAuthenticated,function(req,res) {
+        db.goal.findAll({
+            where: {UserId : req.params.UserId}
+        }).then(function(dbgoal) {
+            res.json(dbgoal)
+        })
+    })
 
     //find all goals, sum the associated log counts, store as count in goals
 }
