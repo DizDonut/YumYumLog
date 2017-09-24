@@ -1,13 +1,17 @@
 
 // Import the model (burger.js) to use its database functions.
 var db = require("../models");
+var passport = require("passport");
+//require authentication for any route; make sure username is in the route parameter
+var application = application = require('./application');
 
 module.exports = function(app) {
     //get the webpage
-    app.get("/userInputs", function(req,res) {
-        res.render("userInputs")
-    })
-    //search for food by category
+    // app.get("/userInputs/search", function(req,res) {
+    //     res.render("userInputs")
+    // })
+    // search for food by category
+    
 
     app.get("/search", function(req, res) {   
         //if the query 'q' is included look for food 

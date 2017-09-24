@@ -40,6 +40,9 @@
             {{!-- if user selects veggie option, show veggie foods in suggestions (same for fruits) --}}
     </div>
     <div class="w3-half w3-container">
+        <div class="w3-col s6 w3-mobile">
+          <button type="submit" class="w3-button w3-red loginBtn"><a href="/logout">Logout</a></button>
+        </div>
         <div class="w3-row" id="bloodhound">
             <form action="/search" class="w3-container">
             {{#if foods}}
@@ -50,7 +53,7 @@
                     <option value="{{this.item}}">{{this.item}}</option>
                 {{/each}}
             </datalist>
-            {{!-- https://css-tricks.com/relevant-dropdowns-polyfill-for-datalist/ datalist isn't safari compatible..possible workaround --}}
+            {{!-- https://github.com/mfranzke/datalist-polyfill datalist isn't safari compatible..possible workaround --}}
             <button type="submit">search</button>
             {{/if}}         
             {{!-- display food suggestions based on the selection from the tracks query --}}

@@ -1,4 +1,7 @@
 var db = require("../models");
+var passport = require("passport");
+//require authentication for any route; make sure username is in the route parameter
+var application = application = require('./application');
 
 module.exports = function(app) {
 
@@ -8,9 +11,10 @@ module.exports = function(app) {
     })
 
 
-    app.get("/user", function(req,res) {
-        res.render("user")
+    app.get("/users/:username",application.IsAuthenticated, function(req,res) {
+        res.render("userInputs")
     })
+
 
     //replacing old registration pathway
     // app.get("/signup", function(req,res) {
@@ -18,15 +22,15 @@ module.exports = function(app) {
     // })
 
     //not using this route right now; replaced with /register
-    app.post("/newUser/:first/:last/:user", function(req,res) {
-        db.user.create({
-            first_name: req.params.first,
-            last_name: req.params.last,
-            username: req.params.user
-        }).then(function(dbUser){
-            // res.redirect('back');
-            res.json(dbUser)
-        });
-    })
+    // app.post("/newUser/:first/:last/:user", function(req,res) {
+    //     db.user.create({
+    //         first_name: req.params.first,
+    //         last_name: req.params.last,
+    //         username: req.params.user
+    //     }).then(function(dbUser){
+    //         // res.redirect('back');
+    //         res.json(dbUser)
+    //     });
+    // })
 
 }
