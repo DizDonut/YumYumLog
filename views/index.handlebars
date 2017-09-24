@@ -14,9 +14,14 @@
                 <a href="/signup">Need to signup?</a>
             </form>
         </div>
+        {{#if username}}
         <div class="w3-col s6 w3-mobile">
-          <button type="submit" class="w3-button w3-red loginBtn"><a href="/logout">Logout</a></button>
+         <a href="/users/{{username}}"><button type="submit" class="w3-button w3-red loginBtn">Go To My Log</button></a>
         </div>
+        <div class="w3-col s6 w3-mobile">
+          <a href="/logout"><button type="submit" class="w3-button w3-red loginBtn">Logout</button></a>
+        </div>
+        {{/if}}
     </div>
 </div>
 <footer class="w3-center">
@@ -29,3 +34,6 @@
     <a class="github-button" href="https://github.com/buikevin96" data-show-count="true" aria-label="Follow @buikevin96 on GitHub">Follow @buikevin96</a>
   </ul>
 </footer>
+
+{{!-- free hamster logos --}}
+{{!-- https://www.flaticon.com/free-icons/hamster_197875 --}}
