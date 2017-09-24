@@ -27,12 +27,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 //settings from express-session
 app.use(session({ 
-    secret: 'goatjsformakebettersecurity',
+    secret: 'yumyumkeepsyoulogged',
     resave: false,
     saveUninitialized: false}))
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(errorHandler)
+function errorHandler (err, req, res, next) {
+	if (res.headersSent) {
+	  return next(err)
+	}
+	res.status(500)
+	res.render('error', { error: err })
+  }
 //couldn't initiate
 // if ('development' === app.get('env')) {
 // 	app.use(express.errorHandler())
@@ -58,15 +66,18 @@ require("./routes/api-dashboard-routes.js")(app);
 //passport related routes
     //assuming the index route in the api-user file will do the same
 // app.get('/', routes.index)
-app.get('/userInputs', application.IsAuthenticated, function(req,res) {
-    var hbsObj = {
-        username : req.user.username
-    }
-    res.render("/userInputs", hbsObj)
+app.get('/login', application.IsAuthenticated, function(req,res) {
+    // var hbsObj = {
+    //     username : req.user.username
+	// }
+	// hbsObj
+	//  + req.user.username
+	// "/"+ req.user.username + "/users"
+    res.redirect("/users/" + req.user.username)
 })
 app.post('/authenticate',
   passport.authenticate('local',{
-	successRedirect: '/userInputs',
+	successRedirect: '/login',
 	failureRedirect: '/'
   })
 )
@@ -78,7 +89,12 @@ app.post('/register', function(req, res){
 	console.log("req.username " + req.username)
 	db.User.findOne({where: {username: req.username}}).then(function (user){
 		if(!user) {
-			db.User.create({username: req.body.username, password: req.body.password}).then(function(dbUser,err){
+			db.User.create({
+				username: req.body.username, 
+				password: req.body.password,
+				first_name: req.body.firstName,
+				last_name: req.body.lastName
+			}).then(function(dbUser,err){
 				console.log(err);
 				// console.log(dbUser)
                 // res.redirect("/authenticate");
@@ -92,7 +108,7 @@ app.post('/register', function(req, res){
 });
 //listener 
 db
-.sequelize.sync()//{force:true}
+.sequelize.sync({force:true})//
 // .then(function() {
 //     app.listen(PORT, function() {
 //         console.log("App listening on PORT: " + PORT);
@@ -104,7 +120,7 @@ db
 	// } else {
 		db.User.find({where: {username: 'admin'}}).then(function (user){
 			if (!user) {
-				db.User.build({username: 'admin', password: 'admin'}).save();
+				db.User.build({username: 'admin', password: 'admin', first_name: 'Test', last_name: 'User'}).save();
 			};
 		});
 		app.listen(PORT, function() {

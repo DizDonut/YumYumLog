@@ -6,13 +6,9 @@ module.exports = function(sequelize, DataTypes) {
     var db = require("../models");
     var User = sequelize.define("User", {
         username: {type: DataTypes.STRING, unique: true, allowNull: false, validate: {notEmpty: true}},
-        password: {type: DataTypes.STRING, allowNull: false, validate: {notEmpty: true}}
-        // first_name: {
-        //     type: DataTypes.STRING
-        // },
-        // last_name: {
-        //     type: DataTypes.STRING
-        // }
+        password: {type: DataTypes.STRING, allowNull: false, validate: {notEmpty: true}},
+        first_name: {type: DataTypes.STRING},
+        last_name: {type: DataTypes.STRING}
     },	{
 		dialect: 'mysql'
 	});
