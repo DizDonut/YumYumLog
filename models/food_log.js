@@ -17,11 +17,17 @@ module.exports = function(sequelize, DataTypes) {
 
     Log.associate = function(models) {
         // When a food item is deleted
-        Log.belongsTo(models.User);
+        Log.belongsTo(models.User,{ 
+            foreignKey: {
+                allowNull: false
+            },
+            onDelete: "CASCADE"
+          });
         Log.belongsTo(models.goal, {
             foreignKey: {
-              allowNull: false
-            }
+              allowNull: false,
+            },
+            onDelete: "CASCADE"
         });
         // Log.belongsTo(models.timeline);
     }
