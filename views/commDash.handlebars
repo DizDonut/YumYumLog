@@ -1,0 +1,51 @@
+<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large" onclick="sideBar_Close()">Close &times;</button>
+  <a href="/userDash" class="w3-bar-item w3-button">Back to My Dashboard</a>
+  <a href="/user" class="w3-bar-item w3-button">Back to the Login Page</a>
+  <a href="#" class="w3-bar-item w3-button">See the Community Dashboard</a>
+</div>
+
+<div zclass="w3-main" id="sidebar">
+
+  <div class="w3-jumbo">
+    <button class="w3-button w3-bisque w3-large" onclick="sideBar_Open()">&#9776;</button>
+    <div class="w3-container">
+      <h2>Welcome Back {{username}}!</h2>
+      <span class="w3-badge w3-xlarge w3-blue">RANK</span>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="w3-container">
+    <div class="w3-row">
+      <div class="w3=responsive">
+        <table class="w3-table-all w3-hoverable">
+          <thead>
+            <tr class="w3-blue">
+              <th>Food Track</th>
+              <th>Servings Goal</th>
+              <th>Week</th>
+              <th>Progress</th>
+              <th>Completed</th>
+            </tr>
+            <tr>
+              <td>User Name Goes Here</td> <!-- {/{userObj.userID}/} -->
+              <td>"Current Food Track"</td> <!-- {/{userObj.currTrack}/} -->
+              <td>Current week of the year</td> <!-- {/{userObj.currWeek}/} -->
+              <td onload="progress_Bar()">
+                <div class="w3-light-grey">
+                  <div id="curr_prog" class="w3-container w3-blue" style="height:20px; width:0px">
+                    <!-- {/{foodObj.count}/} -->
+                  </div>
+                </div>
+              </td>
+              <td onload="check_Star()"></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

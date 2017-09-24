@@ -6,12 +6,12 @@ module.exports = function(app) {
             include: [{model: db.log}],
             order: [['week', 'DESC']]}).then(function(dbgoal) {
             res.json(dbgoal);
-            // var hbsObj = {
-            //     dashboard : dbgoal
-            // }
-            // replace res.json with the rendered handlebars page - res.render("userDash",hbsObj)
+            var hbsObj = {
+                dashboard : dbgoal
+            }
+            res.render("userDash",hbsObj)
         })
-        
+
     })
 
     app.get("/dashboard/:id", function(req,res) {
@@ -27,6 +27,6 @@ module.exports = function(app) {
             // }
             // replace res.json with the rendered handlebars page - res.render("userDash",hbsObj)
         })
-        
+
     })
 }

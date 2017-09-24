@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //added from passport.js authentication example
 app.use(cookieParser());
 //settings from express-session
-app.use(session({ 
+app.use(session({
     secret: 'yumyumkeepsyoulogged',
     resave: false,
     saveUninitialized: false}))
@@ -90,7 +90,7 @@ app.post('/register', function(req, res){
 	db.User.findOne({where: {username: req.username}}).then(function (user){
 		if(!user) {
 			db.User.create({
-				username: req.body.username, 
+				username: req.body.username,
 				password: req.body.password,
 				first_name: req.body.firstName,
 				last_name: req.body.lastName
@@ -106,14 +106,14 @@ app.post('/register', function(req, res){
 	})
 	res.redirect('/')
 });
-//listener 
+//listener
 db
 .sequelize.sync({force:true})//
-// .then(function() {
-//     app.listen(PORT, function() {
-//         console.log("App listening on PORT: " + PORT);
-//     });
-// })
+  // .then(function() {
+  //     app.listen(PORT, function() {
+  //         console.log("App listening on PORT: " + PORT);
+  //     });
+  // })
 .then(function(err){
 	// if (err) {
 	// 	throw err[0]
