@@ -4,10 +4,20 @@ var passport = require("passport");
 var application = application = require('./application');
 
 module.exports = function(app) {
-
+    //wrapper function to check the property of existing objects (for testing purposes)
+    function hasProp (obj, prop) {
+        return Object.prototype.hasOwnProperty.call(obj, prop);
+      }
         //currently not exporting because the same route passes through authentication (don't want to serve this route w/out authentication)
     app.get("/", function(req,res) {
-        res.render("index")
+        
+        if (hasProp(req, 'user')) {
+            console.log(req.user.username);
+            var hbsObj = {
+                username: req.user.username
+            }
+        }
+        res.render("index",hbsObj)
     })
 
 
