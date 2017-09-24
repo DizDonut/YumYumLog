@@ -2,7 +2,7 @@
 var bcrypt = require('bcrypt-nodejs')
 
 module.exports = function(sequelize, DataTypes) {
-    
+
     var db = require("../models");
     var User = sequelize.define("User", {
         username: {type: DataTypes.STRING, unique: true, allowNull: false, validate: {notEmpty: true}},
@@ -58,7 +58,7 @@ module.exports = function(sequelize, DataTypes) {
 };
 
 
-  
+
 //   module.exports = function(sequelize, DataTypes) {
 //       var User = sequelize.define('User', {
 //           username: {type: DataTypes.STRING, unique: true, validate: {notNull: true, notEmpty: true}},
@@ -82,7 +82,7 @@ module.exports = function(sequelize, DataTypes) {
 //           dialect: 'mysql'
 //       }
 //   );
-  
+
 //   User.hook('beforeCreate', function(user, fn){
 //       var salt = bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
 //           return salt
@@ -93,14 +93,14 @@ module.exports = function(sequelize, DataTypes) {
 //           return fn(null, user)
 //       });
 //   })
-      
-//    return User	
+
+//    return User
 //   }
-  
+
 //old password file
 
 // module.exports = function(sequelize, DataTypes) {
-    
+
 //     var db = require("../models");
 //     var Password = sequelize.define("password", {
 //         key: {

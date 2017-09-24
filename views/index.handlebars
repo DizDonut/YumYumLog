@@ -2,7 +2,7 @@
     <h1 class="w3-jumbo w3-animate-top w3-center">Yum Yum Log</h1>
     <h4 class="w3-animate-top w3-center">Choose a Track.  Set a Goal.  Achieve Results.</h4>
     <div class="w3-row">
-        <div class="w3-col s6 w3-mobile">
+        <div class="w3-col s12 w3-mobile">
           <!-- action="/" method="POST" -->
             <form class="w3-panel w3-card-4" action="/authenticate" method="post">
               <h2 style="text-align: center">Returning User?</h2>
@@ -15,10 +15,10 @@
             </form>
         </div>
         {{#if username}}
-        <div class="w3-col s6 w3-mobile">
+        <div class="w3-col s12 w3-mobile">
          <a href="/users/{{username}}"><button type="submit" class="w3-button w3-red loginBtn">Go To My Log</button></a>
         </div>
-        <div class="w3-col s6 w3-mobile">
+        <div class="w3-col s12 w3-mobile">
           <a href="/logout"><button type="submit" class="w3-button w3-red loginBtn">Logout</button></a>
         </div>
         {{/if}}
