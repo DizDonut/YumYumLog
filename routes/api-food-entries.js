@@ -6,14 +6,37 @@ var passport = require("passport");
 var application = application = require('./application');
 
 module.exports = function(app) {
-    //get the webpage
-    app.get("/userInputs/search", function(req,res) {
-        res.render("userInputs")
-    })
-    // search for food by category
-    
+    //get the tracks user actually has, display in json
+    app.get("/getTracks/:UserId",application.IsAuthenticated,function(req,res) {
+        //req.body.goal is in the request for userTracks, not userInputs
+        debugger;
+            //render the userInputs with the handlebars obj for all current tracks
+            db.goal.findAll({
+                where: {UserId : req.params.UserId}
+            }).then(function(dbGoal) {
 
-    app.get("/search", function(req, res) {   
+                res.json(dbgoal)
+
+                // var hbsObj = {
+                //     goals : dbGoal
+                // }
+                // console.log(hbsObj.goals)
+                // res.render("userTracks", hbsObj)
+            })
+        }
+
+
+
+    })
+
+    //get the webpage
+    // app.get("/userInputs/search", function(req,res) {
+    //     res.render("userInputs")
+    // })
+  
+    
+      // search for food by category
+    app.get("/search/:UserId", function(req, res) {   
         //if the query 'q' is included look for food 
         if (req.query.q) {
             console.log(req.query.q);
@@ -28,7 +51,7 @@ module.exports = function(app) {
                 var hbsObj = {
                     choice : dbfood
                 }
-                console.log(JSON.stringify(hbsObj));
+                // console.log(JSON.stringify(hbsObj));
                 res.render("userInputs",hbsObj)
             });
         //if the query is category, return an object of the category to use for the food search
@@ -82,15 +105,6 @@ module.exports = function(app) {
             res.json(dbGoal);
         })
     })
-    //get the food items by category, display by category in handlebars
-    app.get("/getTracks/:UserId",application.IsAuthenticated,function(req,res) {
-        db.goal.findAll({
-            where: {UserId : req.params.UserId}
-        }).then(function(dbgoal) {
-            res.json(dbgoal)
-        })
-    })
-
     //find all goals, sum the associated log counts, store as count in goals
 }
 //export routes for server.js to use

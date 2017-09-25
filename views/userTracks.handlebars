@@ -4,7 +4,10 @@
 {{!-- {{#if user}} --}}
 {{#if user}}
     <h2 id="userTitle">{{user.first_name}}</h2>
-    <a href="/users/{{user.username}}" class="w3-bar-item w3-button"><button class="w3-button w3-green">Back to main page</button></a>
+    <div class="w3-container">
+        <a href="/users/{{user.username}}" class="w3-bar-item w3-button"><button class="w3-button w3-green">Back to main page</button></a>
+        <a href="/logout"><button type="submit" class="w3-button w3-red loginBtn">Logout</button></a>
+    </div>
     <form action="/addTrack/{{user.username}}" method="post" class="w3-container">
         {{!-- for an actual user, will only display the tracks/goals they've signed up for; populate with goals table category --}}
         <label for="moment" id="momentLabel"></label>

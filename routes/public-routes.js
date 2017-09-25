@@ -11,7 +11,7 @@ module.exports = function(app) {
   });
 
   app.get("/user_food", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/assets/javascript/user_food.js"));
+    res.sendFile(path.join(__dirname, "../public/assets/javascript/scripts_user_food.js"));
   });
 
   app.get("/scripts", function(req, res) {

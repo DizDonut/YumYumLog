@@ -47,30 +47,41 @@ function checkTracks() {
     //get the value of the username from the page run ajax on it to get the data
     var name = document.getElementById("user_Id").value
     // console.log(`magic` + name)
-    $.ajax({url: currentURL + "/getTracks/" + name,method:"GET"}).done(function(data) {
-        console.log(data);
-        var done = 0;
-        //if veggies or fruits, disable in options
-        for (var i=0; i < data.length; i++) {
-            if (data[i].category === "vegetables") {
-                document.getElementById("vegetables").disabled = true
-                done ++;
-            }
-            if (data[i].category === "fruits") {
-                document.getElementById("fruits").disabled = true
-                done ++
-            }
-            if (done >= 2) {
-                //replace tracks with a message
-                var update = document.getElementById("optMsg")
-                document.getElementById("goalInput").disabled = true
-                update.innerHTML = "You're already tracking both goals!"
-            }
-        }
-        // console.log("i've got your goals right here" + data.goals.length);
-    })
 
-        //search database
+        $.ajax({url: currentURL + "/getTracks/" + name,method:"GET"}).done(function(data) {
+            console.log(data);
+            var done = 0;
+            //if veggies or fruits, disable in options
+            debugger;
+        if (window.location.pathname == "/trackPage/" + name) {
+            for (var i=0; i < data.length; i++) {
+                if (data[i].category === "vegetables") {
+                    document.getElementById("vegetables").disabled = true
+                    done ++;
+                }
+                if (data[i].category === "fruits") {
+                    document.getElementById("fruits").disabled = true
+                    done ++
+                }
+                if (done >= 2) {
+                    //replace tracks with a message
+                    var update = document.getElementById("optMsg")
+                    document.getElementById("goalInput").disabled = true
+                    update.innerHTML = "You're already tracking both goals!"
+                }
+            }
+        } else if (window.location.pathname = "addLog/" + name) {
+            for (var i=0; i < data.length; i++) {
+                //create an option
+                //add the text
+                //display the option
+                var option = document.createElement("option")
+                option.innerHTML = data[i].category
+                option.setAttrib
+        }
+            // console.log("i've got your goals right here" + data.goals.length);
+        })
+    //search database
 }
 checkTracks();
 // momentjs sample code
