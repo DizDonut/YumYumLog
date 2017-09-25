@@ -1,4 +1,5 @@
-var db = require("./models");
+//are you requiring our models on the client side or is this psuedocode? need to do ajax calls instead (it's an api)
+// var db = require("../models");
 
 function sideBar_Open() {
   document.getElementById("sidebar").style.marginLeft = "25%";
@@ -22,31 +23,33 @@ window.onload = function(){
   the User model.  Set the width equal to the User.count property; if no goal
   exists, the element is cleared.  If not, we increment the width
 */
-  function progress_Bar(){
-    var elem = document.getElementById("curr_prog");
-    var width = db.User.count; // TODO: check status of assignment here
-    var goal = db.User.goal // TODO: check status of assignment here
-    var id = setInterval(frame, 10);
-    function frame() {
-      if(!goal){
-        clearInterval(id);
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-  }
+    //i think the db.User count and goal is pseudo code. will replace later
+
+  // function progress_Bar(){
+  //   var elem = document.getElementById("curr_prog");
+  //   var width = db.User.count; // TODO: check status of assignment here
+  //   var goal = db.User.goal // TODO: check status of assignment here
+  //   var id = setInterval(frame, 10);
+  //   function frame() {
+  //     if(!goal){
+  //       clearInterval(id);
+  //     } else {
+  //       width++;
+  //       elem.style.width = width + "%";
+  //     }
+  //   }
+  // }
 
 /*
   check_Star function simply checks the goal vs the foodLog count and determines
   if the goal has been met.  If so, create an img element and assign it the star.png
   source and append to the div
 */
-  function check_Star(){
-    if (db.User.count >= db.User.goal) {
-      var elem = document.createElement("img");
-      elem.src = ("./assets/images/star.png")
-      document.getElementById("star_complete").appendChild(elem);
-    }
-  } // end check_Star function
+//   function check_Star(){
+//     if (db.User.count >= db.User.goal) {
+//       var elem = document.createElement("img");
+//       elem.src = ("./assets/images/star.png")
+//       document.getElementById("star_complete").appendChild(elem);
+//     }
+//   } // end check_Star function
 } // end onload listener

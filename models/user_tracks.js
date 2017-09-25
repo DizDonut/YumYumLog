@@ -4,13 +4,18 @@ module.exports = function(sequelize, DataTypes) {
       var Goal = sequelize.define("goal", {
           //create function will add this from a list of options
         category: {
-          type: DataTypes.STRING
+          type: DataTypes.STRING,
+          allowNull: false
         },
         goal: {
-          type: DataTypes.INTEGER 
+          type: DataTypes.INTEGER,
+          allowNull: false
         },
         //get the current week from timeline and log it here
-        week: DataTypes.INTEGER
+        week: {
+          type: DataTypes.INTEGER,
+          allowNull: false
+        }
       });
       Goal.associate = function(models) {
           //generate a userid in the goal table

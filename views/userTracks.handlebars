@@ -1,9 +1,30 @@
 {{!-- this user --}}
 
-    <form action="">
-        {{!-- select food track  --}}
-
-        {{!-- select goal --}}
-
-        {{!-- submit --}}
+{{!-- /createTrack/:id/:category/:goal/:week --}}
+{{!-- {{#if user}} --}}
+{{#if user}}
+    <h2 id="userTitle">{{user.first_name}}</h2>
+    <a href="/users/{{user.username}}" class="w3-bar-item w3-button"><button class="w3-button w3-green">Back to main page</button></a>
+    <form action="/addTrack/{{user.username}}" method="post" class="w3-container">
+        {{!-- for an actual user, will only display the tracks/goals they've signed up for; populate with goals table category --}}
+        <label for="moment" id="momentLabel"></label>
+        <input type="hidden" name="week" id="moment" required>
+        <input type="hidden" name="UserId" value={{user.id}} id="user_Id" required>
+        <label><h4>Select your track:</h4></label>
+        <select name="category" id="trackName" required>
+            {{!-- add available tracks here --}}
+            <option value="" disabled selected id="optMsg">Choose your track</option>
+            <option value="vegetables" id="vegetables">Track my Veggies</option>
+            <option value="fruits" id="fruits">Track my Fruits</option>
+            {{!-- if a track is in the database already, mark it as disabled --}}
+        </select>
+        <label><h4>Set a goal</h4></label>
+        <input type="number" placeholder="(i.e 10 servings)" name="goal" id="goalInput" required>
+        <span> servings per week</span>
+        {{!-- add a clearfix --}}
+        <div></div>
+        <br>
+        <button type="submit">submit category</button>
     </form>
+{{/if}}
+

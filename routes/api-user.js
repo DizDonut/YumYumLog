@@ -22,10 +22,45 @@ module.exports = function(app) {
 
 
     app.get("/users/:username",application.IsAuthenticated, function(req,res) {
-        res.render("userInputs")
+        if (hasProp(req, 'user')) {
+            console.log(req.user.username);
+            var hbsObj = {
+                username: req.user.username
+            }
+        }
+        res.render("userDash",hbsObj)
     })
 
+    app.get("/addLog/:username",application.IsAuthenticated, function(req,res) {
+        if (hasProp(req, 'user')) {
+            console.log(req.user.username);
+            var hbsObj = {
+                user: req.user
+            }
+        }
+        res.render("userInputs",hbsObj)
+    })
 
+    app.get("/trackPage/:username",application.IsAuthenticated, function(req,res) {
+        //you wont need this if the model includes username
+        // if (hasProp(req, 'user')) {
+        //     console.log(req.user.username);
+        //     var hbsObj = {
+        //         user: req.user
+        //     }
+            //find all of the users tracks and deliver them to the page in an object
+        db.User.findOne({
+            where: {username: req.params.username},
+            include: [{model: db.goal}]
+        }).then(function(dbUser) {
+            console.log(dbUser)
+            var hbsObj = {
+                user: dbUser
+            }
+            res.render("userTracks",hbsObj)
+        })
+        
+    })
     //replacing old registration pathway
     // app.get("/signup", function(req,res) {
     //     res.render("signup")
