@@ -45,15 +45,17 @@ setMoment()
 function checkTracks() { 
     var currentURL = window.location.origin
     //get the value of the username from the page run ajax on it to get the data
-    var name = document.getElementById("user_Id").value
+    var name = document.getElementById("username").value
+    var id = document.getElementById("user_Id").value
     // console.log(`magic` + name)
 
-        $.ajax({url: currentURL + "/getTracks/" + name,method:"GET"}).done(function(data) {
+        $.ajax({url: currentURL + "/getTracks/" + id,method:"GET"}).done(function(data) {
             console.log(data);
             var done = 0;
-            //if veggies or fruits, disable in options
             debugger;
-        if (window.location.pathname == "/trackPage/" + name) {
+            //if veggies or fruits, disable in options
+            // debugger;
+        if (window.location.pathname === "/trackPage/" + name) {
             for (var i=0; i < data.length; i++) {
                 if (data[i].category === "vegetables") {
                     document.getElementById("vegetables").disabled = true
@@ -70,20 +72,41 @@ function checkTracks() {
                     update.innerHTML = "You're already tracking both goals!"
                 }
             }
-        } else if (window.location.pathname = "addLog/" + name) {
+        } else if (window.location.pathname === "/addLog/" + name) {
             for (var i=0; i < data.length; i++) {
                 //create an option
                 //add the text
                 //display the option
                 var option = document.createElement("option")
                 option.innerHTML = data[i].category
-                option.setAttrib
+                option.setAttribute("value", data[i].category)
+                option.setAttribute("name", data[i].category)
+                var select = document.getElementById("trackName")
+                select.append(option);
+            }
         }
             // console.log("i've got your goals right here" + data.goals.length);
         })
     //search database
 }
 checkTracks();
+
+//get food index list ajax
+    //on submit, search for food for a category
+        //data object has food items
+            //iterate them in the data list
+
+
+//get one item
+    //on submit, look for one item in the food index
+        //return it to the page
+
+//submit food log
+    //on submit, post food item to db for user
+        //include moment current week
+        //include goalsId
+
+
 // momentjs sample code
 // $(document).ready(function(){
 //     var weeknumber = moment("2017-09-22 00:30:17", "MMDDYYYY HHmmss").week();

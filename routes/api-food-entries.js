@@ -6,70 +6,109 @@ var passport = require("passport");
 var application = application = require('./application');
 
 module.exports = function(app) {
-    //get the tracks user actually has, display in json
+    function hasProp (obj, prop) {
+        return Object.prototype.hasOwnProperty.call(obj, prop);
+    }
+
     app.get("/getTracks/:UserId",application.IsAuthenticated,function(req,res) {
-        //req.body.goal is in the request for userTracks, not userInputs
-        debugger;
-            //render the userInputs with the handlebars obj for all current tracks
-            db.goal.findAll({
-                where: {UserId : req.params.UserId}
-            }).then(function(dbGoal) {
-
-                res.json(dbgoal)
-
-                // var hbsObj = {
-                //     goals : dbGoal
-                // }
-                // console.log(hbsObj.goals)
-                // res.render("userTracks", hbsObj)
-            })
-        }
-
-
-
+        db.goal.findAll({
+            where: {UserId : req.params.UserId}
+        }).then(function(dbGoal) {
+            res.json(dbGoal)
+        })
     })
 
-    //get the webpage
-    // app.get("/userInputs/search", function(req,res) {
-    //     res.render("userInputs")
-    // })
-  
-    
-      // search for food by category
-    app.get("/search/:UserId", function(req, res) {   
-        //if the query 'q' is included look for food 
-        if (req.query.q) {
-            console.log(req.query.q);
-            db.food.findAll({
-                where: { 
-                    item: {
-                        $like: req.query.q
+    // :category?/:foodItem?
+    //change this so that the results are rendered into handlebars partials (or new page)
+        //grab the user information, like you've done for other routes,
+        //user user information to submit the food items
+    app.post("/submitLog/:username",application.IsAuthenticated, function(req,res) {
+        debugger;
+        //db find user using params, then function user
+            //if 
+        
+            //if category
+            //if food item
+            if (req.query.q) {
+                console.log(req.query.q);
+                db.food.findAll({
+                    where: { 
+                        item: {
+                            $like: req.query.q
+                        }
                     }
-                }
-            })
-            .then(function(dbfood) {
-                var hbsObj = {
-                    choice : dbfood
-                }
-                // console.log(JSON.stringify(hbsObj));
-                res.render("userInputs",hbsObj)
-            });
-        //if the query is category, return an object of the category to use for the food search
-        } else if (req.query.category) {
-            console.log(req.query.category)
-            db.food.findAll({
-                where: { 
-                    category: req.query.category
-                }
-            }).then(function(dbfood) {
-                // res.json(dbfood)
-                var hbsObj = {
-                    foods: dbfood
-                }
-                res.render("userInputs",hbsObj)
-            });
-        }
-    });
+                })
+                .then(function(dbfood) {
+                    var hbsObj = {
+                        choice : dbfood
+                    }
+                    // console.log(JSON.stringify(hbsObj));
+                   res.render("userInputs",hbsObj)
+                });
+            //if the query is category, return an object of the category to use for the food search
+            } else if (req.body.category) {
+                console.log(req.query.category)
+                db.food.findAll({
+                    attributes: ['item'],
+                    where: { 
+                        category: req.query.category
+                    }
+                }).then(function(dbfood) {
+                    // res.json(dbfood)
+                    var hbsObj = {
+                        foods: dbfood
+                    }
+                   res.render("userInputs",hbsObj)
+                });
+            } 
+        // else {
+            
+            
+        //         console.log(req.user.username);
+        //         var handleBars = {
+        //             user: req.user
+        //         }
+        
+        //         res.render("userInputs",handleBars)
+        // }
+    })
+      // search for food by category
+    // app.get("/search/:username",application.IsAuthenticated, function(req, res) {   
+    //     //if the query 'q' is included look for food 
+    //     debugger;
+    //     if (req.query.q) {
+    //         console.log(req.query.q);
+    //         db.food.findAll({
+    //             where: { 
+    //                 item: {
+    //                     $like: req.query.q
+    //                 }
+    //             }
+    //         })
+    //         .then(function(dbfood) {
+    //             var hbsObj = {
+    //                 choice : dbfood
+    //             }
+    //             // console.log(JSON.stringify(hbsObj));
+    //             res.render("userInputs",hbsObj)
+    //         });
+    //     //if the query is category, return an object of the category to use for the food search
+    //     } else if (req.query.category) {
+    //         console.log(req.query.category)
+    //         db.food.findAll({
+    //             attributes: ['item'],
+    //             where: { 
+    //                 category: req.query.category
+    //             }
+    //         }).then(function(dbfood) {
+    //             // res.json(dbfood)
+    //             var hbsObj = {
+    //                 foods: dbfood
+    //             }
+    //             res.render("userInputs",hbsObj)
+    //         });
+    //     }
+    // });
     //post a new goal
     app.post("/addTrack/:username",application.IsAuthenticated, function(req,res) {
         // /createTrack/:id/:category/:goal/:week
@@ -90,7 +129,12 @@ module.exports = function(app) {
             //     console.log(result)  
             // })
             // console.log("----db.goal.create data----")
-            res.json(dbGoal);
+            // res.json(dbGoal);
+            
+            var hbsObj = {
+                goals: dbGoal
+            }
+            res.send("/userDash/" + dbGoal)
         })
     })
     //log food entry

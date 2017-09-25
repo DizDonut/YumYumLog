@@ -8,9 +8,8 @@ module.exports = function(app) {
     function hasProp (obj, prop) {
         return Object.prototype.hasOwnProperty.call(obj, prop);
       }
-        //currently not exporting because the same route passes through authentication (don't want to serve this route w/out authentication)
+    //renders the landing page (no authentication needed)
     app.get("/", function(req,res) {
-        
         if (hasProp(req, 'user')) {
             console.log(req.user.username);
             var hbsObj = {
@@ -20,7 +19,7 @@ module.exports = function(app) {
         res.render("index",hbsObj)
     })
 
-
+    //generates user data  and handlebars for the user dash page
     app.get("/users/:username",application.IsAuthenticated, function(req,res) {
         if (hasProp(req, 'user')) {
             console.log(req.user.username);
@@ -31,16 +30,17 @@ module.exports = function(app) {
         res.render("userDash",hbsObj)
     })
 
-    app.get("/addLog/:username",application.IsAuthenticated, function(req,res) {
-        if (hasProp(req, 'user')) {
-            console.log(req.user.username);
-            var hbsObj = {
-                user: req.user
-            }
+    //generates user data and handlebars for the userInputs page
+    app.get("/addLog/:username", function(req,res) {
+        console.log(req.user.username);
+        var handleBars = {
+            user: req.user
         }
-        res.render("userInputs",hbsObj)
+
+        res.render("userInputs",handleBars)
     })
 
+    //renders tracks page and current tracks (for use in the form)
     app.get("/trackPage/:username",application.IsAuthenticated, function(req,res) {
         //you wont need this if the model includes username
         // if (hasProp(req, 'user')) {
