@@ -11,7 +11,7 @@ module.exports = function(app) {
     //renders the landing page (no authentication needed)
     app.get("/", function(req,res) {
         if (hasProp(req, 'user')) {
-            console.log(req.user.username);
+            // console.log(req.user.username);
             var hbsObj = {
                 username: req.user.username
             }
@@ -21,9 +21,8 @@ module.exports = function(app) {
 
     //generates user data  and handlebars for the user dash page
     app.get("/users/:username",application.IsAuthenticated, function(req, res) {
-
         if (hasProp(req, 'user')) {
-            console.log(req.user.username);
+            // console.log(req.user.username);
             var hbsObj = {
                 username: req.user.username,
             }
@@ -33,7 +32,7 @@ module.exports = function(app) {
 
     //generates user data and handlebars for the userInputs page
     app.get("/addLog/:username", function(req,res) {
-        console.log(req.user.username);
+        // console.log(req.user.username);
         var handleBars = {
             user: req.user
         }
@@ -54,7 +53,7 @@ module.exports = function(app) {
             where: {username: req.params.username},
             include: [{model: db.goal}]
         }).then(function(dbUser) {
-            console.log(dbUser)
+            // console.log(dbUser)
             var hbsObj = {
                 user: dbUser
             }
@@ -62,6 +61,7 @@ module.exports = function(app) {
         })
 
     })
+
     //replacing old registration pathway
     // app.get("/signup", function(req,res) {
     //     res.render("signup")

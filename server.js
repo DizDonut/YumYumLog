@@ -9,7 +9,7 @@ var path = require("path");
 var http = require('http');
 var passport = require('passport');
 var passportConfig = require('./config/passport')
-var application = application = require('./routes/application');
+var application = require('./routes/application');
 
 
 //determines encryption

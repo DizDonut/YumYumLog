@@ -1,15 +1,34 @@
 var db = require("../models");
+var application = application = require('./application');
+var moment = require("moment")
 
 module.exports = function(app) {
-    app.get("/dashboard", function(req,res) {
+    app.get("/dashboard",application.IsAuthenticated, function(req,res) {
+        //for a given user, return the count of their items logged for the given track
+        //find all of a a users logs for a given week, get the sum
+        debugger;
+        var userName = req.user.username
+        var weekInput = moment().format();
+        var weekNum = moment(weekInput).isoWeek();
         db.goal.findAll({
-          include: [{model: db.log}],
-          order: [['week', 'DESC']]}).then(function(dbgoal) {
+            // include: [[sequelize.fn('COUNT', sequelize.col('hats')), 'no_hats']]
+            // [[db.sequelize.fn('COUNT', sequelize.col('count')), 'no_count']]
+            where : {week : weekNum },
+            include: [{model: db.log},{model:db.User}],
+            order: [['week', 'DESC']]}).then(function(dbgoal) {
           // res.json(dbgoal);
-          var hbsObj = {
-            dashboard: dbgoal
+          console.log(dbgoal);
+          for (count in dbgoal) {
           }
-          res.render("userDash",hbsObj)
+          var hbsObj = {
+            dashboard: dbgoal,
+            user: {
+                username : userName
+            }
+          }
+          //count per week
+          //for a given goal, given week, calculate the sum of the food log counts that match that week
+          res.render("commDash",hbsObj)
         })
 
     })
