@@ -35,7 +35,9 @@ function setMoment() {
 
     var wkLabel = document.getElementById("momentLabel"); 
     var wkInput = document.getElementsByClassName("moment");
-    wkLabel.innerHTML = date
+    if (wkLabel) {
+        wkLabel.innerHTML = date
+    }
     // wkInpt.setAttribute("placeholder", date)
     // wkInput.setAttribute("value",weekNum )
     for (var i =0; i < wkInput.length; i++) {

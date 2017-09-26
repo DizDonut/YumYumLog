@@ -36,7 +36,7 @@
     <form action="/addTrack/{{user.username}}" method="post" class="w3-panel w3-card-4">
         {{!-- for an actual user, will only display the tracks/goals they've signed up for; populate with goals table category --}}
           <label for="moment" id="momentLabel"></label>
-          <input type="hidden" name="week" id="moment" required>
+          <input type="hidden" name="week" class="moment" required>
           <input type="hidden" name="username" value={{user.username}} id="username">
           <input type="hidden" name="UserId" value={{user.id}} id="user_Id" required>
         <label><h4>Select your track:</h4></label>
