@@ -44,7 +44,7 @@ function setMoment() {
         temp.setAttribute("value",weekNum)
     }
     
-
+}
 
 
 setMoment()
