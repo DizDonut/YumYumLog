@@ -30,19 +30,17 @@ function setMoment() {
     var date = moment().format('dddd, MMMM Do YYYY'); // Current Date, September 24th 2017
     var weekInput = moment().format();
     var weekNum = moment(weekInput).isoWeek();
-    var wkLabel = document.getElementById("momentLabel"); 
+    var wkLabel = document.getElementById("momentLabel");
     var wkInput = document.getElementById("moment");
     wkLabel.innerHTML = date
     // wkInpt.setAttribute("placeholder", date)
     wkInput.setAttribute("value",weekNum )
-
-    
 }
 
 
 setMoment()
 
-function checkTracks() { 
+function checkTracks() {
     var currentURL = window.location.origin
     //get the value of the username from the page run ajax on it to get the data
     var name = document.getElementById("username").value
@@ -52,7 +50,7 @@ function checkTracks() {
         $.ajax({url: currentURL + "/getTracks/" + id,method:"GET"}).done(function(data) {
             console.log(data);
             var done = 0;
-            debugger;
+            // debugger;
             //if veggies or fruits, disable in options
             // debugger;
         if (window.location.pathname === "/trackPage/" + name) {

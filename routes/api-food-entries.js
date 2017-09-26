@@ -25,14 +25,14 @@ module.exports = function(app) {
     app.post("/submitLog/:username",application.IsAuthenticated, function(req,res) {
         debugger;
         //db find user using params, then function user
-            //if 
-        
+            //if
+
             //if category
             //if food item
             if (req.query.q) {
                 console.log(req.query.q);
                 db.food.findAll({
-                    where: { 
+                    where: {
                         item: {
                             $like: req.query.q
                         }
@@ -50,7 +50,7 @@ module.exports = function(app) {
                 console.log(req.query.category)
                 db.food.findAll({
                     attributes: ['item'],
-                    where: { 
+                    where: {
                         category: req.query.category
                     }
                 }).then(function(dbfood) {
@@ -60,26 +60,26 @@ module.exports = function(app) {
                     }
                    res.render("userInputs",hbsObj)
                 });
-            } 
+            }
         // else {
-            
-            
+
+
         //         console.log(req.user.username);
         //         var handleBars = {
         //             user: req.user
         //         }
-        
+
         //         res.render("userInputs",handleBars)
         // }
     })
       // search for food by category
-    // app.get("/search/:username",application.IsAuthenticated, function(req, res) {   
-    //     //if the query 'q' is included look for food 
+    // app.get("/search/:username",application.IsAuthenticated, function(req, res) {
+    //     //if the query 'q' is included look for food
     //     debugger;
     //     if (req.query.q) {
     //         console.log(req.query.q);
     //         db.food.findAll({
-    //             where: { 
+    //             where: {
     //                 item: {
     //                     $like: req.query.q
     //                 }
@@ -97,7 +97,7 @@ module.exports = function(app) {
     //         console.log(req.query.category)
     //         db.food.findAll({
     //             attributes: ['item'],
-    //             where: { 
+    //             where: {
     //                 category: req.query.category
     //             }
     //         }).then(function(dbfood) {
@@ -116,21 +116,21 @@ module.exports = function(app) {
         //find all tracks for this user, pass them to an object...
             //then, if this user is trying to create a track that exists, return a message string saying, ''track exists
             //if the track doesn't exists. create it
-            db.goal.create({
+            db.Goal.create({
                 category: req.body.category,
                 goal: req.body.goal,
                 week: req.body.week,
                 UserId: req.body.UserId
-            }).then(function(dbGoal) {   
+            }).then(function(dbGoal) {
         //     debugger;
         //update the track with the current week
             // db.sequelize.query('UPDATE goals SET timelineId=WEEK(CURDATE()), week=WEEK(CURDATE()) WHERE id=?', {replacements: [dbGoal.id], type: db.sequelize.QueryTypes.UPDATE},{ model: db.goal }).then(function(result) {
             //     console.log("----db.sequelise.query data----")
-            //     console.log(result)  
+            //     console.log(result)
             // })
             // console.log("----db.goal.create data----")
             // res.json(dbGoal);
-            
+
             var hbsObj = {
                 goals: dbGoal
             }
@@ -145,7 +145,7 @@ module.exports = function(app) {
             week: req.params.week,
             UserId: req.params.id,
             goalId: req.params.goalId
-        }).then(function(dbGoal) { 
+        }).then(function(dbGoal) {
             res.json(dbGoal);
         })
     })

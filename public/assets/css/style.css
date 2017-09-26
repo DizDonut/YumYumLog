@@ -1,5 +1,5 @@
 
-body,h1,h2,div,form,input,label,h3,a {font-family: 'Dosis', sans-serif;}
+body,h1,h2,div,form,input,label,h3,a,h4 {font-family: 'Dosis', sans-serif;}
 body, html {height: 100%}
 body:before {
   content: "";
@@ -22,6 +22,7 @@ body:before {
   margin: 25px;
   text-align: left;
   background-color: bisque;
+  padding: 25px 25px 25px 25px;
 }
 
 .w3-bar-block{
@@ -38,7 +39,11 @@ body:before {
   margin: 15px;
 }
 
+#dashboard_hamburger{
+  position: absolute;
+  left: 0;
+}
+
 /* h1,h2,h3,h4 {
     color: red
 } */
-
