@@ -25,39 +25,49 @@ module.exports = function(app) {
     app.post("/submitLog/:username",application.IsAuthenticated, function(req,res) {
         debugger;
         //db find user using params, then function user
-            //if
+            //if 
+        var userName = req.user.username
 
             //if category
             //if food item
-            if (req.query.q) {
-                console.log(req.query.q);
+            if (req.body.q) {
+                console.log(req.body.q);
                 db.food.findAll({
                     where: {
                         item: {
-                            $like: req.query.q
+                            $like: req.body.q
                         }
                     }
                 })
                 .then(function(dbfood) {
                     var hbsObj = {
-                        choice : dbfood
+                        choice : dbfood,
+                        user: {
+                            username : userName
+                        }
                     }
                     // console.log(JSON.stringify(hbsObj));
                    res.render("userInputs",hbsObj)
                 });
             //if the query is category, return an object of the category to use for the food search
             } else if (req.body.category) {
-                console.log(req.query.category)
+                debugger;
+                console.log(req.body.category)
                 db.food.findAll({
                     attributes: ['item'],
-                    where: {
-                        category: req.query.category
+                    where: { 
+                        category: req.body.category
                     }
                 }).then(function(dbfood) {
                     // res.json(dbfood)
+                    
                     var hbsObj = {
-                        foods: dbfood
+                        foods: dbfood,
+                        user: {
+                            username : userName
+                        }
                     }
+                    console.log(hbsObj.foods);
                    res.render("userInputs",hbsObj)
                 });
             }
@@ -138,15 +148,23 @@ module.exports = function(app) {
         })
     })
     //log food entry
-    app.post("/logFood/:id/:item/:count/:week/:goalId",function(req,res) {
+    app.post("/addItem/:username",function(req,res) {
+        var userName = req.user.username
         db.log.create({
-            item: req.params.item,
-            count: req.params.count,
-            week: req.params.week,
-            UserId: req.params.id,
-            goalId: req.params.goalId
-        }).then(function(dbGoal) {
-            res.json(dbGoal);
+            item: req.body.item,
+            count: req.body.count,
+            week: req.body.week,
+            UserId: req.body.id,
+            goalId: req.body.goalId
+        }).then(function(dbGoal) { 
+            // res.json(dbGoal);
+            var hbsObj = {
+                goal : dbGoal,
+                user : {
+                    username : userName
+                }
+            }
+            res.render("userInputs",hbsObj)
         })
     })
     //find all goals, sum the associated log counts, store as count in goals
