@@ -6,7 +6,7 @@ module.exports = function(app) {
     app.get("/dashboard",application.IsAuthenticated, function(req,res) {
         //for a given user, return the count of their items logged for the given track
         //find all of a a users logs for a given week, get the sum
-        debugger;
+        // debugger;
         var userName = req.user.username
         var weekInput = moment().format();
         var weekNum = moment(weekInput).isoWeek();
