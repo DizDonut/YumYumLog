@@ -1,5 +1,13 @@
 {{!-- this user track object; action will send to this.user.category --}}
-
+{{!-- var hbsObj = {
+        user : {
+            choice : dbfood,
+            trackId : goalId,
+            model : userData,
+            username : userName
+        }
+    }
+    }--}}
 <div class="w3-row">
     <div class="w3-half w3-container">
         <div class="user">
@@ -9,57 +17,64 @@
             {{/if}}
         </div>
         {{!-- replaced /search with track --}}
-        <form action="/submitLog/{{user.username}}" method="post" class="w3-container">
-            {{!-- for an actual user, will only display the tracks/goals they've signed up for; populate with goals table category --}}
-            <label for="moment" id="momentLabel"></label>
-            <input type="hidden" name="week" id="moment" required>
-            <input type="hidden" value={{user.username}} id="username">
-            <input type="hidden" name="UserId" value={{user.id}} id="user_Id" required>
-            <h4>Select your track:</h4>
-            <select name="category" id="trackName">
-                <option value="" disabled selected>Choose your track</option>
-            </select>
-            <button type="submit">submit category</button>
-        </form>
+            <form action="/submitLog/{{user.username}}" method="post" class="w3-container">
+                {{!-- for an actual user, will only display the tracks/goals they've signed up for; populate with goals table category --}}
+                <label for="moment" id="momentLabel"></label>
+                <input type="hidden" name="week" class="moment" required>
+                <input type="hidden" value={{user.username}} id="username">
+                <input type="hidden" name="UserId" value={{user.id}} id="user_Id" required>
+                <h4>Select your track:</h4>
+                <select name="category" id="trackName">
+                    <option value="" disabled selected>Choose your track</option>
+                </select>
+                <button type="submit">submit category</button>
+            </form>
     <div class="w3-half w3-container">
         <div class="w3-col s6 w3-mobile">
-         <a href="/logout"><button type="submit" class="w3-button w3-red loginBtn">Logout</button></a>
+            <a href="/logout"><button type="submit" class="w3-button w3-red loginBtn">Logout</button></a>
         </div>
         <div class="w3-col s6 w3-mobile">
           <a href="/users/{{user.username}}" class="w3-bar-item w3-button"><button class="w3-button w3-green">Back to main page</button></a>
         </div>
         <div class="w3-row" id="bloodhound">
+            {{#if user}}
             <form action="/submitLog/{{user.username}}" class="w3-container" method="post">
-            <input type="hidden" value={{user.id}} id="user_Id" required>
-            {{#if foods}}
-            {{!-- <h4>2. What did you eat today?</h4> --}}
-            <input list="foods" name="q" autocomplete="off" placeholder="Enter your item">
-            <datalist id="foods">
-                {{#each foods}}
-                    <option value="{{this.item}}">{{this.item}}</option>
-                {{/each}}
-            </datalist>
-            {{!-- https://github.com/mfranzke/datalist-polyfill datalist isn't safari compatible..possible workaround --}}
-            <button type="submit">search</button>
-            {{/if}}         
-            {{!-- display food suggestions based on the selection from the tracks query --}}
+                <input type="hidden" value={{user.id}} id="user_Id" required>
+                {{#if foods}}
+                <h4>Enter log</h4>
+                <input list="foods" name="q" autocomplete="off" placeholder="Enter your item">
+                <datalist id="foods">
+                    {{#each foods}}
+                        <option value="{{this.item}}">{{this.item}}</option>
+                    {{/each}}
+                </datalist>
+                {{!-- https://github.com/mfranzke/datalist-polyfill datalist isn't safari compatible..possible workaround --}}
+                <button type="submit">search</button>
+                {{/if}} 
             </form>
+            {{/if}}        
+            {{!-- display food suggestions based on the selection from the tracks query --}}   
         </div>
-        <div>
-            {{#if choice}}
-                {{#each choice}}
-                <form action="/addItem/{{user.username}}" method="post">
-                    <h4>You selected {{this.item}}. Add to your log?</h4>
-                    <input type="hidden" name="item" value="{{this.item}}">
-                    <input type="hidden" name="count" value="1">
-                    <input type="hidden" name="user" value="this userId">
-                    <button>Add this item</button>
-                </form>
-                {{/each}}
-            {{/if}}
-
-            {{#if goal}}
-                <h4>{{this.item}} is logged!</h4>
+        <div>   
+            <form action="/addItem/{{user.username}}" method="post">
+                        <label for="moment" id="momentLabel"></label>
+                        <input type="hidden" name="week" class="moment" required>
+                {{#if choice}}
+                    {{#each choice}}
+                        <h4>You selected {{this.item}}. Add to your log?</h4>
+                        <input type="hidden" name="item" value="{{this.item}}">
+                        <input type="hidden" name="category" value="{{this.category}}">
+                        <input type="hidden" name="count" value="1">
+                    {{/each}}
+                    {{/if}}
+                        <input type="hidden" name="goalId" value="{{id}}">
+                        <input type="hidden" name="userId" value="{{userObject.id}}">
+                {{#if choice}}
+                <button>Add this item</button>
+            </form>
+                {{/if}}
+            {{#if item}} 
+                <h4>{{item}} is logged!</h4>
             {{/if}}
         </div>
     </div>

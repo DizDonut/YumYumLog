@@ -88,7 +88,7 @@ app.get('/signup', function(req,res) {
     res.render("signup")
 })
 app.post('/register', function(req, res){
-	console.log("req.username " + req.username)
+	// console.log("req.username " + req.username)
 	db.User.findOne({where: {username: req.username}}).then(function (user){
 		if(!user) {
 			db.User.create({
@@ -97,7 +97,7 @@ app.post('/register', function(req, res){
 				first_name: req.body.firstName,
 				last_name: req.body.lastName
 			}).then(function(dbUser,err){
-				console.log(err);
+				// console.log(err);
 				// console.log(dbUser)
                 // res.redirect("/authenticate");
 			});
