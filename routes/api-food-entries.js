@@ -101,7 +101,7 @@ module.exports = function(app) {
             var hbsObj = {
                 goals: dbGoal
             }
-            res.send("/userDash/" + dbGoal)
+            res.redirect("back")
         })
     })
     //create food entry
