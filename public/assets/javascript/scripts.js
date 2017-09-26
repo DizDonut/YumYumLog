@@ -29,10 +29,43 @@ function carousel(){
   setTimeout(carousel, 4000);
 }
 
+function progressBar(){
+ 
+  var currentURL = window.location.pathname
+  if (currentURL === "/dashboard") {//or userDash/:username
+    var elems = document.getElementsByClassName("curr_prog");
+    
+    //instead of doing an AJAX, pull the counts from the page and adjust progress bars accordingly?
+    var countSpanArr = document.getElementsByClassName("count")
+    var goalSpanArr = document.getElementsByClassName("goal")
+    //for the length of the arr, push values to an obj
+      //use the index postions to adjust the progress
+      for (var i = 0; i < goalSpanArr.length; i++) {
+        var elem = elems[i];
+        var widthArr,goalArr;
+        var width = document.getElementsByClassName("count")[i].innerHTML; // TODO: check status of assignment here
+        var goal = document.getElementsByClassName("goal")[i].innerHTML; // TODO: check status of assignment here
+        //GOT STUCK HERE//
+        // var id = setInterval(frame, 10);
+        // function frame() {
+        var id = setInterval(function() {
+            if(!goal){
+              clearInterval(id);
+            } else {
+              width++;
+              elem.style.width = width + "%";
+            }
+            }, 10);
+        // }
+      }
+  }
+}
+
 
 //below functions need to make sure the page loads first prior to running
 window.onload = function(){
 
+progressBar()
   carousel();
 
 
@@ -46,20 +79,8 @@ window.onload = function(){
 
 //AJAX GOES HERE
 
-  function progress_Bar(){
-    var elem = document.getElementById("curr_prog");
-    var width = db.User.count; // TODO: check status of assignment here
-    var goal = db.User.goal // TODO: check status of assignment here
-    var id = setInterval(frame, 10);
-    function frame() {
-      if(!goal){
-        clearInterval(id);
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-  }
+  
+  
 
 /*
   check_Star function simply checks the goal vs the foodLog count and determines
