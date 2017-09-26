@@ -65,20 +65,20 @@
         <!-- AJAX Call to db to pull back nutritional details of food - will display in automatic slideshow format -->
       </div>
     </div>
-  </div>
-
-</div> <!-- end row -->
+  {{/if}}
 
 
-<footer class="w3-center w3-card-4">
-    <a href="https://github.com/DizDonut/YumYumLog" target="_blank">GitHub Repo</a>
-    <a class="github-button" href="https://github.com/dizDonut/YumYumLog/subscription" data-show-count="true" aria-label="Watch dizDonut/YumYumLog on GitHub">Watch</a>
-  <ul>
-    <a class="github-button" href="https://github.com/dizDonut" data-show-count="true" aria-label="Follow @dizDonut on GitHub">Follow @dizDonut</a>
-    <a class="github-button" href="https://github.com/jbcurrie" data-show-count="true" aria-label="Follow @jbcurrie on GitHub">Follow @jbcurrie</a>
-    <a class="github-button" href="https://github.com/travjbarnes" data-show-count="true" aria-label="Follow @travjbarnes on GitHub">Follow @travjbarnes</a>
-    <a class="github-button" href="https://github.com/buikevin96" data-show-count="true" aria-label="Follow @buikevin96 on GitHub">Follow @buikevin96</a>
-  </ul>
-</footer>
+    <div class="w3-container w3-col s6 w3-mobile w3-text-blue">
+      <div class="mySlides w3-animate-fading">
+        <div class="w3-panel w3-card-4">
+          <!-- TODO <!- {/{}/} -> -->
+          <!-- AJAX Call to db to pull back nutritional details of food - will display in automatic slideshow format -->
+        </div> <!-- end panel that holds the content -->
+      </div> <!-- end slide card -->
+    </div> <!-- end second container -->
+
+  </div> <!-- end row -->
+
+{{> footer }}
 
 </div> <!-- end zclass sidebar -->
