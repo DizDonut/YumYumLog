@@ -1,6 +1,10 @@
-
-body,h1,h2,div,form,input,label,h3,a,h4 {font-family: 'Dosis', sans-serif;}
-body, html {height: 100%}
+body,h1,h2,div,form,input,label,h3,a,h4,th {
+  font-family: 'Dosis', sans-serif;
+  color: #005580;
+}
+body, html {
+  height: 100%
+}
 body:before {
   content: "";
   display: block;
