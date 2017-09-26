@@ -26,6 +26,8 @@
 
 //styling and rendering
 
+//session set user name 
+
 function setMoment() {
     var date = moment().format('dddd, MMMM Do YYYY'); // Current Date, September 24th 2017
     var weekInput = moment().format();
@@ -73,6 +75,7 @@ function checkTracks() {
                 }
             }
         } else if (window.location.pathname === "/addLog/" + name) {
+            debugger;
             for (var i=0; i < data.length; i++) {
                 //create an option
                 //add the text

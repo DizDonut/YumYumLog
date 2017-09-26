@@ -48,7 +48,7 @@
         <div>
             {{#if choice}}
                 {{#each choice}}
-                <form action="/addItem/{{this.item}}" method="post">
+                <form action="/addItem/{{user.username}}" method="post">
                     <h4>You selected {{this.item}}. Add to your log?</h4>
                     <input type="hidden" name="item" value="{{this.item}}">
                     <input type="hidden" name="count" value="1">
@@ -56,6 +56,10 @@
                     <button>Add this item</button>
                 </form>
                 {{/each}}
+            {{/if}}
+
+            {{#if goal}}
+                <h4>{{this.item}} is logged!</h4>
             {{/if}}
         </div>
     </div>
