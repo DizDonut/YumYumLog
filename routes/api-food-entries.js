@@ -33,7 +33,7 @@ module.exports = function(app) {
             if (req.body.q) {
                 // console.log(req.body.q);
                 db.food.findAll({
-                    where: { 
+                    where: {
                         item: {
                             $like: req.body.q
                         }

@@ -1,5 +1,5 @@
 
-body,h1,h2,div,form,input,label,h3,a {font-family: 'Dosis', sans-serif;}
+body,h1,h2,div,form,input,label,h3,a,h4 {font-family: 'Dosis', sans-serif;}
 body, html {height: 100%}
 body:before {
   content: "";
@@ -10,7 +10,7 @@ body:before {
   width: 100%;
   height: 100%;
   z-index: -10;
-  /* background: url("../images/giphy.gif") no-repeat center center; */
+  background: url("../assets/images/yyLogo.png") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -18,27 +18,71 @@ body:before {
   background-size: cover;
 }
 
+#hamLogo{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .w3-panel {
   margin: 25px;
   text-align: left;
-  background-color: bisque;
+  background-color: lightgray;
+  padding: 25px 25px 25px 25px;
 }
 
 .w3-bar-block{
   text-align: left;
 }
 
+footer{
+  background: lightgray;
+  opacity: 0.50;
+  position: absolute;
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
+  width: 100%;
+  bottom: 0;
+}
+
+#register{
+  display: inline-block;
+  position: relative;
+  left: 25%;
+}
+
 .w3-jumbo{
   opacity: .65;
-  background-color: bisque;
+  background-color: lightgray;
   text-align: center;
+  margin: 0px;
+}
+
+#loginBox{
+  margin-bottom: 1%;
 }
 
 .w3-button {
   margin: 15px;
 }
 
+#dashboard_hamburger{
+  position: absolute;
+  left: 2%;
+  height: 50px;
+  width: 50px;
+}
+
+#logo{
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  top: -2%;
+  left: 0;
+}
+
 /* h1,h2,h3,h4 {
     color: red
 } */
-

@@ -32,6 +32,7 @@ function setMoment() {
     var date = moment().format('dddd, MMMM Do YYYY'); // Current Date, September 24th 2017
     var weekInput = moment().format();
     var weekNum = moment(weekInput).isoWeek();
+
     var wkLabel = document.getElementById("momentLabel"); 
     var wkInput = document.getElementsByClassName("moment");
     wkLabel.innerHTML = date
@@ -43,12 +44,12 @@ function setMoment() {
         temp.setAttribute("value",weekNum)
     }
     
-}
+
 
 
 setMoment()
 
-function checkTracks() { 
+function checkTracks() {
     var currentURL = window.location.origin
     //get the value of the username from the page run ajax on it to get the data
     var name = document.getElementById("username").value

@@ -1,19 +1,44 @@
+<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large" onclick="sideBar_Close()">Close &times;</button>
+  {{#if user}}
+    <a href="/users/{{user.username}}" class="w3-bar-item w3-button">Back to Main Page</a>
+    <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+    <a href="#" class="w3-bar-item w3-button">See the Community Dashboard</a>
+  {{/if}}
+</div>
+
+<div zclass="w3-main" id="sidebar">
+
+  <div class="w3-jumbo">
+    <div id="hamb_cont">
+      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="../assets/images/yyLogo.png" alt=""></button>
+    </div>
+
+    <div class="w3-container">
+      {{#if user}}
+        <h2>Choose a track, {{user.first_name}}!</h2>
+      {{/if}}
+    </div>
+  </div>
+
+  <br>
+  <br>
+
 {{!-- this user --}}
 
 {{!-- /createTrack/:id/:category/:goal/:week --}}
 {{!-- {{#if user}} --}}
 {{#if user}}
-    <h2 id="userTitle">{{user.first_name}}</h2>
-    <div class="w3-container">
-        <a href="/users/{{user.username}}" class="w3-bar-item w3-button"><button class="w3-button w3-green">Back to main page</button></a>
-        <a href="/logout"><button type="submit" class="w3-button w3-red loginBtn">Logout</button></a>
-    </div>
-    <form action="/addTrack/{{user.username}}" method="post" class="w3-container">
+
+<div class="w3-row">
+
+  <div class="w3-container w3-col s6 w3-mobile w3-text-blue">
+    <form action="/addTrack/{{user.username}}" method="post" class="w3-panel w3-card-4">
         {{!-- for an actual user, will only display the tracks/goals they've signed up for; populate with goals table category --}}
-        <label for="moment" id="momentLabel"></label>
-        <input type="hidden" name="week" id="moment" required>
-        <input type="hidden" name="username" value={{user.username}} id="username">
-        <input type="hidden" name="UserId" value={{user.id}} id="user_Id" required>
+          <label for="moment" id="momentLabel"></label>
+          <input type="hidden" name="week" id="moment" required>
+          <input type="hidden" name="username" value={{user.username}} id="username">
+          <input type="hidden" name="UserId" value={{user.id}} id="user_Id" required>
         <label><h4>Select your track:</h4></label>
         <select name="category" id="trackName" required>
             {{!-- add available tracks here --}}
@@ -22,13 +47,38 @@
             <option value="fruits" id="fruits">Track my Fruits</option>
             {{!-- if a track is in the database already, mark it as disabled --}}
         </select>
-        <label><h4>Set a goal</h4></label>
-        <input type="number" placeholder="(i.e 10 servings)" name="goal" id="goalInput" required>
-        <span> servings per week</span>
+        <label><h4>Set a goal:</h4></label>
+          <input type="number" placeholder="(i.e 10 servings)" name="goal" id="goalInput" required>
+        <span> Servings per week</span>
         {{!-- add a clearfix --}}
-        <div></div>
+      <div></div>
         <br>
-        <button type="submit">submit category</button>
+      <button class="w3-button w3-blue" type="submit">Submit Category</button>
     </form>
+  </div>
 {{/if}}
 
+  <div class="w3-container w3-col s6 w3-mobile w3-text-blue">
+    <div class="mySlides w3-animate-fading">
+      <div class="w3-panel w3-card-4">
+        <!-- TODO <!- {/{}/} -> -->
+        <!-- AJAX Call to db to pull back nutritional details of food - will display in automatic slideshow format -->
+      </div>
+    </div>
+  </div>
+
+</div> <!-- end row -->
+
+
+<footer class="w3-center w3-card-4">
+    <a href="https://github.com/DizDonut/YumYumLog" target="_blank">GitHub Repo</a>
+    <a class="github-button" href="https://github.com/dizDonut/YumYumLog/subscription" data-show-count="true" aria-label="Watch dizDonut/YumYumLog on GitHub">Watch</a>
+  <ul>
+    <a class="github-button" href="https://github.com/dizDonut" data-show-count="true" aria-label="Follow @dizDonut on GitHub">Follow @dizDonut</a>
+    <a class="github-button" href="https://github.com/jbcurrie" data-show-count="true" aria-label="Follow @jbcurrie on GitHub">Follow @jbcurrie</a>
+    <a class="github-button" href="https://github.com/travjbarnes" data-show-count="true" aria-label="Follow @travjbarnes on GitHub">Follow @travjbarnes</a>
+    <a class="github-button" href="https://github.com/buikevin96" data-show-count="true" aria-label="Follow @buikevin96 on GitHub">Follow @buikevin96</a>
+  </ul>
+</footer>
+
+</div> <!-- end zclass sidebar -->

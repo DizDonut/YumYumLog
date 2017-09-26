@@ -1,21 +1,23 @@
 <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large" onclick="sideBar_Close()">Close &times;</button>
   {{#if username}}
-  <a href="/trackPage/{{username}}" class="w3-bar-item w3-button">Choose a Track</a>
-  <a href="/addLog/{{username}}" class="w3-bar-item w3-button">Input Today's Data</a>
-  <a href="#" class="w3-bar-item w3-button">See the Community Dashboard</a>
+    <a href="/trackPage/{{username}}" class="w3-bar-item w3-button">Choose a Track</a>
+    <a href="/addLog/{{username}}" class="w3-bar-item w3-button">Input Today's Data</a>
+    <a href="#" class="w3-bar-item w3-button">See the Community Dashboard</a>
   {{/if}}
 </div>
 
 <div zclass="w3-main" id="sidebar">
 
   <div class="w3-jumbo">
-    <button class="w3-button w3-bisque w3-large" onclick="sideBar_Open()">&#9776;</button>
+    <div id="hamb_cont">
+      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="../assets/images/yyLogo.png" alt=""></button>
+    </div>
+
     <div class="w3-container">
       {{#if username}}
       <h2>Welcome Back {{username}}!</h2>
       {{/if}}
-      <span class="w3-badge w3-xlarge w3-blue">RANK</span>
     </div>
   </div>
 
@@ -38,17 +40,19 @@
               <th>Completed</th>
             </tr>
             <tr>
-              <td>User Name Goes Here</td> <!-- {/{userObj.userID}/} -->
-              <td>"Current Food Track"</td> <!-- {/{userObj.currTrack}/} -->
-              <td>Current week of the year</td> <!-- {/{userObj.currWeek}/} -->
-              <td onload="progress_Bar()">
-                <div class="w3-light-grey">
-                  <div id="curr_prog" class="w3-container w3-blue" style="height:20px; width:0px">
-                    <!-- {/{foodObj.count}/} -->
+              {{#each dashboard}}
+                <td>{{this.category}}</td> <!-- {/{userObj.userID}/} -->
+                <td>{{this.goal}}</td> <!-- {/{userObj.currTrack}/} -->
+                <td>Current week of the year</td> <!-- {/{userObj.currWeek}/} -->
+                <td onload="progress_Bar()">
+                  <div class="w3-light-grey">
+                    <div id="curr_prog" class="w3-container w3-blue" style="height:20px; width:0px">
+                      <!-- {/{foodObj.count}/} -->
+                    </div>
                   </div>
-                </div>
-              </td>
-              <td onload="check_Star()"><div id="star_complete"></div></td>
+                </td>
+                <td onload="check_Star()"><div id="star_complete"></div></td>
+              {{/each}}
             </tr>
           </thead>
         </table>
@@ -56,3 +60,15 @@
     </div>
   </div>
 </div>
+
+
+<footer class="w3-center w3-card-4">
+    <a href="https://github.com/DizDonut/YumYumLog" target="_blank">GitHub Repo</a>
+    <a class="github-button" href="https://github.com/dizDonut/YumYumLog/subscription" data-show-count="true" aria-label="Watch dizDonut/YumYumLog on GitHub">Watch</a>
+  <ul>
+    <a class="github-button" href="https://github.com/dizDonut" data-show-count="true" aria-label="Follow @dizDonut on GitHub">Follow @dizDonut</a>
+    <a class="github-button" href="https://github.com/jbcurrie" data-show-count="true" aria-label="Follow @jbcurrie on GitHub">Follow @jbcurrie</a>
+    <a class="github-button" href="https://github.com/travjbarnes" data-show-count="true" aria-label="Follow @travjbarnes on GitHub">Follow @travjbarnes</a>
+    <a class="github-button" href="https://github.com/buikevin96" data-show-count="true" aria-label="Follow @buikevin96 on GitHub">Follow @buikevin96</a>
+  </ul>
+</footer>
