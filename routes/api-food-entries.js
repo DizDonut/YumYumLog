@@ -6,10 +6,11 @@ var passport = require("passport");
 var application = application = require('./application');
 
 module.exports = function(app) {
+    //helper function to get prop of undefined obj
     function hasProp (obj, prop) {
         return Object.prototype.hasOwnProperty.call(obj, prop);
     }
-
+    //send current goals to script. render in list options on userInputs page
     app.get("/getTracks/:UserId",application.IsAuthenticated,function(req,res) {
         db.goal.findAll({
             where: {UserId : req.params.UserId}
@@ -18,20 +19,19 @@ module.exports = function(app) {
         })
     })
 
-    // :category?/:foodItem?
-    //change this so that the results are rendered into handlebars partials (or new page)
-        //grab the user information, like you've done for other routes,
-        //user user information to submit the food items
+    //list food by category
     app.post("/submitLog/:username",application.IsAuthenticated, function(req,res) {
-        debugger;
-        //db find user using params, then function user
-            //if 
+        // debugger;
         var userName = req.user.username
-
+        var userObj = req.user;
+        db.User.findOne({
+            where: {username: req.params.username},
+            include: [{model: db.goal}]}).then(function(user) {
+            var userData = user;
             //if category
             //if food item
             if (req.body.q) {
-                console.log(req.body.q);
+                // console.log(req.body.q);
                 db.food.findAll({
                     where: {
                         item: {
@@ -40,126 +40,85 @@ module.exports = function(app) {
                     }
                 })
                 .then(function(dbfood) {
+                    // debugger;
+                    var goalId;
+                    //for the length of the models array return goalId where categories match
+                    for (var i=0; i < userData.goals.length; i++) {
+                        if (dbfood[0].category === userData.goals[i].category) {
+                            goalId = userData.goals[i].id
+                        }
+                    }
+                    // var hbsObj = {
+                    //     user : {
+                    //         choice : dbfood,
+                    //         trackId : goalId,
+                    //         model : userData,
+                    //         username : userName
+                    //     }
+                    // }
                     var hbsObj = {
+                        id: goalId,
                         choice : dbfood,
+                        data : userData,
+                        userObject : userObj,
                         user: {
                             username : userName
                         }
                     }
-                    // console.log(JSON.stringify(hbsObj));
+                    console.log(hbsObj);
                    res.render("userInputs",hbsObj)
                 });
             //if the query is category, return an object of the category to use for the food search
             } else if (req.body.category) {
-                debugger;
-                console.log(req.body.category)
+                // console.log(req.body.category)
                 db.food.findAll({
                     attributes: ['item'],
                     where: { 
                         category: req.body.category
                     }
                 }).then(function(dbfood) {
-                    // res.json(dbfood)
-                    
                     var hbsObj = {
                         foods: dbfood,
                         user: {
                             username : userName
                         }
                     }
-                    console.log(hbsObj.foods);
+                    // console.log(hbsObj.foods);
                    res.render("userInputs",hbsObj)
                 });
-            }
-        // else {
-
-
-        //         console.log(req.user.username);
-        //         var handleBars = {
-        //             user: req.user
-        //         }
-
-        //         res.render("userInputs",handleBars)
-        // }
+            } 
+        })
     })
-      // search for food by category
-    // app.get("/search/:username",application.IsAuthenticated, function(req, res) {
-    //     //if the query 'q' is included look for food
-    //     debugger;
-    //     if (req.query.q) {
-    //         console.log(req.query.q);
-    //         db.food.findAll({
-    //             where: {
-    //                 item: {
-    //                     $like: req.query.q
-    //                 }
-    //             }
-    //         })
-    //         .then(function(dbfood) {
-    //             var hbsObj = {
-    //                 choice : dbfood
-    //             }
-    //             // console.log(JSON.stringify(hbsObj));
-    //             res.render("userInputs",hbsObj)
-    //         });
-    //     //if the query is category, return an object of the category to use for the food search
-    //     } else if (req.query.category) {
-    //         console.log(req.query.category)
-    //         db.food.findAll({
-    //             attributes: ['item'],
-    //             where: {
-    //                 category: req.query.category
-    //             }
-    //         }).then(function(dbfood) {
-    //             // res.json(dbfood)
-    //             var hbsObj = {
-    //                 foods: dbfood
-    //             }
-    //             res.render("userInputs",hbsObj)
-    //         });
-    //     }
-    // });
-    //post a new goal
+    //create a new goal
     app.post("/addTrack/:username",application.IsAuthenticated, function(req,res) {
-        // /createTrack/:id/:category/:goal/:week
-        debugger;
-        //find all tracks for this user, pass them to an object...
-            //then, if this user is trying to create a track that exists, return a message string saying, ''track exists
-            //if the track doesn't exists. create it
-            db.Goal.create({
-                category: req.body.category,
-                goal: req.body.goal,
-                week: req.body.week,
-                UserId: req.body.UserId
-            }).then(function(dbGoal) {
-        //     debugger;
-        //update the track with the current week
-            // db.sequelize.query('UPDATE goals SET timelineId=WEEK(CURDATE()), week=WEEK(CURDATE()) WHERE id=?', {replacements: [dbGoal.id], type: db.sequelize.QueryTypes.UPDATE},{ model: db.goal }).then(function(result) {
-            //     console.log("----db.sequelise.query data----")
-            //     console.log(result)
-            // })
-            // console.log("----db.goal.create data----")
-            // res.json(dbGoal);
-
+        
+        db.goal.create({
+            category: req.body.category,
+            goal: req.body.goal,
+            week: req.body.week,
+            UserId: req.body.UserId
+        }).then(function(dbGoal) {   
             var hbsObj = {
                 goals: dbGoal
             }
             res.send("/userDash/" + dbGoal)
         })
     })
-    //log food entry
+    //create food entry
     app.post("/addItem/:username",function(req,res) {
         var userName = req.user.username
+        var choice = req.body.item
+        // debugger;
         db.log.create({
             item: req.body.item,
             count: req.body.count,
             week: req.body.week,
-            UserId: req.body.id,
+            UserId: req.body.userId,
             goalId: req.body.goalId
         }).then(function(dbGoal) { 
             // res.json(dbGoal);
             var hbsObj = {
-                goal : dbGoal,
+                item : choice,
                 user : {
                     username : userName
                 }

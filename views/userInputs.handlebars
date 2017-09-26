@@ -1,4 +1,5 @@
 {{!-- this user track object; action will send to this.user.category --}}
+
 <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
   {{#if user}}
   <button class="w3-bar-item w3-button w3-large" onclick="sideBar_Close()">Close &times;</button>
@@ -60,43 +61,53 @@
         </div>
       </div>
 
-      <div class="w3-row" id="bloodhound">
-          <form action="/submitLog/{{user.username}}" class="w3-container" method="post">
-          <input type="hidden" value={{user.id}} id="user_Id" required>
-          {{#if foods}}
-          {{!-- <h4>2. What did you eat today?</h4> --}}
-          <input list="foods" name="q" autocomplete="off" placeholder="Enter your item">
-          <datalist id="foods">
-              {{#each foods}}
-                  <option value="{{this.item}}">{{this.item}}</option>
-              {{/each}}
-          </datalist>
-          {{!-- https://github.com/mfranzke/datalist-polyfill datalist isn't safari compatible..possible workaround --}}
-          <button type="submit">search</button>
-          {{/if}}
-          {{!-- display food suggestions based on the selection from the tracks query --}}
-          </form>
-      </div>
+      
+        <div class="w3-row" id="bloodhound">
+            {{#if user}}
+            <form action="/submitLog/{{user.username}}" class="w3-container" method="post">
+                <input type="hidden" value={{user.id}} id="user_Id" required>
+                {{#if foods}}
+                <h4>Enter log</h4>
+                <input list="foods" name="q" autocomplete="off" placeholder="Enter your item">
+                <datalist id="foods">
+                    {{#each foods}}
+                        <option value="{{this.item}}">{{this.item}}</option>
+                    {{/each}}
+                </datalist>
+                {{!-- https://github.com/mfranzke/datalist-polyfill datalist isn't safari compatible..possible workaround --}}
+                <button type="submit">search</button>
+                {{/if}} 
+            </form>
+            {{/if}}        
+            {{!-- display food suggestions based on the selection from the tracks query --}}   
+        </div>
     </div>
   </div> <!-- end row -->
 
   <div class="w3-row w3-center">
     <div id="display_Input" class="w3-col s6 w3-mobile w3-panel w3-card-4">
-      {{#if choice}}
-        {{#each choice}}
-          <form action="/addItem/{{user.username}}" method="post">
-            <h4>You selected {{this.item}}. Add to your log?</h4>
-              <input type="hidden" name="item" value="{{this.item}}">
-              <input type="hidden" name="count" value="1">
-              <input type="hidden" name="user" value="this userId">
-            <button>Add this item</button>
-          </form>
-        {{/each}}
+      <form action="/addItem/{{user.username}}" method="post">
+          <label for="moment" id="momentLabel"></label>
+          <input type="hidden" name="week" class="moment" required>
+          
+          {{#if choice}}
+              {{#each choice}}
+                  <h4>You selected {{this.item}}. Add to your log?</h4>
+                  <input type="hidden" name="item" value="{{this.item}}">
+                  <input type="hidden" name="category" value="{{this.category}}">
+                  <input type="hidden" name="count" value="1">
+              {{/each}}
+              {{/if}}
+                  <input type="hidden" name="goalId" value="{{id}}">
+                  <input type="hidden" name="userId" value="{{userObject.id}}">
+          {{#if choice}}
+          <button>Add this item</button>
+      </form>
+          {{/if}}
+      {{#if item}} 
+          <h4>{{item}} is logged!</h4>
       {{/if}}
 
-      {{#if goal}}
-          <h4>{{this.item}} is logged!</h4>
-      {{/if}}
     </div> <!-- end card to hold display -->
   </div> <!-- end row used to display successfully logged input-->
 
