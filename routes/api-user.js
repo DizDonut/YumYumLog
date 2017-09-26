@@ -20,11 +20,12 @@ module.exports = function(app) {
     })
 
     //generates user data  and handlebars for the user dash page
-    app.get("/users/:username",application.IsAuthenticated, function(req,res) {
+    app.get("/users/:username",application.IsAuthenticated, function(req, res) {
+
         if (hasProp(req, 'user')) {
             console.log(req.user.username);
             var hbsObj = {
-                username: req.user.username
+                username: req.user.username,
             }
         }
         res.render("userDash",hbsObj)
@@ -59,7 +60,7 @@ module.exports = function(app) {
             }
             res.render("userTracks",hbsObj)
         })
-        
+
     })
     //replacing old registration pathway
     // app.get("/signup", function(req,res) {
