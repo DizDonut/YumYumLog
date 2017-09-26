@@ -13,9 +13,28 @@ function sideBar_Close() {
   document.getElementById("openNav").style.display = "inline-block";
 }
 
+function carousel(){
+  var slideIndex = 0;
+  var i;
+  var x = document.getElementByClassName("mySlides");
+  for (var i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  slideIndex++;
+  if(slideIndex > x.length){
+    slideIndex = 1
+  }
+
+  x[slideIndex-1].style.display = "block";
+  setTimeout(carousel, 4000);
+}
+
 
 //below functions need to make sure the page loads first prior to running
 window.onload = function(){
+
+  carousel();
+
 
 /*
   progress_Bar function displays a progress bar on our user dashboard. It
@@ -25,7 +44,7 @@ window.onload = function(){
 */
     //i think the db.User count and goal is pseudo code. will replace later
 
-//AJAX GOES HERE 
+//AJAX GOES HERE
 
   function progress_Bar(){
     var elem = document.getElementById("curr_prog");
