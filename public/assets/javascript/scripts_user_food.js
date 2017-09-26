@@ -33,11 +33,15 @@ function setMoment() {
     var weekInput = moment().format();
     var weekNum = moment(weekInput).isoWeek();
     var wkLabel = document.getElementById("momentLabel"); 
-    var wkInput = document.getElementById("moment");
+    var wkInput = document.getElementsByClassName("moment");
     wkLabel.innerHTML = date
     // wkInpt.setAttribute("placeholder", date)
-    wkInput.setAttribute("value",weekNum )
-
+    // wkInput.setAttribute("value",weekNum )
+    for (var i =0; i < wkInput.length; i++) {
+        // debugger;
+        var temp = wkInput[i]
+        temp.setAttribute("value",weekNum)
+    }
     
 }
 
@@ -54,7 +58,7 @@ function checkTracks() {
         $.ajax({url: currentURL + "/getTracks/" + id,method:"GET"}).done(function(data) {
             console.log(data);
             var done = 0;
-            debugger;
+            // debugger;
             //if veggies or fruits, disable in options
             // debugger;
         if (window.location.pathname === "/trackPage/" + name) {
@@ -75,18 +79,19 @@ function checkTracks() {
                 }
             }
         } else if (window.location.pathname === "/addLog/" + name) {
-            debugger;
+            // debugger;
             for (var i=0; i < data.length; i++) {
-                //create an option
-                //add the text
-                //display the option
                 var option = document.createElement("option")
                 option.innerHTML = data[i].category
                 option.setAttribute("value", data[i].category)
                 option.setAttribute("name", data[i].category)
                 var select = document.getElementById("trackName")
-                select.append(option);
+                select.append(option); 
             }
+        } else if (window.location.pathname === "/submitLog/" + name) {
+            //currently can't associate goalId because you'll have two options (fruits or veggies)
+            var input = document.getElementById("goal_Id")
+            input.setAttribute("value",data)
         }
             // console.log("i've got your goals right here" + data.goals.length);
         })
