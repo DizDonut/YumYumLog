@@ -11,12 +11,12 @@
 
   <div class="w3-jumbo">
     <div id="hamb_cont">
-      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="../assets/images/yyLogo.png" alt=""></button>
+      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="/images/yyLogo" alt=""></button>
     </div>
 
     <div class="w3-container">
       {{#if user}}
-        <h2>Choose a track, {{user.first_name}}!</h2>
+        <h2>Choose a track, {{user.username}}!</h2>
       {{/if}}
     </div>
   </div>
@@ -57,7 +57,11 @@
     </form>
   </div>
 {{/if}}
-
+{{#if choice}}
+  <div>
+    <h3>You're tracking your {{choice.category}} now, aiming for {{choice.goal}} per week!</h3>
+  </div>
+{{/if}}
   <div class="w3-container w3-col s6 w3-mobile w3-text-blue">
     <div class="mySlides w3-animate-fading">
       <div class="w3-panel w3-card-4">

@@ -3,20 +3,18 @@ var application = application = require('./application');
 var moment = require("moment")
 
 module.exports = function(app) {
-    app.get("/dashboard/:week?",application.IsAuthenticated, function(req,res) {
-
+    app.get("/dashboard",application.IsAuthenticated, function(req,res) {
+        
         var userName = req.user.username
         var weekInput = moment().format();
-        var weekNum = req.params.week || moment(weekInput).isoWeek();
+        var weekNum = req.query.week || moment(weekInput).isoWeek();
         db.goal.findAll({
             // include: [[sequelize.fn('COUNT', sequelize.col('hats')), 'no_hats']]
             // [[db.sequelize.fn('COUNT', sequelize.col('count')), 'no_count']]
             include: [{model: db.log, where : {week : weekNum }},{model:db.User, attributes: ['username'] }],
             order: [['week', 'DESC']]}).then(function(dbgoal) {
           // res.json(dbgoal);
-          console.log(dbgoal);
-          for (count in dbgoal) {
-          }
+          
           var hbsObj = {
             dashboard: dbgoal,
             user: {

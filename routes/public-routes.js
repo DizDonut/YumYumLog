@@ -17,9 +17,19 @@ module.exports = function(app) {
   app.get("/scripts", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/assets/javascript/scripts.js"));
   });
+  //all our images
 
-  // app.get("/images", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/assets/images"));
-  // });
+  app.get("/images/:image", function(req, res) {
+    if (req.params.image === "giphy") {
+      res.sendFile(path.join(__dirname, "../public/assets/images/giphy.gif"));
+    }
+    if (req.params.image === "star") {
+      res.sendFile(path.join(__dirname, "../public/assets/images/star.png"));
+    }
+    if (req.params.image === "yyLogo") {
+      res.sendFile(path.join(__dirname, "../public/assets/images/yyLogo.png"));
+    }
+    
+  });
 
 };
