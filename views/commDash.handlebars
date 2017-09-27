@@ -1,12 +1,20 @@
 <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large" onclick="sideBar_Close()">Close &times;</button>
-  <a href="/users/{{user.username}}" class="w3-bar-item w3-button">Back to the Login Page</a>
+    {{#if user.username}}
+      <a href="/users/{{user.username}}" class="w3-bar-item w3-button">Back to My Dashboard</a>
+      <a href="/addLog/{{user.username}}" class="w3-bar-item w3-button">Log your Data</a>
+    {{/if}}  
+    <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+    <a href="/signup" class="w3-bar-item w3-button">Register</a>
 </div>
 
 <div zclass="w3-main" id="sidebar">
 
   <div class="w3-jumbo">
-    <button class="w3-button w3-bisque w3-large" onclick="sideBar_Open()">&#9776;</button>
+    <div id="hamb_cont">
+      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="../assets/images/yyLogo.png" alt=""></button>
+    </div>
+
     <div class="w3-container">
       <h2>Welcome Back {{username}}!</h2>
     </div>
@@ -20,7 +28,7 @@
       <div class="w3=responsive">
         <table class="w3-table-all w3-hoverable">
           <thead>
-            <tr class="w3-blue">
+            <tr class="w3-gray">
               <th>User</th>
               <th>Track</th>
               <th>Week</th>
@@ -36,9 +44,9 @@
               <td>{{this.dataValues.week}}</td> <!-- {/{userObj.currWeek}/} -->
               <td onload="progress_Bar()">
                 <div class="w3-light-grey">
-                  <div id="curr_prog" class="w3-container w3-blue curr_prog" style="height:20px; width:0px">
+                  <div class="w3-container w3-blue curr_prog" style="height:20px; width:0%">
                     <!-- {/{foodObj.count}/} -->
-                        <span class="count">{{this.logs.length}}</span>/<span class="goal">{{this.dataValues.goal}}</span>
+                    <span class="count">{{this.logs.length}}</span>/<span class="goal">{{this.dataValues.goal}}</span>
                   </div>
                 </div>
               </td>
@@ -50,4 +58,7 @@
       </div>
     </div>
   </div>
-</div>
+
+{{> footer}}
+
+</div> <!-- end zclass sidebar -->
