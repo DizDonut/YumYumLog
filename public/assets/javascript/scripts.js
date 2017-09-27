@@ -109,7 +109,7 @@ function progressBar(){
 // function check_Star(){
 //   if (progress_Bar()) {
 //     var elem = document.createElement("img");
-//     elem.src = ("../assets/images/star.png")
+//     elem.src = ("/images/star")
 //     document.getElementById("star_complete").appendChild(elem);
 //   }
 // } // end check_Star function
@@ -122,7 +122,7 @@ function progressBar(){
       var goalCnt = parseInt(goal)
       if (cnt >= goalCnt ) {
         var elem = document.createElement("img");
-        elem.src = ("../assets/images/star.png")
+        elem.src = ("/images/star")
         document.getElementById("star_complete").appendChild(elem);
         //turn progress bar green, limit width to the current width (with a boolean?)
 

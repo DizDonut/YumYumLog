@@ -3,7 +3,7 @@
         <tr class="w3-gray">
             <th>Food Track</th>
             <th>Servings Goal</th>
-            <th>Week</th>
+            <th>Week Logged</th>
             <th>Progress</th>
             <th>Completed</th>
         </tr>
@@ -27,27 +27,31 @@
             <td onload="check_Star()"><div id="star_complete"></div></td>
         </tr>
             {{#each logs}}
-                <tr>
-                    <td class="nutrition"><h4>{{this.item}}</h4></td>
+            {{!-- <div class="w3-dropdown-hover"> --}}
+                <tr class="none">
+                    <td class="nutrition none"><h4>{{this.item}}</h4></td>
                     {{!-- <td>Short Description : ({{this.food.short_desc}})</td> --}}
+                
+                    {{!-- <div class="w3-dropdown-content"></div> --}}
+                    <tr class="none">
+                        <td>Serving Size (GmWt): {{this.food.servingSize}} </td>
+                        <td>Calories (Energ_Kcal): {{this.food.calories}}</td>
+                    </tr> 
+                    <tr class="none">
+                        <td>Gram Weight: {{this.food.gramWeight}}</td>
+                        <td>Protein (g): {{this.food.protein}}</td>
+                    </tr>
+                    <tr class="none">
+                        <td>Fat (g): {{this.food.totalFat}}</td>
+                        <td>sugar (g): {{this.food.sugar}}</td>
+                    </tr> 
+                    <tr class="none">
+                        <td>Vitamin C (mg): {{this.food.vitaminC}}</td>
+                        <td>Sodium (mg): {{this.food.sodium}}</td>
+                    </tr>
                 </tr>
-                <tr>
-                    <td>Serving Size (GmWt): {{this.food.servingSize}} </td>
-                    <td>Calories (Energ_Kcal): {{this.food.calories}}</td>
-                </tr> 
-                <tr>
-                    <td>Gram Weight: {{this.food.gramWeight}}</td>
-                    <td>Protein (g): {{this.food.protein}}</td>
-                </tr>
-                <tr>
-                    <td>Fat (g): {{this.food.totalFat}}</td>
-                    <td>sugar (g): {{this.food.sugar}}</td>
-                </tr> 
-                <tr>
-                    <td>Vitamin C (mg): {{this.food.vitaminC}}</td>
-                    <td>Sodium (mg): {{this.food.sodium}}</td>
-                </tr>
-
+                {{!-- </div> --}}
+            {{!-- </div> --}}
             {{/each}}
         {{/each}}
     {{/if}}
