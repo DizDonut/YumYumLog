@@ -44,11 +44,11 @@ body:before {
 footer{
   background: lightgray;
   opacity: 0.50;
-  position: absolute;
+  position: relative;
   padding: 10px 10px 10px 10px;
   border-radius: 10px;
   width: 100%;
-  bottom: 0;
+  margin-top: 16%;
 }
 
 #register{
@@ -77,14 +77,15 @@ footer{
   left: 2%;
   height: 50px;
   width: 50px;
+  margin: 0px;
+  padding: 0px;
 }
 
 #logo{
   position: absolute;
   height: 50px;
   width: 50px;
-  top: -2%;
-  left: 0;
+  margin-top: 1%
 }
 
 table, th, td {
