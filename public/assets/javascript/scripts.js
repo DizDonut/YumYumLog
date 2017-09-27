@@ -57,7 +57,7 @@ function progressBar(){
   var currentURL = window.location.pathname
   var name = document.getElementById("username").innerHTML
   // debugger;
-    if (currentURL === "/dashboard" || currentURL === "/users/" + name ){   //or userDash/:username
+    // if (currentURL === "/dashboard" || currentURL === "/users/" + name ){   //or userDash/:username
       var elems = document.getElementsByClassName("curr_prog");
 
       //instead of doing an AJAX, pull the counts from the page and adjust progress bars accordingly?
@@ -83,7 +83,7 @@ function progressBar(){
           check_Star(width,goal)
         }
       }
-    }
+    // }
   }
   
 //       check_Star()
@@ -109,7 +109,7 @@ function progressBar(){
 // function check_Star(){
 //   if (progress_Bar()) {
 //     var elem = document.createElement("img");
-//     elem.src = ("../assets/images/star.png")
+//     elem.src = ("/images/star")
 //     document.getElementById("star_complete").appendChild(elem);
 //   }
 // } // end check_Star function
@@ -122,7 +122,7 @@ function progressBar(){
       var goalCnt = parseInt(goal)
       if (cnt >= goalCnt ) {
         var elem = document.createElement("img");
-        elem.src = ("../assets/images/star.png")
+        elem.src = ("/images/star")
         document.getElementById("star_complete").appendChild(elem);
         //turn progress bar green, limit width to the current width (with a boolean?)
 

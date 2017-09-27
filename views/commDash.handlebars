@@ -12,11 +12,12 @@
 
   <div class="w3-jumbo">
     <div id="hamb_cont">
-      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="../assets/images/yyLogo.png" alt=""></button>
+      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="/images/yyLogo" alt=""></button>
     </div>
 
     <div class="w3-container">
       <h2 id="username">Welcome Back {{user.username}}!</h2>
+      <h2 id="momentLabel"></h2>
     </div>
   </div>
 
@@ -24,6 +25,20 @@
   <br>
 
   <div class="w3-container">
+    
+    <div class="w3-row">
+      <form action="/dashboard/" method="get">
+        <label for="currentWeek"></label>
+        {{!-- get the weekArr numbers for all logged items, display here --}}
+        <select name="week" id="getWeek">
+          <option value="" disabled selected id="optMsg">Filter By Week</option>
+          <option value="37">week 37</option>
+          <option value="38">week 38</option>
+          <option value="39">week 39</option>
+        </select>
+        <span><button type="submit">Go</button></span>
+      </form>
+    </div>
     <div class="w3-row">
       <div class="w3=responsive">
         <table class="w3-table-all w3-hoverable">

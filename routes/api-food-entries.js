@@ -13,7 +13,7 @@ module.exports = function(app) {
     }
     //send current goals to script. render in list options on userInputs page
     app.get("/getTracks/:UserId",application.IsAuthenticated,function(req,res) {
-        debugger
+        // debugger
         db.goal.findAll({
             where: {UserId : req.params.UserId}
         }).then(function(dbGoal) {
@@ -94,7 +94,11 @@ module.exports = function(app) {
     })
     //create a new goal
     app.post("/addTrack/:username",application.IsAuthenticated, function(req,res) {
-        
+        var userObj = req.user
+        var choiceObj = {
+            category : req.body.category,
+            goal : req.body.goal
+        }
         db.goal.create({
             category: req.body.category,
             goal: req.body.goal,
@@ -102,9 +106,15 @@ module.exports = function(app) {
             UserId: req.body.UserId
         }).then(function(dbGoal) {   
             var hbsObj = {
-                goals: dbGoal
+                goals: dbGoal,
+                choice : choiceObj,
+                user : {
+                    username : userObj.username,
+                    id: userObj.id,
+                    
+                }
             }
-            res.redirect("back")
+            res.render("userTracks",hbsObj)
         })
     })
     //create food entry

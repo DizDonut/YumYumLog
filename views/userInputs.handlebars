@@ -15,7 +15,7 @@
 
   <div class="w3-jumbo">
     <div id="hamb_cont">
-      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="../assets/images/yyLogo.png" alt=""></button>
+      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="/images/yyLogo" alt=""></button>
     </div>
 
     <div class="w3-container">
@@ -94,7 +94,7 @@
 
           {{#if choice}}
               {{#each choice}}
-                  <h4>You selected {{this.item}}. Add to your log?</h4>
+                  <h4>You selected {{this.item}} (Serving size - {{this.servingSize}}). Add to your log?</h4>
                   <input type="hidden" name="item" value="{{this.item}}">
                   <input type="hidden" name="category" value="{{this.category}}">
                   <input type="hidden" name="count" value="1">

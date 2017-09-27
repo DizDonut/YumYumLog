@@ -1,6 +1,5 @@
 
 function setMoment() {
-    // debugger;
     var date = moment().format('dddd, MMMM Do YYYY'); // Current Date, September 24th 2017
     var weekInput = moment().format();
     var weekNum = moment(weekInput).isoWeek();
@@ -24,9 +23,7 @@ function checkTracks() {
     var currentURL = window.location.origin
     //get the value of the username from the page run ajax on it to get the data
     var name = document.getElementById("username").value
-    if (document.getElementById("user_Id")) {
-        var id = document.getElementById("user_Id").value
-    }
+    var id = document.getElementById("user_Id").value
     
     // console.log(`magic` + name)
 
@@ -36,7 +33,7 @@ function checkTracks() {
             // debugger;
             //if veggies or fruits, disable in options
             // debugger;
-        if (window.location.pathname === "/trackPage/" + name) {
+        if (window.location.pathname === "/trackPage/" + name || window.location.pathname === "/addTrack/" + name) {
             for (var i=0; i < data.length; i++) {
                 if (data[i].category === "vegetables") {
                     document.getElementById("vegetables").disabled = true
@@ -72,6 +69,7 @@ function checkTracks() {
         })
     //search database
 }
+
 
 
 setMoment();
