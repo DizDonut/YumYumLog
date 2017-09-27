@@ -4,7 +4,9 @@
   {{#if user}}
   <button class="w3-bar-item w3-button w3-large" onclick="sideBar_Close()">Close &times;</button>
     <a href="/users/{{user.username}}" class="w3-bar-item w3-button">Back to My Dashboard</a>
-    <a href="#" class="w3-bar-item w3-button">See the Community Dashboard</a>
+    <a href="/trackPage/{{user.username}}" class="w3-bar-item w3-button">Back to Choose a Track</a>
+    <a href="/dashboard" class="w3-bar-item w3-button">See the Community Dashboard</a>
+    <a href="/logout" class="w3-bar-item w3-button">Logout</a>
   {{/if}}
 </div>
 
@@ -61,7 +63,7 @@
         </div>
       </div>
 
-      
+
         <div class="w3-row" id="bloodhound">
             {{#if user}}
             <form action="/submitLog/{{user.username}}" class="w3-container" method="post">
@@ -76,10 +78,10 @@
                 </datalist>
                 {{!-- https://github.com/mfranzke/datalist-polyfill datalist isn't safari compatible..possible workaround --}}
                 <button type="submit">search</button>
-                {{/if}} 
+                {{/if}}
             </form>
-            {{/if}}        
-            {{!-- display food suggestions based on the selection from the tracks query --}}   
+            {{/if}}
+            {{!-- display food suggestions based on the selection from the tracks query --}}
         </div>
     </div>
   </div> <!-- end row -->
@@ -89,7 +91,7 @@
       <form action="/addItem/{{user.username}}" method="post">
           <label for="moment" id="momentLabel"></label>
           <input type="hidden" name="week" class="moment" required>
-          
+
           {{#if choice}}
               {{#each choice}}
                   <h4>You selected {{this.item}}. Add to your log?</h4>
@@ -104,7 +106,7 @@
           <button>Add this item</button>
       </form>
           {{/if}}
-      {{#if item}} 
+      {{#if item}}
           <h4>{{item}} is logged!</h4>
       {{/if}}
 
