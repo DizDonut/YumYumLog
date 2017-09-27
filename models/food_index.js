@@ -116,8 +116,12 @@ module.exports = function(sequelize, DataTypes) {
       }, {
         timestamps: false
       });
+      Food.associate = function(models) {
+        Food.hasMany(models.log)
+      }
 
       return Food;
+
   };
 
   //add recommended serving size, and some baseline nutrition, maybe calories

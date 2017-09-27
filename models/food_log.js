@@ -29,6 +29,11 @@ module.exports = function(sequelize, DataTypes) {
             },
             onDelete: "CASCADE"
         });
+        Log.belongsTo(models.food, {
+            foreignKey: {
+                allowNull: false,
+            }
+        })
         // Log.belongsTo(models.timeline);
     }
       return Log;

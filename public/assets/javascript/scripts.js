@@ -56,7 +56,7 @@ function progressBar(){
 
   var currentURL = window.location.pathname
   var name = document.getElementById("username").innerHTML
-  debugger;
+  // debugger;
     if (currentURL === "/dashboard" || currentURL === "/users/" + name ){   //or userDash/:username
       var elems = document.getElementsByClassName("curr_prog");
 
@@ -70,15 +70,17 @@ function progressBar(){
         var elem = elems[i];
         var width = document.getElementsByClassName("count")[i].innerHTML; // TODO: check status of assignment here
         var goal = document.getElementsByClassName("goal")[i].innerHTML; // TODO: check status of assignment here
-        console.log(width);
-        console.log(goal);
+        // console.log(width);
+        // console.log(goal);
 
         if(goal <= 0){
           clearInterval(id);
         } else {
-          console.log(width);
+          //create a limit once progress is acheived (so that they can exceed the goal, but it doesn't affect the progress bar width)
+          // console.log(width);
           elem.style.width = ((width / goal) * 100) + "%";
-          console.log(elem.style.width);
+          // console.log(elem.style.width);
+          check_Star(width,goal)
         }
       }
     }
@@ -91,6 +93,7 @@ function progressBar(){
     }
   }
 
+
 /*
   check_Star function simply checks the goal vs the foodLog count and determines
   if the goal has been met.  If so, create an img element and assign it the star.png
@@ -100,15 +103,38 @@ function progressBar(){
   function check_Star(){
     if (progress_Bar()) {
       var elem = document.createElement("img");
-      elem.src = ("./assets/images/star.png")
+      elem.src = ("../assets/images/star.png")
       document.getElementById("star_complete").appendChild(elem);
     }
   } // end check_Star function
+
 
 //below functions need to make sure the page loads first prior to running
 window.onload = function(){
 
   progressBar();
   carousel();
+
+
+
+/*
+  progress_Bar function displays a progress bar on our user dashboard. It
+  compares values from two models: UserTrack and Goal, both of which belongTo
+  the User model.  Set the width equal to the User.count property; if no goal
+  exists, the element is cleared.  If not, we increment the width
+*/
+    //i think the db.User count and goal is pseudo code. will replace later
+
+//AJAX GOES HERE
+
+
+
+/*
+  check_Star function simply checks the goal vs the foodLog count and determines
+  if the goal has been met.  If so, create an img element and assign it the star.png
+  source and append to the div
+*/
+
+// end check_Star function
 
 } // end onload listener

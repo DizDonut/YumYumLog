@@ -30,7 +30,10 @@ module.exports = function(app) {
             where : {id : req.user.id}, 
             include : [
                 {model: db.goal, include: [
-                    {model:db.log}]}
+                    {model:db.log, include: [
+                        {model:db.food}
+                    ]}
+                ]}
             ]
         }).then(function(dbgoal) {
             // res.json(dbgoal);

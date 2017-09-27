@@ -8,12 +8,12 @@
             <th>Completed</th>
         </tr>
     </thead>
-    
     <tbody>
     {{#if dashboard}}
         {{#each dashboard.goals}}
         <tr>
             <td>{{this.category}}</td> <!-- {/{userObj.userID}/} -->
+            {{!-- clickable button on click display object data --}}
             <td>{{this.goal}}</td> <!-- {/{userObj.currTrack}/} -->
             <td>{{this.week}}</td> <!-- {/{userObj.currWeek}/} -->
             <td onload="progress_Bar()">
@@ -26,7 +26,33 @@
             </td>
             <td onload="check_Star()"><div id="star_complete"></div></td>
         </tr>
+            {{#each logs}}
+                <tr>
+                    <td class="nutrition"><h4>{{this.item}}</h4></td>
+                    {{!-- <td>Short Description : ({{this.food.short_desc}})</td> --}}
+                </tr>
+                <tr>
+                    <td>Serving Size (GmWt): {{this.food.servingSize}} </td>
+                    <td>Calories (Energ_Kcal): {{this.food.calories}}</td>
+                </tr> 
+                <tr>
+                    <td>Gram Weight: {{this.food.gramWeight}}</td>
+                    <td>Protein (g): {{this.food.protein}}</td>
+                </tr>
+                <tr>
+                    <td>Fat (g): {{this.food.totalFat}}</td>
+                    <td>sugar (g): {{this.food.sugar}}</td>
+                </tr> 
+                <tr>
+                    <td>Vitamin C (mg): {{this.food.vitaminC}}</td>
+                    <td>Sodium (mg): {{this.food.sodium}}</td>
+                </tr>
+
+            {{/each}}
         {{/each}}
     {{/if}}
     </tbody>
 </table>
+{{#unless dashboard.goals}}
+    <h2>No logs yet. Get Started!</h2>
+{{/unless}}

@@ -30,7 +30,6 @@ module.exports = function(app) {
         })
 
     })
-
     // When eager loading we can also filter the associated model using where. This will return all Users in which the where clause of Tool model matches rows.
     
     // User.findAll({

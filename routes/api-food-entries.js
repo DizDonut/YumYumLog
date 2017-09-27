@@ -116,7 +116,8 @@ module.exports = function(app) {
             count: req.body.count,
             week: req.body.week,
             UserId: req.body.userId,
-            goalId: req.body.goalId
+            goalId: req.body.goalId,
+            foodId: req.body.foodId
         }).then(function(dbGoal) { 
             // res.json(dbGoal);
             var hbsObj = {
