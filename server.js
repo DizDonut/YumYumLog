@@ -15,7 +15,7 @@ var application = require('./routes/application');
 //determines encryption
 SALT_WORK_FACTOR = 12;
 
-var PORT = 3000 || process.env.PORT
+var PORT = process.env.PORT || 3000;
 
 var db = require("./models");
 var app = express();
