@@ -1,5 +1,6 @@
-// are you requiring our models on the client side or is this psuedocode? need to do ajax calls instead (it's an api)
-// var db = require("../models");
+/*
+  sideBar_Open is used to open the sidebar - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_sidebar_shift
+*/
 
 function sideBar_Open() {
   document.getElementById("sidebar").style.marginLeft = "25%";
@@ -7,11 +8,21 @@ function sideBar_Open() {
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("openNav").style.display = 'none';
 }
+
+/*
+  sideBar_Close is used to close the sidebar - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_sidebar_shift
+*/
+
 function sideBar_Close() {
   document.getElementById("sidebar").style.marginLeft = "0%";
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("openNav").style.display = "inline-block";
 }
+
+/*
+  carousel function is used to animate the slides/cards on the userTrack page.  The slides will contain
+  additional nutriional details for random foods in the database 
+*/
 
 function carousel(){
   if (document.getElementsByClassName("mySlides")) {
@@ -32,6 +43,14 @@ function carousel(){
     }
   }
 }
+
+/*
+  progress_Bar function displays a progress bar on our user dashboard. It
+  compares values from two models: UserTrack and Goal, both of which belongTo
+  the User model.  Set the width equal to the User.count property; if no goal
+  exists, the element is cleared.  If not, we increment the width and return true if
+  the width reaches 100% or greater
+*/
 
 function progressBar(){
 
@@ -64,6 +83,13 @@ function progressBar(){
           check_Star(width,goal)
         }
       }
+    }
+    
+  //return statement 
+    if(elem.style.width >= 100%){
+      return true;
+    } else {
+      return false;
     }
   }
   
@@ -106,14 +132,17 @@ function progressBar(){
         elem.src = ("../assets/images/star.png")
         document.getElementById("star_complete").appendChild(elem);
         //turn progress bar green, limit width to the current width (with a boolean?)
+
     }
-  } 
+  } // end check_Star function
+
 
 //below functions need to make sure the page loads first prior to running
 window.onload = function(){
   console.log('im working')
   progressBar();
   carousel();
+
 
 
 /*
@@ -135,4 +164,5 @@ window.onload = function(){
 */
 
 // end check_Star function
+
 } // end onload listener
