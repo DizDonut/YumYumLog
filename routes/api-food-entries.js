@@ -13,6 +13,7 @@ module.exports = function(app) {
     }
     //send current goals to script. render in list options on userInputs page
     app.get("/getTracks/:UserId",application.IsAuthenticated,function(req,res) {
+        debugger
         db.goal.findAll({
             where: {UserId : req.params.UserId}
         }).then(function(dbGoal) {
@@ -21,12 +22,12 @@ module.exports = function(app) {
     })
 
     //list food by category
-    app.post("/submitLog/:username",application.IsAuthenticated, function(req,res) {
+    app.post("/submitLog/:id",application.IsAuthenticated, function(req,res) {
         // debugger;
         var userName = req.user.username
         var userObj = req.user;
         db.User.findOne({
-            where: {username: req.params.username},
+            where: {id: req.user.id},
             include: [{model: db.goal}]}).then(function(user) {
             var userData = user;
             //if category
@@ -63,7 +64,8 @@ module.exports = function(app) {
                         data : userData,
                         userObject : userObj,
                         user: {
-                            username : userName
+                            username : userName,
+                            id : userObj.id
                         }
                     }
                     console.log(hbsObj);

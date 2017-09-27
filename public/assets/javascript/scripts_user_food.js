@@ -64,11 +64,11 @@ function checkTracks() {
                 select.append(option); 
             }
         } else if (window.location.pathname === "/submitLog/" + name) {
+            // debugger;
             //currently can't associate goalId because you'll have two options (fruits or veggies)
-            var input = document.getElementById("goal_Id")
-            input.setAttribute("value",data)
+            // var input = document.getElementById("goal_Id")
+            // input.setAttribute("value",data)
         }
-            // console.log("i've got your goals right here" + data.goals.length);
         })
     //search database
 }

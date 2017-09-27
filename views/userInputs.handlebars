@@ -34,7 +34,7 @@
     <div class="w3-container w3-col s6 w3-mobile">
       {{!-- replaced /search with track --}}
       <div class="w3-panel w3-card-4">
-        <form action="/submitLog/{{user.username}}" method="post" class="w3-container">
+        <form action="/submitLog/{{user.id}}" method="post" class="w3-container">
             {{!-- for an actual user, will only display the tracks/goals they've signed up for; populate with goals table category --}}
             <label for="moment" id="momentLabel"></label>
             <input type="hidden" name="week" id="moment" required>
@@ -101,7 +101,7 @@
                   <input type="hidden" name="foodId" value="{{this.id}}">
               {{/each}}
               {{/if}}
-                  <input type="hidden" name="goalId" value="{{id}}">
+                  <input type="hidden" name="goalId" value="{{id}}" id="goal_Id">
                   <input type="hidden" name="userId" value="{{userObject.id}}">
           {{#if choice}}
           <button>Add this item</button>

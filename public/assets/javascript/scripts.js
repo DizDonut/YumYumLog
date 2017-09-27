@@ -67,6 +67,36 @@ function progressBar(){
     }
   }
   
+//       check_Star()
+//     }
+//   }
+// }
+
+// //return statement 
+//   if(elem.style.width >= 100%){
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+
+// /*
+// check_Star function simply checks the goal vs the foodLog count and determines
+// if the goal has been met.  If so, create an img element and assign it the star.png
+// source and append to the div
+// */
+
+// function check_Star(){
+//   if (progress_Bar()) {
+//     var elem = document.createElement("img");
+//     elem.src = ("../assets/images/star.png")
+//     document.getElementById("star_complete").appendChild(elem);
+//   }
+// } // end check_Star function
+
+
+
   function check_Star(count,goal){
     // if (db.User.count >= db.User.goal) {
       var cnt = parseInt(count)
@@ -81,7 +111,7 @@ function progressBar(){
 
 //below functions need to make sure the page loads first prior to running
 window.onload = function(){
-
+  console.log('im working')
   progressBar();
   carousel();
 

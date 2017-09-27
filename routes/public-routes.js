@@ -18,8 +18,8 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/assets/javascript/scripts.js"));
   });
 
-  app.get("/images", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/assets/images"));
-  });
+  // app.get("/images", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/assets/images"));
+  // });
 
 };
