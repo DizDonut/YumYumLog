@@ -1,33 +1,4 @@
 
-// console.log('im working');
-
-//for now, we have one js file for all client side js. add it below
-
-
-//user login
-    //
-//registration
-    //
-
-//add a goal/user_track
-    //
-
-//log food to the log model
-    //
-
-//community dashboard
-    //grab the count values from the weekly objects, and tally them on the client side to display in a column header for progress ('tallly of counts' / 'db.obj.goal' repr. as a %)
-        //OR  create an alias attribute in sequelize that returns the tally (or the progress %) for each user's goal
-//user dashboard
-    //same tally procredure as above
-
-//user more details
-    //display the food items for the selected 'week'
-
-//styling and rendering
-
-//session set user name 
-
 function setMoment() {
     // debugger;
     var date = moment().format('dddd, MMMM Do YYYY'); // Current Date, September 24th 2017
@@ -48,9 +19,6 @@ function setMoment() {
     }
     
 }
-
-
-
 
 function checkTracks() {
     var currentURL = window.location.origin
@@ -106,24 +74,38 @@ function checkTracks() {
 }
 
 
+setMoment();
+checkTracks();
 
-function userDash() {
-    // debugger;
-    var currentURL = window.location.origin
-    var name = document.getElementById("username").innerHTML
-    if (window.location.pathname === "/users/" + name ) {
-        $.ajax({url: currentURL + "/dashboard/" + name,method:"GET"}).done(function(data) {
-            //run function for progress bars?
-            return
-        })
-    }
-}
+// console.log('im working');
+
+//for now, we have one js file for all client side js. add it below
 
 
-    // userDash();
-    setMoment();
-    checkTracks();
-    
+//user login
+    //
+//registration
+    //
+
+//add a goal/user_track
+    //
+
+//log food to the log model
+    //
+
+//community dashboard
+    //grab the count values from the weekly objects, and tally them on the client side to display in a column header for progress ('tallly of counts' / 'db.obj.goal' repr. as a %)
+        //OR  create an alias attribute in sequelize that returns the tally (or the progress %) for each user's goal
+//user dashboard
+    //same tally procredure as above
+
+//user more details
+    //display the food items for the selected 'week'
+
+//styling and rendering
+
+//session set user name 
+
 //get food index list ajax
     //on submit, search for food for a category
         //data object has food items

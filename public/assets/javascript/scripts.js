@@ -37,7 +37,7 @@ function progressBar(){
 
   var currentURL = window.location.pathname
   var name = document.getElementById("username").innerHTML
-  debugger;
+  // debugger;
     if (currentURL === "/dashboard" || currentURL === "/users/" + name ){   //or userDash/:username
       var elems = document.getElementsByClassName("curr_prog");
 
@@ -51,20 +51,33 @@ function progressBar(){
         var elem = elems[i];
         var width = document.getElementsByClassName("count")[i].innerHTML; // TODO: check status of assignment here
         var goal = document.getElementsByClassName("goal")[i].innerHTML; // TODO: check status of assignment here
-        console.log(width);
-        console.log(goal);
+        // console.log(width);
+        // console.log(goal);
 
         if(goal <= 0){
           clearInterval(id);
         } else {
-          console.log(width);
+          //create a limit once progress is acheived (so that they can exceed the goal, but it doesn't affect the progress bar width)
+          // console.log(width);
           elem.style.width = ((width / goal) * 100) + "%";
-          console.log(elem.style.width);
+          // console.log(elem.style.width);
+          check_Star(width,goal)
         }
       }
     }
   }
-
+  
+  function check_Star(count,goal){
+    // if (db.User.count >= db.User.goal) {
+      var cnt = parseInt(count)
+      var goalCnt = parseInt(goal)
+      if (cnt >= goalCnt ) {
+        var elem = document.createElement("img");
+        elem.src = ("../assets/images/star.png")
+        document.getElementById("star_complete").appendChild(elem);
+        //turn progress bar green, limit width to the current width (with a boolean?)
+    }
+  } 
 
 //below functions need to make sure the page loads first prior to running
 window.onload = function(){
@@ -90,11 +103,6 @@ window.onload = function(){
   if the goal has been met.  If so, create an img element and assign it the star.png
   source and append to the div
 */
-//   function check_Star(){
-//     if (db.User.count >= db.User.goal) {
-//       var elem = document.createElement("img");
-//       elem.src = ("./assets/images/star.png")
-//       document.getElementById("star_complete").appendChild(elem);
-//     }
-//   } // end check_Star function
+
+// end check_Star function
 } // end onload listener
