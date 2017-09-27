@@ -57,7 +57,7 @@ function progressBar(){
   var currentURL = window.location.pathname
   var name = document.getElementById("username").innerHTML
   // debugger;
-    if (currentURL === "/dashboard" || currentURL === "/users/" + name ){   //or userDash/:username
+    // if (currentURL === "/dashboard" || currentURL === "/users/" + name ){   //or userDash/:username
       var elems = document.getElementsByClassName("curr_prog");
 
       //instead of doing an AJAX, pull the counts from the page and adjust progress bars accordingly?
@@ -83,7 +83,7 @@ function progressBar(){
           check_Star(width,goal)
         }
       }
-    }
+    // }
   }
   
 //       check_Star()
