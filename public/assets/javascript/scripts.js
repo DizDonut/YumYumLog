@@ -36,8 +36,9 @@ function carousel(){
 function progressBar(){
 
   var currentURL = window.location.pathname
-    if (currentURL === "/dashboard" || currentURL === "/dashboard/:username")
-    {   //or userDash/:username
+  var name = document.getElementById("username").innerHTML
+  debugger;
+    if (currentURL === "/dashboard" || currentURL === "/users/" + name ){   //or userDash/:username
       var elems = document.getElementsByClassName("curr_prog");
 
       //instead of doing an AJAX, pull the counts from the page and adjust progress bars accordingly?
