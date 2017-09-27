@@ -132,7 +132,7 @@ function progressBar(){
 
 //below functions need to make sure the page loads first prior to running
 window.onload = function(){
-  console.log('im working')
+  
   progressBar();
   carousel();
 
