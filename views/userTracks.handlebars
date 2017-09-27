@@ -2,6 +2,7 @@
   <button class="w3-bar-item w3-button w3-large" onclick="sideBar_Close()">Close &times;</button>
   {{#if user}}
     <a href="/users/{{user.username}}" class="w3-bar-item w3-button">Back to Main Page</a>
+    <a href="/addLog/{{user.username}}" class="w3-bar-item w3-button">Log Your Data</a>
     <a href="/logout" class="w3-bar-item w3-button">Logout</a>
     <a href="/dashboard" class="w3-bar-item w3-button">See the Community Dashboard</a>
   {{/if}}
@@ -32,7 +33,7 @@
 
 <div class="w3-row">
 
-  <div class="w3-container w3-col s6 w3-mobile w3-text-blue">
+  <div class="w3-container w3-col s6 w3-mobile w3-text-blue w3-center">
     <form action="/addTrack/{{user.username}}" method="post" class="w3-panel w3-card-4">
         {{!-- for an actual user, will only display the tracks/goals they've signed up for; populate with goals table category --}}
           <label for="moment" id="momentLabel"></label>
@@ -57,31 +58,19 @@
     </form>
   </div>
 {{/if}}
-{{#if choice}}
-  <div>
-    <h3>You're tracking your {{choice.category}} now, aiming for {{choice.goal}} per week!</h3>
-  </div>
-{{/if}}
-  <div class="w3-container w3-col s6 w3-mobile w3-text-blue">
-    <div class="mySlides w3-animate-fading">
-      <div class="w3-panel w3-card-4">
-        <!-- TODO <!- {/{}/} -> -->
-        <!-- AJAX Call to db to pull back nutritional details of food - will display in automatic slideshow format -->
-      </div>
-    </div>
-  {{!-- {{/if}} --}}
 
 
+  {{#if choice}}
     <div class="w3-container w3-col s6 w3-mobile w3-text-blue">
       <div class="mySlides w3-animate-fading">
         <div class="w3-panel w3-card-4">
-          <!-- TODO <!- {/{}/} -> -->
-          <!-- AJAX Call to db to pull back nutritional details of food - will display in automatic slideshow format -->
-        </div> <!-- end panel that holds the content -->
-      </div> <!-- end slide card -->
-    </div> <!-- end second container -->
+          <h3>You're tracking your {{choice.category}} now, aiming for {{choice.goal}} per week!</h3>
+        </div>
+      </div>
+    </div>
+  {{/if}}
 
-  </div> <!-- end row -->
+</div> <!-- end row -->
 
 {{> footer }}
 

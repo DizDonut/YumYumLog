@@ -21,7 +21,8 @@
     <div class="w3-container">
       <div class="user">
           {{#if user}}
-              <h1 id="userTitle">Hey {{user.username}}! What was on the menu today?</h1>
+              <h1 id="userTitle">Hey {{user.username}}!</h1>
+              <h2>What was on the menu today?</h1>
           {{/if}}
       </div>
     </div> <!-- end container for greeting -->
@@ -44,49 +45,44 @@
             <select name="category" id="trackName">
                 <option value="" disabled selected>Choose your track</option>
             </select>
-            <button type="submit">submit category</button>
+            <button id="subCat" type="submit">Submit Category</button>
         </form>
       </div>
     </div>
 
     <div class="w3-container w3-col s6 w3-mobile">
       <div class="w3-panel w3-card-4">
-        <div class="w3-row">
-          <div class="w3-container">
-            <div class="w3-col s6">
-              <a href="/logout"><button type="submit" class="w3-button w3-red loginBtn">Logout</button></a>
-            </div>
-            <div class="w3-col s6">
-              <a href="/users/{{user.username}}"><button class="w3-button w3-green">Back to main page</button></a>
-            </div>
-          </div>
-        </div>
+        <a href="/logout"><button type="submit" class="w3-button w3-red loginBtn">Logout</button></a>
+        <a href="/users/{{user.username}}"><button class="w3-button w3-green">Back to main page</button></a>
       </div>
+    </div>
 
 
-        <div class="w3-row" id="bloodhound">
-            {{#if user}}
-            <form action="/submitLog/{{user.username}}" class="w3-container" method="post">
-                <input type="hidden" value={{user.id}} id="user_Id" required>
-                {{#if foods}}
-                <h4>Enter log</h4>
-                <input list="foods" name="q" autocomplete="off" placeholder="Enter your item">
-                <datalist id="foods">
-                    {{#each foods}}
-                        <option value="{{this.item}}">{{this.item}}</option>
-                    {{/each}}
-                </datalist>
-                {{!-- https://github.com/mfranzke/datalist-polyfill datalist isn't safari compatible..possible workaround --}}
-                <button type="submit">search</button>
-                {{/if}}
-            </form>
-            {{/if}}
-            {{!-- display food suggestions based on the selection from the tracks query --}}
-        </div>
+
     </div>
   </div> <!-- end row -->
 
   <div class="w3-row w3-center">
+    <div class="w3-row" id="bloodhound">
+        {{#if user}}
+        <form action="/submitLog/{{user.username}}" class="w3-container" method="post">
+            <input type="hidden" value={{user.id}} id="user_Id" required>
+            {{#if foods}}
+            <h4>Enter log</h4>
+            <input list="foods" name="q" autocomplete="off" placeholder="Enter your item">
+            <datalist id="foods">
+                {{#each foods}}
+                    <option value="{{this.item}}">{{this.item}}</option>
+                {{/each}}
+            </datalist>
+            {{!-- https://github.com/mfranzke/datalist-polyfill datalist isn't safari compatible..possible workaround --}}
+            <button type="submit">search</button>
+            {{/if}}
+        </form>
+        {{/if}}
+        {{!-- display food suggestions based on the selection from the tracks query --}}
+    </div>
+
     <div id="display_Input" class="w3-col s6 w3-mobile w3-panel w3-card-4">
       <form action="/addItem/{{user.username}}" method="post">
           <label for="moment" id="momentLabel"></label>

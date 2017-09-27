@@ -43,12 +43,13 @@ body:before {
 
 footer{
   background: lightgray;
-  opacity: 0.50;
-  position: relative;
+  /*opacity: 0.50;*/
+  position: absolute;
   padding: 10px 10px 10px 10px;
   border-radius: 10px;
   width: 100%;
   margin-top: 16%;
+  bottom: 0;
 }
 
 #register{
@@ -81,8 +82,14 @@ footer{
   padding: 0px;
 }
 
+#trackName, #subCat{
+  padding: 5px;
+  margin-bottom: 15px;
+  color: #005580;
+}
+
 #logo{
-  position: absolute;
+  position: relative;
   height: 50px;
   width: 50px;
   margin-top: 1%
