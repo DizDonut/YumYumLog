@@ -1,5 +1,32 @@
-{{!-- <form action="/search" method="get"> --}}
-    <input class="typeahead tt-query" spellcheck="false" autocomplete="off" name="typeahead" type="text" placeholder="search for food" id="foodSearch" />
-    <input type="submit" value="go">
-{{!-- </form> --}}
-{{!-- tt-input class removed --}}
+<table class="w3-table-all w3-hoverable">
+    <thead>
+        <tr class="w3-gray">
+            <th>Food Track</th>
+            <th>Servings Goal</th>
+            <th>Week</th>
+            <th>Progress</th>
+            <th>Completed</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+    {{#if dashboard}}
+        {{#each dashboard.goals}}
+        <tr>
+            <td>{{this.category}}</td> <!-- {/{userObj.userID}/} -->
+            <td>{{this.goal}}</td> <!-- {/{userObj.currTrack}/} -->
+            <td>{{this.week}}</td> <!-- {/{userObj.currWeek}/} -->
+            <td onload="progress_Bar()">
+                <div class="w3-light-grey">
+                <div id="curr_prog" class="w3-container w3-blue" style="height:20px; width:0px">
+                    <!-- {/{foodObj.count}/} -->
+                    <span class="count">{{this.logs.length}}</span>/<span class="goal">{{this.goal}}</span>
+                </div>
+                </div>
+            </td>
+            <td onload="check_Star()"><div id="star_complete"></div></td>
+        </tr>
+        {{/each}}
+    {{/if}}
+    </tbody>
+</table>

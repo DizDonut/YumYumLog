@@ -14,19 +14,23 @@ function sideBar_Close() {
 }
 
 function carousel(){
-  var slideIndex = 0;
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (var i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
+  if (document.getElementsByClassName("mySlides")) {
+    var slideIndex = 0;
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (x.length > 0) {
+      for (var i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      slideIndex++;
+      if(slideIndex > x.length){
+        slideIndex = 1
+      }
+    
+      x[slideIndex-1].style.display = "block";
+      setTimeout(carousel, 4000);
+    }
   }
-  slideIndex++;
-  if(slideIndex > x.length){
-    slideIndex = 1
-  }
-
-  x[slideIndex-1].style.display = "block";
-  setTimeout(carousel, 4000);
 }
 
 function progressBar(){
@@ -77,7 +81,6 @@ window.onload = function(){
     //i think the db.User count and goal is pseudo code. will replace later
 
 //AJAX GOES HERE
-
 
 
 
