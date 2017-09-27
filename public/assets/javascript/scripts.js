@@ -84,13 +84,6 @@ function progressBar(){
         }
       }
     }
-    
-  //return statement 
-    if(elem.style.width >= 100%){
-      return true;
-    } else {
-      return false;
-    }
   }
   
 //       check_Star()
@@ -133,7 +126,7 @@ function progressBar(){
         document.getElementById("star_complete").appendChild(elem);
         //turn progress bar green, limit width to the current width (with a boolean?)
 
-    }
+      }
   } // end check_Star function
 
 
