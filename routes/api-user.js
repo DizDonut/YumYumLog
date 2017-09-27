@@ -21,16 +21,16 @@ module.exports = function(app) {
     })
 
     //generates user data  and handlebars for the user dash page
-    app.get("/users/:username",application.IsAuthenticated, function(req, res) {
-
+    app.get("/users/:username/:week?",application.IsAuthenticated, function(req, res) {
+        var userObj = req.user;
         var userName = req.user.username
         var weekInput = moment().format();
-        var weekNum = moment(weekInput).isoWeek();
+        var weekNum = req.params.week || moment(weekInput).isoWeek();
         db.User.findOne({
             where : {id : req.user.id}, 
             include : [
                 {model: db.goal, include: [
-                    {model:db.log, include: [
+                    {model:db.log, where : {week : weekNum }, include: [
                         {model:db.food}
                     ]}
                 ]}
@@ -40,7 +40,9 @@ module.exports = function(app) {
             var handlebars = {
                 dashboard : dbgoal,
                 user : {
-                    username :userName
+                    username :userName,
+                    firstname : userObj.first_name,
+                    lastname : userObj.last_name
                 }
             }
             console.log(handlebars)
