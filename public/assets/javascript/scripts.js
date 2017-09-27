@@ -14,19 +14,23 @@ function sideBar_Close() {
 }
 
 function carousel(){
-  var slideIndex = 0;
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (var i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
+  if (document.getElementsByClassName("mySlides")) {
+    var slideIndex = 0;
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (x.length > 0) {
+      for (var i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      slideIndex++;
+      if(slideIndex > x.length){
+        slideIndex = 1
+      }
+    
+      x[slideIndex-1].style.display = "block";
+      setTimeout(carousel, 4000);
+    }
   }
-  slideIndex++;
-  if(slideIndex > x.length){
-    slideIndex = 1
-  }
-
-  x[slideIndex-1].style.display = "block";
-  setTimeout(carousel, 4000);
 }
 
 function progressBar(){
@@ -79,8 +83,6 @@ progressBar()
 
 //AJAX GOES HERE
 
-  
-  
 
 /*
   check_Star function simply checks the goal vs the foodLog count and determines

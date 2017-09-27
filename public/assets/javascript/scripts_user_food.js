@@ -29,6 +29,7 @@
 //session set user name 
 
 function setMoment() {
+    // debugger;
     var date = moment().format('dddd, MMMM Do YYYY'); // Current Date, September 24th 2017
     var weekInput = moment().format();
     var weekNum = moment(weekInput).isoWeek();
@@ -49,13 +50,16 @@ function setMoment() {
 }
 
 
-setMoment()
+
 
 function checkTracks() {
     var currentURL = window.location.origin
     //get the value of the username from the page run ajax on it to get the data
     var name = document.getElementById("username").value
-    var id = document.getElementById("user_Id").value
+    if (document.getElementById("user_Id")) {
+        var id = document.getElementById("user_Id").value
+    }
+    
     // console.log(`magic` + name)
 
         $.ajax({url: currentURL + "/getTracks/" + id,method:"GET"}).done(function(data) {
@@ -81,7 +85,7 @@ function checkTracks() {
                     update.innerHTML = "You're already tracking both goals!"
                 }
             }
-        } else if (window.location.pathname === "/addLog/" + name) {
+        } else if (window.location.pathname === "/addLog/" + name || window.location.pathname === "/addItem/" + name ) {
             // debugger;
             for (var i=0; i < data.length; i++) {
                 var option = document.createElement("option")
@@ -100,8 +104,26 @@ function checkTracks() {
         })
     //search database
 }
-checkTracks();
 
+
+
+function userDash() {
+    // debugger;
+    var currentURL = window.location.origin
+    var name = document.getElementById("username").innerHTML
+    if (window.location.pathname === "/users/" + name ) {
+        $.ajax({url: currentURL + "/dashboard/" + name,method:"GET"}).done(function(data) {
+            //run function for progress bars?
+            return
+        })
+    }
+}
+
+
+    // userDash();
+    setMoment();
+    checkTracks();
+    
 //get food index list ajax
     //on submit, search for food for a category
         //data object has food items

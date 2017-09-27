@@ -1,5 +1,6 @@
 var db = require("../models");
 var passport = require("passport");
+var moment = require("moment")
 //require authentication for any route; make sure username is in the route parameter
 var application = application = require('./application');
 
@@ -21,13 +22,28 @@ module.exports = function(app) {
 
     //generates user data  and handlebars for the user dash page
     app.get("/users/:username",application.IsAuthenticated, function(req, res) {
-        if (hasProp(req, 'user')) {
-            // console.log(req.user.username);
-            var hbsObj = {
-                username: req.user.username,
+
+        var userName = req.user.username
+        var weekInput = moment().format();
+        var weekNum = moment(weekInput).isoWeek();
+        db.User.findOne({
+            where : {id : req.user.id}, 
+            include : [
+                {model: db.goal, include: [
+                    {model:db.log}]}
+            ]
+        }).then(function(dbgoal) {
+            // res.json(dbgoal);
+            var handlebars = {
+                dashboard : dbgoal,
+                user : {
+                    username :userName
+                }
             }
-        }
-        res.render("userDash",hbsObj)
+            console.log(handlebars)
+            res.render("userDash",handlebars)
+        })
+        // res.render("userDash",hbsObj)
     })
 
     //generates user data and handlebars for the userInputs page
@@ -42,12 +58,6 @@ module.exports = function(app) {
 
     //renders tracks page and current tracks (for use in the form)
     app.get("/trackPage/:username",application.IsAuthenticated, function(req,res) {
-        //you wont need this if the model includes username
-        // if (hasProp(req, 'user')) {
-        //     console.log(req.user.username);
-        //     var hbsObj = {
-        //         user: req.user
-        //     }
             //find all of the users tracks and deliver them to the page in an object
         db.User.findOne({
             where: {username: req.params.username},
@@ -61,22 +71,5 @@ module.exports = function(app) {
         })
 
     })
-
-    //replacing old registration pathway
-    // app.get("/signup", function(req,res) {
-    //     res.render("signup")
-    // })
-
-    //not using this route right now; replaced with /register
-    // app.post("/newUser/:first/:last/:user", function(req,res) {
-    //     db.user.create({
-    //         first_name: req.params.first,
-    //         last_name: req.params.last,
-    //         username: req.params.user
-    //     }).then(function(dbUser){
-    //         // res.redirect('back');
-    //         res.json(dbUser)
-    //     });
-    // })
 
 }

@@ -1,8 +1,8 @@
 <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large" onclick="sideBar_Close()">Close &times;</button>
-  {{#if username}}
-    <a href="/trackPage/{{username}}" class="w3-bar-item w3-button">Choose a Track</a>
-    <a href="/addLog/{{username}}" class="w3-bar-item w3-button">Input Today's Data</a>
+  {{#if user}}
+    <a href="/trackPage/{{user.username}}" class="w3-bar-item w3-button">Choose a Track</a>
+    <a href="/addLog/{{user.username}}" class="w3-bar-item w3-button">Input Today's Data</a>
     <a href="/dashboard" class="w3-bar-item w3-button">See the Community Dashboard</a>
   {{/if}}
 </div>
@@ -15,8 +15,8 @@
     </div>
 
     <div class="w3-container">
-      {{#if username}}
-      <h1>Welcome Back {{username}}!</h1>
+      {{#if user}}
+      <h1>Welcome Back <span id="username">{{user.username}}</span>!</h1>
       {{/if}}
     </div>
   </div>
@@ -30,32 +30,7 @@
     </div>
     <div class="w3-row">
       <div class="w3=responsive">
-        <table class="w3-table-all w3-hoverable">
-          <thead>
-            <tr class="w3-gray">
-              <th>Food Track</th>
-              <th>Servings Goal</th>
-              <th>Week</th>
-              <th>Progress</th>
-              <th>Completed</th>
-            </tr>
-            <tr>
-              {{#each dashboard}}
-                <td>{{this.category}}</td> <!-- {/{userObj.userID}/} -->
-                <td>{{this.goal}}</td> <!-- {/{userObj.currTrack}/} -->
-                <td>Current week of the year</td> <!-- {/{userObj.currWeek}/} -->
-                <td onload="progress_Bar()">
-                  <div class="w3-light-grey">
-                    <div id="curr_prog" class="w3-container w3-blue" style="height:20px; width:0px">
-                      <!-- {/{foodObj.count}/} -->
-                    </div>
-                  </div>
-                </td>
-                <td onload="check_Star()"><div id="star_complete"></div></td>
-              {{/each}}
-            </tr>
-          </thead>
-        </table>
+          {{> input}}
       </div>
     </div>
   </div>

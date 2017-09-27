@@ -2,6 +2,7 @@
 // Import the model (burger.js) to use its database functions.
 var db = require("../models");
 var passport = require("passport");
+var moment = require("moment")
 //require authentication for any route; make sure username is in the route parameter
 var application = application = require('./application');
 
@@ -106,6 +107,7 @@ module.exports = function(app) {
     })
     //create food entry
     app.post("/addItem/:username",function(req,res) {
+        var userObj = req.user
         var userName = req.user.username
         var choice = req.body.item
         // debugger;
@@ -120,7 +122,8 @@ module.exports = function(app) {
             var hbsObj = {
                 item : choice,
                 user : {
-                    username : userName
+                    username : userName,
+                    id : userObj.id
                 }
             }
             res.render("userInputs",hbsObj)
