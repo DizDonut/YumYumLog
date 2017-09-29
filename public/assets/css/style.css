@@ -43,13 +43,11 @@ body:before {
 
 footer{
   background: lightgray;
-  /*opacity: 0.50;*/
   position: absolute;
   padding: 10px 10px 10px 10px;
   border-radius: 10px;
   width: 100%;
-  margin-top: 16%;
-  bottom: 0;
+  bottom: -25%;
 }
 
 #register{
