@@ -7,7 +7,7 @@
   {{/if}}
 </div>
 
-<div zclass="w3-main" id="sidebar">
+{{!-- <div zclass="w3-main" id="sidebar"> --}}
 
   <div class="w3-jumbo">
     <div id="hamb_cont">
@@ -24,52 +24,39 @@
   <br>
   <br>
 
-{{!-- this user --}}
+  {{!-- this user --}}
 
-{{!-- /createTrack/:id/:category/:goal/:week --}}
-{{!-- {{#if user}} --}}
-{{#if user}}
+  {{!-- /createTrack/:id/:category/:goal/:week --}}
+  {{!-- {{#if user}} --}}
+  {{#if user}}
 
-<div class="w3-row">
+  <div class="w3-row">
 
-  <div class="w3-container w3-col s6 w3-mobile w3-text-blue">
-    <form action="/addTrack/{{user.username}}" method="post" class="w3-panel w3-card-4">
-        {{!-- for an actual user, will only display the tracks/goals they've signed up for; populate with goals table category --}}
-          <label for="moment" id="momentLabel"></label>
-          <input type="hidden" name="week" class="moment" required>
-          <input type="hidden" name="username" value={{user.username}} id="username">
-          <input type="hidden" name="UserId" value={{user.id}} id="user_Id" required>
-        <label><h4>Select your track:</h4></label>
-        <select name="category" id="trackName" required>
-            {{!-- add available tracks here --}}
-            <option value="" disabled selected id="optMsg">Choose your track</option>
-            <option value="vegetables" id="vegetables">Track my Veggies</option>
-            <option value="fruits" id="fruits">Track my Fruits</option>
-            {{!-- if a track is in the database already, mark it as disabled --}}
-        </select>
-        <label><h4>Set a goal:</h4></label>
-          <input type="number" placeholder="(i.e 10 servings)" name="goal" id="goalInput" required>
-        <span> Servings per week</span>
-        {{!-- add a clearfix --}}
-      <div></div>
-        <br>
-      <button class="w3-button w3-blue" type="submit">Submit Category</button>
-    </form>
-  </div>
-{{/if}}
-{{#if choice}}
-  <div>
-    <h3>You're tracking your {{choice.category}} now, aiming for {{choice.goal}} per week!</h3>
-  </div>
-{{/if}}
-  <div class="w3-container w3-col s6 w3-mobile w3-text-blue">
-    <div class="mySlides w3-animate-fading">
-      <div class="w3-panel w3-card-4">
-        <!-- TODO <!- {/{}/} -> -->
-        <!-- AJAX Call to db to pull back nutritional details of food - will display in automatic slideshow format -->
-      </div>
+    <div class="w3-container w3-col s6 w3-mobile w3-text-blue w3-center">
+      <form action="/addTrack/{{user.username}}" method="post" class="w3-panel w3-card-4">
+          {{!-- for an actual user, will only display the tracks/goals they've signed up for; populate with goals table category --}}
+            <label for="moment" id="momentLabel"></label>
+            <input type="hidden" name="week" class="moment" required>
+            <input type="hidden" name="username" value={{user.username}} id="username">
+            <input type="hidden" name="UserId" value={{user.id}} id="user_Id" required>
+          <label><h4>Select your track:</h4></label>
+          <select name="category" id="trackName" required>
+              {{!-- add available tracks here --}}
+              <option value="" disabled selected id="optMsg">Choose your track</option>
+              <option value="vegetables" id="vegetables">Track my Veggies</option>
+              <option value="fruits" id="fruits">Track my Fruits</option>
+              {{!-- if a track is in the database already, mark it as disabled --}}
+          </select>
+          <label><h4>Set a goal:</h4></label>
+            <input type="number" placeholder="(i.e 10 servings)" name="goal" id="goalInput" required>
+          <span> Servings per week</span>
+          {{!-- add a clearfix --}}
+        <div></div>
+          <br>
+        <button class="w3-button w3-blue" type="submit">Submit Category</button>
+      </form>
     </div>
-  {{!-- {{/if}} --}}
+  {{/if}}
 
 
     <div class="w3-container w3-col s6 w3-mobile w3-text-blue">
@@ -83,6 +70,6 @@
 
   </div> <!-- end row -->
 
-{{> footer }}
 
-</div> <!-- end zclass sidebar -->
+{{!-- </div> <!-- end zclass sidebar --> --}}
+{{> footer }}

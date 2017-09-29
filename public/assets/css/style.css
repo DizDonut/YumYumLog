@@ -3,7 +3,9 @@ body,h1,h2,div,form,input,label,h3,a,h4,th {
   color: #005580;
 }
 body, html {
-  height: 100%
+  min-height: 100%;
+  overflow-x: hidden;
+  transition: background-color .5s;
 }
 body:before {
   content: "";
@@ -14,12 +16,12 @@ body:before {
   width: 100%;
   height: 100%;
   z-index: -10;
-  background: url("../assets/images/yyLogo.png") no-repeat center center;
+  background: url("../assets/images/hamster.svg") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  opacity: 0.5;
   background-size: cover;
+  opacity: 0.5;
 }
 
 #hamLogo{
@@ -43,12 +45,16 @@ body:before {
 
 footer{
   background: lightgray;
-  opacity: 0.50;
-  position: absolute;
+  /*opacity: 0.50;*/
+  position: fixed;
   padding: 10px 10px 10px 10px;
   border-radius: 10px;
   width: 100%;
+  margin-top: 25%;
   bottom: 0;
+}
+footer a, footer ul {
+  margin: 2px;
 }
 
 #register{
@@ -57,11 +63,24 @@ footer{
   left: 25%;
 }
 
-.w3-jumbo{
+.w3-jumbo {
   opacity: .65;
   background-color: lightgray;
   text-align: center;
   margin: 0px;
+  position:fixed;
+  top:0;
+  overflow: hidden;
+  width: 100%;
+}
+/* .w3-jumbo div, .w3-jumbo button,.w3-jumbo h2 {
+
+
+} */
+
+.main-content {
+  margin-top: 10%;
+  margin-bottom:10%;
 }
 
 #loginBox{
@@ -91,6 +110,20 @@ table, th, td {
   border-collapse: collapse;
 }
 
+#mySidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top:0;
+  left:0;
+  overflow-x: hidden;
+}
+
+#mySidebar a, #mySidebar button {
+  width: auto;
+  
+}
 /* h1,h2,h3,h4 {
     color: red
 } */
