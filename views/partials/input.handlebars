@@ -1,4 +1,4 @@
-<table class="w3-table-all w3-hoverable">
+<table id="myDashboard" class="w3-table-all w3-hoverable">
     <thead>
         <tr class="w3-gray">
             <th>Food Track</th>
@@ -30,6 +30,7 @@
                     <th class="w3-hide showFoodCol {{this.category}}">Item <i>(Date Logged)</i></th>
                 </tr>
                 {{#each logs}}
+
                     <tr class="none">
                         <th class="showNutrition w3-hide {{../category}}" value="{{this.item}}">{{this.item}}<i>(Logged</i> <i class="convert">{{this.createdAt}}</i></th>
                     </tr>
@@ -40,7 +41,7 @@
     </tbody>
 </table>
 {{#unless dashboard.goals}}
-    <h2>No logs yet. Get Started!</h2>
+    <h2>No logs yet. Get Started by clicking on Hammy Hamster!</h2>
 {{/unless}}
 {{#if dashboard}}
     {{#each dashboard.goals}}
@@ -50,4 +51,3 @@
     {{/each}}
 {{/if}}
 
-{{!-- https://www.w3schools.com/w3css/w3css_accordions.asp --}}

@@ -3,10 +3,10 @@
 */
 
 function sideBar_Open() {
-  // document.getElementById("sidebar").style.marginLeft = "25%";
+  document.getElementById("sidebar").style.marginLeft = "25%";
   document.getElementById("mySidebar").style.width = "25%";
   document.getElementById("mySidebar").style.display = "block";
-  // document.getElementById("openNav").style.display = 'none';
+  document.getElementById("openNav").style.display = 'none';
   document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
 
@@ -15,15 +15,15 @@ function sideBar_Open() {
 */
 
 function sideBar_Close() {
-  // document.getElementById("sidebar").style.marginLeft = "0%";
+  document.getElementById("sidebar").style.marginLeft = "0%";
   document.getElementById("mySidebar").style.display = "none";
-  // document.getElementById("openNav").style.display = "inline-block";
+  document.getElementById("openNav").style.display = "inline-block";
   document.body.style.backgroundColor = "white";
 }
 
 /*
   carousel function is used to animate the slides/cards on the userTrack page.  The slides will contain
-  additional nutriional details for random foods in the database 
+  additional nutriional details for random foods in the database
 */
 
 function carousel(){
@@ -39,7 +39,7 @@ function carousel(){
       if(slideIndex > x.length){
         slideIndex = 1
       }
-    
+
       x[slideIndex-1].style.display = "block";
       setTimeout(carousel, 4000);
     }
@@ -87,13 +87,13 @@ function progressBar(){
       }
     // }
   }
-  
+
 //       check_Star()
 //     }
 //   }
 // }
 
-// //return statement 
+// //return statement
 //   if(elem.style.width >= 100%){
 //     return true;
 //   } else {
@@ -102,19 +102,19 @@ function progressBar(){
 // }
 
 
-// /*
-// check_Star function simply checks the goal vs the foodLog count and determines
-// if the goal has been met.  If so, create an img element and assign it the star.png
-// source and append to the div
-// */
+/*
+check_Star function simply checks the goal vs the foodLog count and determines
+if the goal has been met.  If so, create an img element and assign it the star.png
+source and append to the div
+*/
 
-// function check_Star(){
-//   if (progress_Bar()) {
-//     var elem = document.createElement("img");
-//     elem.src = ("/images/star")
-//     document.getElementById("star_complete").appendChild(elem);
-//   }
-// } // end check_Star function
+function check_Star(wid, goal){
+  if (wid >= goal) {
+    var elem = document.createElement("img");
+    elem.src = ("/images/star")
+    document.getElementById("star_complete").appendChild(elem);
+  }
+} // end check_Star function
 
 
 

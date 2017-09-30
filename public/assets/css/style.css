@@ -4,9 +4,9 @@ body,h1,h2,div,form,input,label,h3,a,h4,th {
 }
 body, html {
   min-height: 100%;
-  /* overflow-x: hidden; */
   transition: background-color .5s;
 }
+
 body:before {
   content: "";
   display: block;
@@ -24,14 +24,6 @@ body:before {
   opacity: 0.5;
 }
 
-#hamLogo{
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 .w3-panel {
   margin: 25px;
   text-align: left;
@@ -45,43 +37,31 @@ body:before {
 
 footer{
   background: lightgray;
-  /*opacity: 0.50;*/
-  position: fixed;
+  position: sticky;
+  display: block;
   padding: 10px 10px 10px 10px;
-  border-radius: 10px;
   width: 100%;
-  margin-top: 25%;
-  bottom: 0;
+  margin-top: 5%;
 }
 footer a, footer ul {
   margin: 2px;
 }
 
 #register{
-  display: inline-block;
-  position: relative;
-  left: 25%;
+  margin-bottom: 9%;
 }
 
-.w3-jumbo {
+.w3-jumbo{
   opacity: .65;
   background-color: lightgray;
   text-align: center;
   margin: 0px;
-  position:fixed;
-  top:0;
-  overflow: hidden;
-  width: 100%;
 }
-/* .w3-jumbo div, .w3-jumbo button,.w3-jumbo h2 {
 
-
-} */
-
-.main-content {
+/* .main-content {
   margin-top: 10%;
   margin-bottom:10%;
-}
+} */
 
 #loginBox{
   margin-bottom: 1%;
@@ -94,19 +74,38 @@ footer a, footer ul {
 #dashboard_hamburger{
   position: absolute;
   left: 2%;
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 100px;
+  margin: 0px;
+  padding: 0px;
+  top: 4px;
+}
+
+#trackName, #subCat{
+  padding: 5px;
+  margin-bottom: 15px;
+  color: #005580;
+  width: 100%;
 }
 
 #logo{
-  position: absolute;
+  position: relative;
   height: 50px;
   width: 50px;
-  top: -2%;
-  left: 0;
+  margin-top: 5%
 }
 
-#mySidebar {
+#myDashboard{
+  margin-bottom: 10%;
+}
+
+#foodInput, #log, #register, #displayLogConfirmation,#logConfirmation{
+  width: 50%;
+  position: sticky;
+  left: 25%;
+}
+
+/* #mySidebar {
   height: 100%;
   width: 0;
   position: fixed;
@@ -114,12 +113,12 @@ footer a, footer ul {
   top:0;
   left:0;
   overflow-x: hidden;
-}
+} */
 
-#mySidebar a, #mySidebar button {
+/* #mySidebar a, #mySidebar button {
   width: auto;
   
-}
+} */
 .modal {
   width: 50%;
 }

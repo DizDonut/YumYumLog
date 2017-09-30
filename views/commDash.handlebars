@@ -1,72 +1,79 @@
- 
-  <div class="w3-sidebar w3-bar-block w3-animate-left w3-container" style="display:none" id="mySidebar">
-    <button class="w3-bar-item w3-button w3-large w3-border-bottom" onclick="sideBar_Close()">Close &times;</button>
-      {{#if user.username}}
-        <a href="/users/{{user.username}}" class="w3-bar-item w3-button w3-border-bottom">Back to My Dashboard</a>
-        <a href="/addLog/{{user.username}}" class="w3-bar-item w3-button w3-border-bottom">Log your Data</a>
-      {{/if}}  
-      <a href="/logout" class="w3-bar-item w3-button w3-border-bottom">Logout</a>
-      <a href="/signup" class="w3-bar-item w3-button w3-border-bottom">Register</a>
+<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large" onclick="sideBar_Close()">Close &times;</button>
+    {{#if user.username}}
+      <a href="/users/{{user.username}}" class="w3-bar-item w3-button">Back to My Dashboard</a>
+      <a href="/addLog/{{user.username}}" class="w3-bar-item w3-button">Log your Data</a>
+    {{/if}}
+    <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+    <a href="/signup" class="w3-bar-item w3-button">Register</a>
+</div>
+
+<div zclass="w3-main" id="sidebar">
+
+  <div class="w3-jumbo">
+    <div id="hamb_cont">
+      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()">&#9776<img id="logo" src="/images/yyLogo" alt=""></button>
+    </div>
+
+    <div class="w3-container">
+      <h2 id="username">Welcome Back {{user.username}}!</h2>
+    </div>
+  </div>
+  <h2 id="momentLabel" class="w3-center"></h2>
+
+  <br>
+  <br>
+
+  <div class="w3-container">
+
+    <div class="w3-row">
+      <form action="/dashboard/" method="get">
+        <label for="currentWeek"></label>
+        {{!-- get the weekArr numbers for all logged items, display here --}}
+        <select name="week" id="getWeek">
+          <option value="" disabled selected id="optMsg">Filter By Week</option>
+          <option value="37">week 37</option>
+          <option value="38">week 38</option>
+          <option value="39">week 39</option>
+        </select>
+        <span><button type="submit">Go</button></span>
+      </form>
+    </div>
+    <div class="w3-row">
+      <div class="w3=responsive">
+        <table class="w3-table-all w3-hoverable">
+          <thead>
+            <tr class="w3-gray">
+              <th>User</th>
+              <th>Track</th>
+              <th>Week</th>
+              <th>Progress</th>
+              <th>Completed</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+            {{#each dashboard}}
+            <tr>
+              <td>{{this.User.username}}</td> <!-- {/{userObj.userID}/} -->
+              <td>{{this.dataValues.category}}</td> <!-- {/{userObj.currTrack}/} -->
+              <td>{{this.dataValues.week}}</td> <!-- {/{userObj.currWeek}/} -->
+              <td onload="progress_Bar()">
+                <div class="w3-light-grey">
+                  <div class="w3-container w3-blue curr_prog" style="height:20px; width:0%">
+                    <!-- {/{foodObj.count}/} -->
+                    <span class="count">{{this.logs.length}}</span>/<span class="goal">{{this.dataValues.goal}}</span>
+                  </div>
+                </div>
+              </td>
+              <td onload="check_Star()"></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
-  {{!-- <div zclass="w3-main" id="sidebar"> --}}
-
-    <div class="w3-jumbo">
-      <div id="hamb_cont">
-        <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="/images/yyLogo" alt=""></button>
-      </div>
-
-      <div class="w3-container">
-        <h2 id="username">Welcome Back {{user.username}}!</h2>
-        <h2 id="momentLabel"></h2>
-      </div>
-    </div>
-    <div class="w3-container main-content">
-      <div class="w3-row">
-        <form action="/dashboard/" method="get">
-          <label for="currentWeek"></label>
-          {{!-- get the weekArr numbers for all logged items, display here --}}
-          <select name="week" id="getWeek">
-            <option value="" disabled selected id="optMsg">Filter By Week</option>
-            <option value="37">week 37</option>
-            <option value="38">week 38</option>
-            <option value="39">week 39</option>
-          </select>
-          <span><button type="submit">Go</button></span>
-        </form>
-      </div>
-      <div class="w3-row">
-        <div class="w-responsive">
-          <table class="w3-table-all w3-hoverable">
-            <thead>
-              <tr class="w3-gray">
-                <th>User</th>
-                <th>Track</th>
-                <th>Week</th>
-                <th>Progress</th>
-                <th>Completed</th>
-              </tr>
-              </thead>
-              {{#each dashboard}}
-              <tr>
-                <td>{{this.User.username}}</td> <!-- {/{userObj.userID}/} -->
-                <td>{{this.dataValues.category}}</td> <!-- {/{userObj.currTrack}/} -->
-                <td>{{this.dataValues.week}}</td> <!-- {/{userObj.currWeek}/} -->
-                <td onload="progress_Bar()">
-                  <div class="w3-light-grey">
-                    <div class="w3-container w3-blue curr_prog" style="height:20px; width:0%">
-                      <!-- {/{foodObj.count}/} -->
-                      <span class="count">{{this.logs.length}}</span>/<span class="goal">{{this.dataValues.goal}}</span>
-                    </div>
-                  </div>
-                </td>
-                <td onload="check_Star()"></td>
-              </tr>
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  {{!-- </div> <!-- end zclass sidebar --> --}}
 {{> footer}}
+
+</div> <!-- end zclass sidebar -->
