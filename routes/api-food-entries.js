@@ -99,6 +99,7 @@ module.exports = function(app) {
             category : req.body.category,
             goal : req.body.goal
         }
+
         db.goal.create({
             category: req.body.category,
             goal: req.body.goal,
@@ -123,6 +124,10 @@ module.exports = function(app) {
         var userName = req.user.username
         var choice = req.body.item
         // debugger;
+        //find all items where req.user.Id equals UserId
+        // for the length of items, if the name matches the current name and the current week is the same
+        //update the count of the logged item
+        db.log.findAll()
         db.log.create({
             item: req.body.item,
             count: req.body.count,

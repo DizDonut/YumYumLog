@@ -4,7 +4,7 @@ body,h1,h2,div,form,input,label,h3,a,h4,th {
 }
 body, html {
   min-height: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   transition: background-color .5s;
 }
 body:before {
@@ -106,10 +106,6 @@ footer a, footer ul {
   left: 0;
 }
 
-table, th, td {
-  border-collapse: collapse;
-}
-
 #mySidebar {
   height: 100%;
   width: 0;
@@ -123,6 +119,17 @@ table, th, td {
 #mySidebar a, #mySidebar button {
   width: auto;
   
+}
+.modal {
+  width: 50%;
+}
+
+#modalData {
+  width: 100%;
+}
+
+.modalBtn {
+  z-index: 10;
 }
 /* h1,h2,h3,h4 {
     color: red
