@@ -49,57 +49,61 @@
         </form>
       </div>
     </div>
-
   </div>  <!-- end first row - displays track selection -->
 
-  {{#if category}}
     <div id="bloodhound" class="w3-row">
-      <div class="w3-panel w3-card-4 w3-col s6 w3-mobile">
+      <!-- <div class="w3-panel w3-card-4 w3-col s6 w3-mobile"> -->
         {{#if user}}
         <form action="/submitLog/{{user.username}}" class="w3-container" method="post">
           <input type="hidden" value={{user.id}} id="user_Id" required>
           {{#if foods}}
-          <h4>Enter log</h4>
-          <input list="foods" name="q" autocomplete="off" placeholder="Enter your item">
-          <datalist id="foods">
-            {{#each foods}}
-              <option value="{{this.item}}">{{this.item}}</option>
-            {{/each}} <!-- end each food hdlbrs -->
-          </datalist>
-          {{!-- https://github.com/mfranzke/datalist-polyfill datalist isn't safari compatible..possible workaround --}}
-            <button type="submit">search</button>
+            <div id="log" class="w3-panel w3-card-4 w3-col s6 w3-center">
+              <h4 class="w3-center">Search for Your Food Item:</h4>
+              <input list="foods" name="q" autocomplete="off" placeholder="Enter your item">
+              <datalist class="w3-center" id="foods">
+                {{#each foods}}
+                  <option value="{{this.item}}">{{this.item}}</option>
+                {{/each}} <!-- end each food hdlbrs -->
+              </datalist>
+                <button class="w3-center" type="submit">Search</button>
+                {{!-- https://github.com/mfranzke/datalist-polyfill datalist isn't safari compatible..possible workaround --}}
+            </div>
           {{/if}} <!-- end if foods hdlbrs -->
         </form>
         {{/if}} <!-- end if user hdlbrs -->
-      {{/if}} <!-- end if choice hdlbrs - this prevents div from displaying until a choice is made -->
-    </div> <!-- display food suggestions based on the selection from the tracks query -- >
 
-    <div id="display_Input" class=" w3-col s6 w3-mobile w3-panel w3-card-4">
-      <form action="/addItem/{{user.username}}" method="post">
-          <label for="moment" id="momentLabel"></label>
-          <input type="hidden" name="week" class="moment" required>
+      <form action="/addItem/{{user.username}}" method="post"> <!-- create form to log our data -->
+        <label for="moment" id="momentLabel"></label>
+        <input type="hidden" name="week" class="moment" required>
 
           {{#if choice}}
-              {{#each choice}}
-                  <h4>You selected {{this.item}} (Serving size - {{this.servingSize}}). Add to your log?</h4>
-                  <input type="hidden" name="item" value="{{this.item}}">
-                  <input type="hidden" name="category" value="{{this.category}}">
-                  <input type="hidden" name="count" value="1">
-                  <input type="hidden" name="foodId" value="{{this.id}}">
-              {{/each}}
-              {{/if}}
-                  <input type="hidden" name="goalId" value="{{id}}" id="goal_Id">
-                  <input type="hidden" name="userId" value="{{userObject.id}}">
-          {{#if choice}}
-          <button>Add this item</button>
-      </form>
+            {{#each choice}}
+              <div id="displayLogConfirmation" class="w3-center w3-panel w3-card-4">
+
+                <h4 class="w3-center">You selected {{this.item}} (Serving size - {{this.servingSize}}).  Add to your log?</h4>
+                <input type="hidden" name="item" value="{{this.item}}">
+                <input type="hidden" name="category" value="{{this.category}}">
+                <input type="hidden" name="count" value="1">
+                <input type="hidden" name="foodId" value="{{this.id}}">
+            {{/each}}
           {{/if}}
 
-      {{#if item}}
-          <h4>{{item}} is logged!</h4>
-      {{/if}}
+                <input type="hidden" name="goalId" value="{{id}}" id="goal_Id">
+                <input type="hidden" name="userId" value="{{userObject.id}}">
 
-    </div> <!-- end card to hold display -->
+              {{#if choice}}
+                <button>Add this item</button>
+              {{/if}}
+
+              {{#if item}}
+                <div id="logConfirmation" class="w3-center w3-panel w3-card-4">
+                  <h4>{{item}} is logged!</h4>
+                </div>
+              {{/if}}
+
+            </div> <!-- end panel div to hold the output -->
+      </form>
+
   </div> <!-- end row -->
 
   {{> footer }}
