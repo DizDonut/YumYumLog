@@ -4,6 +4,7 @@
     <a href="/trackPage/{{user.username}}" class="w3-bar-item w3-button">Choose a Track</a>
     <a href="/addLog/{{user.username}}" class="w3-bar-item w3-button">Input Today's Data</a>
     <a href="/dashboard" class="w3-bar-item w3-button">See the Community Dashboard</a>
+    <a href="/logout" class="w3-bar-item w3-button">Logout</a>
   {{/if}}
 </div>
 
@@ -11,7 +12,7 @@
 
   <div class="w3-jumbo">
     <div id="hamb_cont">
-      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="/images/yyLogo" alt=""></button>
+      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()">&#9776<img id="logo" src="/images/yyLogo" alt=""></button>
     </div>
 
     <div class="w3-container">
@@ -26,15 +27,12 @@
 
   <div class="w3-container">
     <div class="w3-row">
-      <a href="/logout"><button type="submit" class="w3-button w3-red loginBtn">Logout</button></a>
-    </div>
-    <div class="w3-row">
       <div class="w3=responsive">
         {{> input}}
       </div>
     </div>
   </div>
-</div>
 
+  {{> footer}}
 
-{{> footer}}
+</div> <!-- end zclass for sidebar - all elements wrapped in this div to be responsive when sidebar is open -->

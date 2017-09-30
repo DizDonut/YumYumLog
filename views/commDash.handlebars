@@ -3,7 +3,7 @@
     {{#if user.username}}
       <a href="/users/{{user.username}}" class="w3-bar-item w3-button">Back to My Dashboard</a>
       <a href="/addLog/{{user.username}}" class="w3-bar-item w3-button">Log your Data</a>
-    {{/if}}  
+    {{/if}}
     <a href="/logout" class="w3-bar-item w3-button">Logout</a>
     <a href="/signup" class="w3-bar-item w3-button">Register</a>
 </div>
@@ -12,20 +12,20 @@
 
   <div class="w3-jumbo">
     <div id="hamb_cont">
-      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="/images/yyLogo" alt=""></button>
+      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()">&#9776<img id="logo" src="/images/yyLogo" alt=""></button>
     </div>
 
     <div class="w3-container">
       <h2 id="username">Welcome Back {{user.username}}!</h2>
-      <h2 id="momentLabel"></h2>
     </div>
   </div>
+  <h2 id="momentLabel" class="w3-center"></h2>
 
   <br>
   <br>
 
   <div class="w3-container">
-    
+
     <div class="w3-row">
       <form action="/dashboard/" method="get">
         <label for="currentWeek"></label>
