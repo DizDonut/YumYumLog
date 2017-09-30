@@ -70,8 +70,8 @@ function progressBar(){
       //use the index postions to adjust the progress
       for (var i = 0; i < goalSpanArr.length; i++) {
         var elem = elems[i];
-        var width = document.getElementsByClassName("count")[i].innerHTML; // TODO: check status of assignment here
-        var goal = document.getElementsByClassName("goal")[i].innerHTML; // TODO: check status of assignment here
+        var width = document.getElementsByClassName("count")[i].innerHTML;
+        var goal = document.getElementsByClassName("goal")[i].innerHTML;
         // console.log(width);
         // console.log(goal);
 
@@ -85,21 +85,7 @@ function progressBar(){
           check_Star(width,goal)
         }
       }
-    // }
-  }
-
-//       check_Star()
-//     }
-//   }
-// }
-
-// //return statement
-//   if(elem.style.width >= 100%){
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
+  } //end progressBar function
 
 
 /*
@@ -143,12 +129,12 @@ function check_Star(wid, goal){
         //if the text of the cat is vegetables
           if (showFood[i].className.indexOf("w3-show") == -1 && showFood[i].className.indexOf(cat) !== -1) {
             showFood[i].className += " w3-show";
-            //hide the other category and any food items 
-          } else { 
+            //hide the other category and any food items
+          } else {
               showFood[i].className = showFood[i].className.replace(" w3-show", "");
           }
       }
-      
+
       for (j=0; j < col.length; j++){
         if (col[j].className.indexOf("w3-show") == -1 && col[j].className.indexOf(cat) !== -1) {
           col[j].className += " w3-show"
@@ -185,44 +171,19 @@ function check_Star(wid, goal){
       //   //if the text of the cat is vegetables
           if (showNutrition[i].className.indexOf("w3-show") == -1 && showNutrition[i].className.indexOf(item) !== -1) {
             showNutrition[i].className += " w3-show";
-            // var modal = document.getElementById("modalData"); 
-            //hide the other category and any food items 
-          } else { 
+            // var modal = document.getElementById("modalData");
+            //hide the other category and any food items
+          } else {
               showNutrition[i].className = showNutrition[i].className.replace(" w3-show", "");
           }
       }
-      
-
-
     })
-  }
+  } // end showNutrition function
+
 //below functions need to make sure the page loads first prior to running
 window.onload = function(){
   showNutrition();
-  showTableElems();  
+  showTableElems();
   progressBar();
   carousel();
-
-
-
-/*
-  progress_Bar function displays a progress bar on our user dashboard. It
-  compares values from two models: UserTrack and Goal, both of which belongTo
-  the User model.  Set the width equal to the User.count property; if no goal
-  exists, the element is cleared.  If not, we increment the width
-*/
-    //i think the db.User count and goal is pseudo code. will replace later
-
-//AJAX GOES HERE
-
-
-
-/*
-  check_Star function simply checks the goal vs the foodLog count and determines
-  if the goal has been met.  If so, create an img element and assign it the star.png
-  source and append to the div
-*/
-
-// end check_Star function
-
 } // end onload listener
