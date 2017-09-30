@@ -6,28 +6,28 @@
         {{!-- w3-hover-opacity --}}
         <div class="w3-display-container" id="modalData">
             <div class='w3-container w3-center'> 
-                <table class='w3-table-all w3-hoverable'>  
+                <table class='w3-table-all w3-hoverable w3-centered'>  
                     <thead>
                         <tr class="w3-gray"> 
                             <th class='nutritionCol w3-hide {{this.item}}'> {{this.item}} Nutrition</th> 
                         </tr>
                     </thead> 
-                    <tbody>
-                        <tr class='nutrition w3-hide {{this.item}}'> 
-                            <td>Serving Size (GmWt): {{this.food.servingSize}}</td>
-                            <td>Calories (Energ_Kcal): {{this.food.calories}}</td>
+                    <tbody class="w3-centered">
+                        <tr class='nutrition w3-hide {{this.item}} w3-center '> 
+                            <td class="w3-center ">Serving Size (GmWt): {{this.food.servingSize}}</td>
+                            <td class="w3-center ">Calories (Energ_Kcal): {{this.food.calories}}</td>
                         </tr>
                         <tr class='nutrition w3-hide {{this.item}}'>
-                            <td>Gram Weight: {{this.food.gramWeight}}</td>
-                            <td>Protein (g): {{this.food.protein}}</td>
+                            <td class="w3-center ">Gram Weight: {{this.food.gramWeight}}</td>
+                            <td class="w3-center ">Protein (g): {{this.food.protein}}</td>
                         </tr>
                         <tr class='nutrition w3-hide {{this.item}}'>
-                            <td>Fat (g): {{this.food.totalFat}}</td>
-                            <td>sugar (g): {{this.food.sugar}}</td>
+                            <td class="w3-center ">Fat (g): {{this.food.totalFat}}</td>
+                            <td class="w3-center ">sugar (g): {{this.food.sugar}}</td>
                         </tr> 
                         <tr class='nutrition w3-hide {{this.item}}'>
-                            <td>Vitamin C (mg): {{this.food.vitaminC}}</td>
-                            <td>Sodium (mg): {{this.food.sodium}}</td>
+                            <td class="w3-center ">Vitamin C (mg): {{this.food.vitaminC}}</td>
+                            <td class="w3-center ">Sodium (mg): {{this.food.sodium}}</td>
                         </tr>
                     </tbody>
                 </table>

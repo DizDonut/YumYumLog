@@ -158,6 +158,9 @@ width: 50%;
 .modalBtn {
   z-index: 10;
 }
+/* .modal-right {
+  float:right;
+} */
 /* h1,h2,h3,h4 {
     color: red
 } */
