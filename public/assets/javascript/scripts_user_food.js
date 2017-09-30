@@ -20,6 +20,7 @@ function setMoment() {
 }
 
 function checkTracks() {
+    //if statement for window goes here (for all windows affected)
     var currentURL = window.location.origin
     //get the value of the username from the page run ajax on it to get the data
     var name = document.getElementById("username").value
@@ -71,8 +72,20 @@ function checkTracks() {
     //search database
 }
 
+function convertTime() {
+    // debugger;
+    // var date = moment().format('dddd, MMMM Do YYYY');
+    // for each item in the array, convert the time to a nice format
+    var timeArr = document.getElementsByClassName("convert"); 
 
+    for (var i=0; i< timeArr.length; i++) {
+        var temp = timeArr[i].innerHTML
+        var convert = moment(temp).format('dddd, MMM Do YYYY')
+        timeArr[i].innerHTML = convert
+    }
+}
 
+convertTime();
 setMoment();
 checkTracks();
 

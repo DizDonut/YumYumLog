@@ -27,7 +27,7 @@ module.exports = function(app) {
       res.sendFile(path.join(__dirname, "../public/assets/images/star.png"));
     }
     if (req.params.image === "yyLogo") {
-      res.sendFile(path.join(__dirname, "../public/assets/images/yyLogo.png"));
+      res.sendFile(path.join(__dirname, "../public/assets/images/hamster.svg"));
     }
     
   });
