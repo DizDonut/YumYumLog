@@ -21,7 +21,7 @@ function sideBar_Close() {
 
 /*
   carousel function is used to animate the slides/cards on the userTrack page.  The slides will contain
-  additional nutriional details for random foods in the database 
+  additional nutriional details for random foods in the database
 */
 
 function carousel(){
@@ -37,7 +37,7 @@ function carousel(){
       if(slideIndex > x.length){
         slideIndex = 1
       }
-    
+
       x[slideIndex-1].style.display = "block";
       setTimeout(carousel, 4000);
     }
@@ -85,13 +85,13 @@ function progressBar(){
       }
     // }
   }
-  
+
 //       check_Star()
 //     }
 //   }
 // }
 
-// //return statement 
+// //return statement
 //   if(elem.style.width >= 100%){
 //     return true;
 //   } else {
@@ -100,19 +100,19 @@ function progressBar(){
 // }
 
 
-// /*
-// check_Star function simply checks the goal vs the foodLog count and determines
-// if the goal has been met.  If so, create an img element and assign it the star.png
-// source and append to the div
-// */
+/*
+check_Star function simply checks the goal vs the foodLog count and determines
+if the goal has been met.  If so, create an img element and assign it the star.png
+source and append to the div
+*/
 
-// function check_Star(){
-//   if (progress_Bar()) {
-//     var elem = document.createElement("img");
-//     elem.src = ("/images/star")
-//     document.getElementById("star_complete").appendChild(elem);
-//   }
-// } // end check_Star function
+function check_Star(wid, goal){
+  if (wid >= goal) {
+    var elem = document.createElement("img");
+    elem.src = ("/images/star")
+    document.getElementById("star_complete").appendChild(elem);
+  }
+} // end check_Star function
 
 
 
@@ -132,7 +132,7 @@ function progressBar(){
 
 //below functions need to make sure the page loads first prior to running
 window.onload = function(){
-  
+
   progressBar();
   carousel();
 
