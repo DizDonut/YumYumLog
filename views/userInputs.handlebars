@@ -52,8 +52,8 @@
 
   </div>  <!-- end first row - displays track selection -->
 
+  {{#if category}}
     <div id="bloodhound" class="w3-row">
-      {{#if choice}}
       <div class="w3-panel w3-card-4 w3-col s6 w3-mobile">
         {{#if user}}
         <form action="/submitLog/{{user.username}}" class="w3-container" method="post">
@@ -74,12 +74,12 @@
       {{/if}} <!-- end if choice hdlbrs - this prevents div from displaying until a choice is made -->
     </div> <!-- display food suggestions based on the selection from the tracks query -- >
 
-    {{#if choice}}
     <div id="display_Input" class=" w3-col s6 w3-mobile w3-panel w3-card-4">
       <form action="/addItem/{{user.username}}" method="post">
           <label for="moment" id="momentLabel"></label>
           <input type="hidden" name="week" class="moment" required>
 
+          {{#if choice}}
               {{#each choice}}
                   <h4>You selected {{this.item}} (Serving size - {{this.servingSize}}). Add to your log?</h4>
                   <input type="hidden" name="item" value="{{this.item}}">
