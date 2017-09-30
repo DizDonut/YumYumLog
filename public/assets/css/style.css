@@ -43,14 +43,19 @@ body:before {
 
 footer{
   background: lightgray;
-  position: sticky;
+  position: fixed;
   display: block;
   padding: 10px 10px 10px 10px;
   width: 100%;
   margin-top: 5%;
+  bottom:0;
 }
 footer a, footer ul {
   margin: 2px;
+}
+
+div.bloodhound {
+  margin-bottom: 10%;
 }
 
 #register{
@@ -62,6 +67,9 @@ footer a, footer ul {
   background-color: lightgray;
   text-align: center;
   margin: 0px;
+  /* position: fixed; */
+  /* top:0; */
+  /* width: 100%; */
 }
 
 /* .main-content {
@@ -111,28 +119,42 @@ footer a, footer ul {
   left: 25%;
 }
 
-/* #mySidebar {
-  height: 100%;
+.w3-main, .main-content {
+  margin-bottom: 10%;
+}
+
+.index-header{
+  margin-top: 0px;
+  /* top:0;
+  width:100%;
+  position:fixed;
+  margin-bottom: 10%; */
+}
+#mySidebar {
+  /* height: 100%;
   width: 0;
   position: fixed;
   z-index: 1;
   top:0;
-  left:0;
+  left:0; */
   overflow-x: hidden;
-} */
+}
 
 /* #mySidebar a, #mySidebar button {
   width: auto;
 
 } */
-.modal {
-  width: 50%;
+
+.w3-modal {
+  display:none;
 }
 
 #modalData {
   width: 100%;
 }
-
+.w3-modal-content {
+width: 50%;
+}
 .modalBtn {
   z-index: 10;
 }
