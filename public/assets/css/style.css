@@ -43,7 +43,7 @@ body:before {
 
 footer{
   background: lightgray;
-  position: absolute;
+  position: relative;
   padding: 10px 10px 10px 10px;
   border-radius: 10px;
   width: 100%;
