@@ -62,8 +62,9 @@
     </div>
   </div> <!-- end row -->
 
-  <div class="w3-row w3-center">
+  <div class="w3-row">
     <div class="w3-row" id="bloodhound">
+      <div class="w3-panel w3-card-4 w3-half w3-center w3-mobile">
         {{#if user}}
         <form action="/submitLog/{{user.username}}" class="w3-container" method="post">
             <input type="hidden" value={{user.id}} id="user_Id" required>
@@ -81,9 +82,12 @@
         </form>
         {{/if}}
         {{!-- display food suggestions based on the selection from the tracks query --}}
+      </div>
     </div>
+  </div> <!-- end row used to display food item search-->
 
-    <div id="display_Input" class="w3-col s6 w3-mobile w3-panel w3-card-4">
+<div class="w3-row">
+    <div id="display_Input" class="w3-half w3-center w3-mobile w3-panel w3-card-4">
       <form action="/addItem/{{user.username}}" method="post">
           <label for="moment" id="momentLabel"></label>
           <input type="hidden" name="week" class="moment" required>
@@ -103,12 +107,13 @@
           <button>Add this item</button>
       </form>
           {{/if}}
+
       {{#if item}}
           <h4>{{item}} is logged!</h4>
       {{/if}}
 
     </div> <!-- end card to hold display -->
-  </div> <!-- end row used to display successfully logged input-->
+  </div>
 
   {{> footer }}
 
