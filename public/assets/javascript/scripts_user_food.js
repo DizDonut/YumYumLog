@@ -4,7 +4,7 @@ function setMoment() {
     var weekInput = moment().format();
     var weekNum = moment(weekInput).isoWeek();
 
-    var wkLabel = document.getElementById("momentLabel"); 
+    var wkLabel = document.getElementById("momentLabel");
     var wkInput = document.getElementsByClassName("moment");
     if (wkLabel) {
         wkLabel.innerHTML = date
@@ -16,7 +16,7 @@ function setMoment() {
         var temp = wkInput[i]
         temp.setAttribute("value",weekNum)
     }
-    
+
 }
 
 function checkTracks() {
@@ -24,7 +24,7 @@ function checkTracks() {
     //get the value of the username from the page run ajax on it to get the data
     var name = document.getElementById("username").value
     var id = document.getElementById("user_Id").value
-    
+
     // console.log(`magic` + name)
 
         $.ajax({url: currentURL + "/getTracks/" + id,method:"GET"}).done(function(data) {
@@ -55,10 +55,11 @@ function checkTracks() {
             for (var i=0; i < data.length; i++) {
                 var option = document.createElement("option")
                 option.innerHTML = data[i].category
+                option.className = "w3-center"
                 option.setAttribute("value", data[i].category)
                 option.setAttribute("name", data[i].category)
                 var select = document.getElementById("trackName")
-                select.append(option); 
+                select.append(option);
             }
         } else if (window.location.pathname === "/submitLog/" + name) {
             // debugger;
@@ -102,7 +103,7 @@ checkTracks();
 
 //styling and rendering
 
-//session set user name 
+//session set user name
 
 //get food index list ajax
     //on submit, search for food for a category

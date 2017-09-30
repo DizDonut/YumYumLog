@@ -35,18 +35,14 @@ body:before {
 
 footer{
   background: lightgray;
-  position: relative;
+  position: sticky;
   display: block;
   padding: 10px 10px 10px 10px;
   width: 100%;
   margin-top: 5%;
-  bottom: -25%;
 }
 
 #register{
-  display: inline-block;
-  position: relative;
-  left: 25%;
   margin-bottom: 9%;
 }
 
@@ -93,9 +89,9 @@ footer{
   margin-bottom: 10%;
 }
 
-#foodInput{
+#foodInput, #log, #register, #displayLogConfirmation,#logConfirmation{
   width: 50%;
-  position: relative;
+  position: sticky;
   left: 25%;
 }
 
