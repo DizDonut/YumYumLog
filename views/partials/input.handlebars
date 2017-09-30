@@ -1,4 +1,4 @@
-<table class="w3-table-all w3-hoverable">
+<table id="myDashboard" class="w3-table-all w3-hoverable">
     <thead>
         <tr class="w3-gray">
             <th>Food Track</th>
@@ -12,7 +12,7 @@
     {{#if dashboard}}
         {{#each dashboard.goals}}
         <tr>
-            <td class="w3-dropdown-content">{{this.category}}</td> <!-- {/{userObj.userID}/} -->
+            <td>{{this.category}}</td> <!-- {/{userObj.userID}/} -->
             {{!-- clickable button on click display object data --}}
             <td>{{this.goal}}</td> <!-- {/{userObj.currTrack}/} -->
             <td>{{this.week}}</td> <!-- {/{userObj.currWeek}/} -->
@@ -29,7 +29,7 @@
             {{#each logs}}
             {{!-- <div class="w3-dropdown-hover"> --}}
                 <tr class="none">
-                    <td class="w3-dropdown-hover nutrition none"><h4>{{this.item}}</h4></td>
+                    <td class="nutrition none"><h4>{{this.item}}</h4></td>
                     {{!-- <td>Short Description : ({{this.food.short_desc}})</td> --}}
 
                     {{!-- <div class="w3-dropdown-content"></div> --}}

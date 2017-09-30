@@ -15,24 +15,24 @@
 
   <div class="w3-jumbo">
     <div id="hamb_cont">
-      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()"><img id="logo" src="/images/yyLogo" alt=""></button>
+      <button id="dashboard_hamburger" class="w3-button w3-bisque w3-large" onclick="sideBar_Open()">&#9776<img id="logo" src="/images/yyLogo" alt=""></button>
     </div>
 
     <div class="w3-container">
       <div class="user">
           {{#if user}}
               <h1 id="userTitle">Hey {{user.username}}!</h1>
-              <h2>What was on the menu today?</h1>
           {{/if}}
       </div>
     </div> <!-- end container for greeting -->
   </div> <!-- end jumbotron with user name and greeting -->
+  <h2 class="w3-center">What was on the menu today?</h1>
 
   <br>
   <br>
 
   <div class="w3-row">
-    <div class="w3-container w3-col s6 w3-mobile">
+    <div id="foodInput" class="w3-container w3-center w3-col s12 w3-mobile">
       {{!-- replaced /search with track --}}
       <div class="w3-panel w3-card-4">
         <form action="/submitLog/{{user.id}}" method="post" class="w3-container">
@@ -41,7 +41,7 @@
             <input type="hidden" name="week" id="moment" required>
             <input type="hidden" value={{user.username}} id="username">
             <input type="hidden" name="UserId" value={{user.id}} id="user_Id" required>
-            <h4>Select your track:</h4>
+            <h4 class="w3-center">Select your track:</h4>
             <select name="category" id="trackName">
                 <option value="" disabled selected>Choose your track</option>
             </select>
@@ -50,49 +50,36 @@
       </div>
     </div>
 
-    <div class="w3-container w3-col s6 w3-mobile">
-      <div class="w3-panel w3-card-4">
-        <a href="/logout"><button type="submit" class="w3-button w3-red loginBtn">Logout</button></a>
-        <a href="/users/{{user.username}}"><button class="w3-button w3-green">Back to main page</button></a>
-      </div>
-    </div>
+  </div>  <!-- end first row - displays track selection -->
 
-
-
-    </div>
-  </div> <!-- end row -->
-
-  <div class="w3-row">
-    <div class="w3-row" id="bloodhound">
-      <div class="w3-panel w3-card-4 w3-half w3-center w3-mobile">
+    <div id="bloodhound" class="w3-row">
+      {{#if choice}}
+      <div class="w3-panel w3-card-4 w3-col s6 w3-mobile">
         {{#if user}}
         <form action="/submitLog/{{user.username}}" class="w3-container" method="post">
-            <input type="hidden" value={{user.id}} id="user_Id" required>
-            {{#if foods}}
-            <h4>Enter log</h4>
-            <input list="foods" name="q" autocomplete="off" placeholder="Enter your item">
-            <datalist id="foods">
-                {{#each foods}}
-                    <option value="{{this.item}}">{{this.item}}</option>
-                {{/each}}
-            </datalist>
-            {{!-- https://github.com/mfranzke/datalist-polyfill datalist isn't safari compatible..possible workaround --}}
+          <input type="hidden" value={{user.id}} id="user_Id" required>
+          {{#if foods}}
+          <h4>Enter log</h4>
+          <input list="foods" name="q" autocomplete="off" placeholder="Enter your item">
+          <datalist id="foods">
+            {{#each foods}}
+              <option value="{{this.item}}">{{this.item}}</option>
+            {{/each}} <!-- end each food hdlbrs -->
+          </datalist>
+          {{!-- https://github.com/mfranzke/datalist-polyfill datalist isn't safari compatible..possible workaround --}}
             <button type="submit">search</button>
-            {{/if}}
+          {{/if}} <!-- end if foods hdlbrs -->
         </form>
-        {{/if}}
-        {{!-- display food suggestions based on the selection from the tracks query --}}
-      </div>
-    </div>
-  </div> <!-- end row used to display food item search-->
+        {{/if}} <!-- end if user hdlbrs -->
+      {{/if}} <!-- end if choice hdlbrs - this prevents div from displaying until a choice is made -->
+    </div> <!-- display food suggestions based on the selection from the tracks query -- >
 
-<div class="w3-row">
-    <div id="display_Input" class="w3-half w3-center w3-mobile w3-panel w3-card-4">
+    {{#if choice}}
+    <div id="display_Input" class=" w3-col s6 w3-mobile w3-panel w3-card-4">
       <form action="/addItem/{{user.username}}" method="post">
           <label for="moment" id="momentLabel"></label>
           <input type="hidden" name="week" class="moment" required>
 
-          {{#if choice}}
               {{#each choice}}
                   <h4>You selected {{this.item}} (Serving size - {{this.servingSize}}). Add to your log?</h4>
                   <input type="hidden" name="item" value="{{this.item}}">
@@ -113,7 +100,7 @@
       {{/if}}
 
     </div> <!-- end card to hold display -->
-  </div>
+  </div> <!-- end row -->
 
   {{> footer }}
 

@@ -22,14 +22,6 @@ body:before {
   background-size: cover;
 }
 
-#hamLogo{
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 .w3-panel {
   margin: 25px;
   text-align: left;
@@ -44,9 +36,10 @@ body:before {
 footer{
   background: lightgray;
   position: relative;
+  display: block;
   padding: 10px 10px 10px 10px;
-  border-radius: 10px;
   width: 100%;
+  margin-top: 5%;
   bottom: -25%;
 }
 
@@ -54,6 +47,7 @@ footer{
   display: inline-block;
   position: relative;
   left: 25%;
+  margin-bottom: 9%;
 }
 
 .w3-jumbo{
@@ -74,23 +68,35 @@ footer{
 #dashboard_hamburger{
   position: absolute;
   left: 2%;
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 100px;
   margin: 0px;
   padding: 0px;
+  top: 4px;
 }
 
 #trackName, #subCat{
   padding: 5px;
   margin-bottom: 15px;
   color: #005580;
+  width: 100%;
 }
 
 #logo{
   position: relative;
   height: 50px;
   width: 50px;
-  margin-top: 1%
+  margin-top: 5%
+}
+
+#myDashboard{
+  margin-bottom: 10%;
+}
+
+#foodInput{
+  width: 50%;
+  position: relative;
+  left: 25%;
 }
 
 table, th, td {
