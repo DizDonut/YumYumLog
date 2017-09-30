@@ -25,13 +25,13 @@
   <br>
   <br>
 
-{{!-- this user --}}
+  {{!-- this user --}}
 
-{{!-- /createTrack/:id/:category/:goal/:week --}}
-{{!-- {{#if user}} --}}
-{{#if user}}
+  {{!-- /createTrack/:id/:category/:goal/:week --}}
+  {{!-- {{#if user}} --}}
+  {{#if user}}
 
-<div class="w3-row">
+<div class="w3-row main-content">
 
   <div class="w3-container w3-col s6 w3-mobile w3-text-blue w3-center">
     <form action="/addTrack/{{user.username}}" method="post" class="w3-panel w3-card-4">
@@ -57,7 +57,7 @@
       <button class="w3-button w3-blue" type="submit">Submit Category</button>
     </form>
   </div>
-{{/if}}
+  {{/if}}
 
 
   {{#if choice}}
@@ -73,6 +73,7 @@
 
 </div> <!-- end row -->
 
-{{> footer }}
+
 
 </div> <!-- end zclass sidebar -->
+{{> footer }}

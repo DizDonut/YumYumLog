@@ -25,7 +25,20 @@
   <br>
   <br>
 
-  <div class="w3-container">
+  <div class="w3-container main-content">
+    <div class="w3-row">
+      <form action="/dashboard/" method="get">
+        <label for="currentWeek"></label>
+        {{!-- get the weekArr numbers for all logged items, display here --}}
+        <select name="week" id="getWeek">
+          <option value="" disabled selected id="optMsg">Filter By Week</option>
+          <option value="37">week 37</option>
+          <option value="38">week 38</option>
+          <option value="39">week 39</option>
+        </select>
+        <span><button type="submit">Go</button></span>
+      </form>
+    </div>
     <div class="w3-row">
       <div class="w3=responsive">
         {{> input}}
@@ -33,6 +46,7 @@
     </div>
   </div>
 
-  {{> footer}}
+
 
 </div> <!-- end zclass for sidebar - all elements wrapped in this div to be responsive when sidebar is open -->
+  {{> footer}}

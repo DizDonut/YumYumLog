@@ -28,10 +28,7 @@
   </div> <!-- end jumbotron with user name and greeting -->
   <h2 class="w3-center">What was on the menu today?</h1>
 
-  <br>
-  <br>
-
-  <div class="w3-row">
+  <div class="w3-row main-content">
     <div id="foodInput" class="w3-container w3-center w3-col s12 w3-mobile">
       {{!-- replaced /search with track --}}
       <div class="w3-panel w3-card-4">
@@ -51,7 +48,7 @@
     </div>
   </div>  <!-- end first row - displays track selection -->
 
-    <div id="bloodhound" class="w3-row">
+  <div id="bloodhound" class="w3-row">
       <!-- <div class="w3-panel w3-card-4 w3-col s6 w3-mobile"> -->
         {{#if user}}
         <form action="/submitLog/{{user.username}}" class="w3-container" method="post">
@@ -106,6 +103,7 @@
 
   </div> <!-- end row -->
 
-  {{> footer }}
+
 
 </div> <!-- end zclass sidbar -->
+  {{> footer }}
