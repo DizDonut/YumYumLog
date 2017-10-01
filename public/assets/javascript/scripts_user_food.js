@@ -9,14 +9,10 @@ function setMoment() {
     if (wkLabel) {
         wkLabel.innerHTML = date
     }
-    // wkInpt.setAttribute("placeholder", date)
-    // wkInput.setAttribute("value",weekNum )
     for (var i =0; i < wkInput.length; i++) {
-        // debugger;
         var temp = wkInput[i]
         temp.setAttribute("value",weekNum)
     }
-
 }
 
 function checkTracks() {
@@ -25,15 +21,12 @@ function checkTracks() {
     //get the value of the username from the page run ajax on it to get the data
     var name = document.getElementById("username").value
     var id = document.getElementById("user_Id").value
-
-    // console.log(`magic` + name)
-
         $.ajax({url: currentURL + "/getTracks/" + id,method:"GET"}).done(function(data) {
+
             console.log(data);
             var done = 0;
-            // debugger;
+           
             //if veggies or fruits, disable in options
-            // debugger;
         if (window.location.pathname === "/trackPage/" + name || window.location.pathname === "/addTrack/" + name) {
             for (var i=0; i < data.length; i++) {
                 if (data[i].category === "vegetables") {
@@ -45,14 +38,13 @@ function checkTracks() {
                     done ++
                 }
                 if (done >= 2) {
-                    //replace tracks with a message
                     var update = document.getElementById("optMsg")
                     document.getElementById("goalInput").disabled = true
                     update.innerHTML = "You're already tracking both goals!"
                 }
             }
         } else if (window.location.pathname === "/addLog/" + name || window.location.pathname === "/addItem/" + name ) {
-            // debugger;
+           
             for (var i=0; i < data.length; i++) {
                 var option = document.createElement("option")
                 option.innerHTML = data[i].category
@@ -63,18 +55,11 @@ function checkTracks() {
                 select.append(option);
             }
         } else if (window.location.pathname === "/submitLog/" + name) {
-            // debugger;
-            //currently can't associate goalId because you'll have two options (fruits or veggies)
-            // var input = document.getElementById("goal_Id")
-            // input.setAttribute("value",data)
         }
         })
-    //search database
 }
 
 function convertTime() {
-    // debugger;
-    // var date = moment().format('dddd, MMMM Do YYYY');
     // for each item in the array, convert the time to a nice format
     var timeArr = document.getElementsByClassName("convert"); 
 
@@ -88,62 +73,3 @@ function convertTime() {
 convertTime();
 setMoment();
 checkTracks();
-
-// console.log('im working');
-
-//for now, we have one js file for all client side js. add it below
-
-
-//user login
-    //
-//registration
-    //
-
-//add a goal/user_track
-    //
-
-//log food to the log model
-    //
-
-//community dashboard
-    //grab the count values from the weekly objects, and tally them on the client side to display in a column header for progress ('tallly of counts' / 'db.obj.goal' repr. as a %)
-        //OR  create an alias attribute in sequelize that returns the tally (or the progress %) for each user's goal
-//user dashboard
-    //same tally procredure as above
-
-//user more details
-    //display the food items for the selected 'week'
-
-//styling and rendering
-
-//session set user name
-
-//get food index list ajax
-    //on submit, search for food for a category
-        //data object has food items
-            //iterate them in the data list
-
-
-//get one item
-    //on submit, look for one item in the food index
-        //return it to the page
-
-//submit food log
-    //on submit, post food item to db for user
-        //include moment current week
-        //include goalsId
-
-
-// momentjs sample code
-// $(document).ready(function(){
-//     var weeknumber = moment("2017-09-22 00:30:17", "MMDDYYYY HHmmss").week();
-//     alert(`non iso week number ${weeknumber}`);
-//   });
-//    $(document).ready(function(){
-//     var weeknumber = moment("09-21-2017", "MMDDYYYY").isoWeek();
-//     alert(`iso week number ${weeknumber}`);
-//     var week = moment().isoWeeks(1)
-//     alert(`week given number ${week}`);
-//     moment().format('[today] dddd');
-//     alert(`week year ${moment().weekYear(38)}`)
-//   });

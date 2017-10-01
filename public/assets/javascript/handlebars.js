@@ -13,15 +13,6 @@ function hbsHelpers(exphbs) {
         }
     });
 }
-
 //   example https://gist.github.com/pheuter/3515945
-
-//   {{#if type desired="image" type=type}}
-//   <div class="msg img">
-//     <strong>{{user}}</strong> <i>shared an image</i>
-//     <br />
-//     <a href="{{file}}"><img src="{{file}}" /></a>
-//   </div>
-// {{/if}}
 
 module.exports = hbsHelpers;
