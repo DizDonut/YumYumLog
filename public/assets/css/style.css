@@ -72,10 +72,6 @@ div.bloodhound {
   /* width: 100%; */
 }
 
-/* .main-content {
-  margin-top: 10%;
-  margin-bottom:10%;
-} */
 
 #loginBox{
   margin-bottom: 1%;
@@ -140,11 +136,6 @@ div.bloodhound {
   overflow-x: hidden;
 }
 
-/* #mySidebar a, #mySidebar button {
-  width: auto;
-
-} */
-
 .w3-modal {
   display:none;
 }
@@ -158,9 +149,3 @@ width: 50%;
 .modalBtn {
   z-index: 10;
 }
-/* .modal-right {
-  float:right;
-} */
-/* h1,h2,h3,h4 {
-    color: red
-} */
