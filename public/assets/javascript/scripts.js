@@ -51,9 +51,11 @@ function progressBar(){
   var currentURL = window.location.pathname
   var name = document.getElementById("username").innerHTML
   // debugger;
+
     if (currentURL === "/dashboard" || currentURL === "/users/" + name ) { 
 
       //or userDash/:username
+
       var elems = document.getElementsByClassName("curr_prog");
 
       //instead of doing an AJAX, pull the counts from the page and adjust progress bars accordingly?
@@ -64,6 +66,7 @@ function progressBar(){
       //use the index postions to adjust the progress
       for (var i = 0; i < goalSpanArr.length; i++) {
         var elem = elems[i];
+
         var width = document.getElementsByClassName("count")[i].innerHTML; // TODO: check status of assignment here
         var goal = document.getElementsByClassName("goal")[i].innerHTML; // TODO: check status of assignment here
 
@@ -76,8 +79,15 @@ function progressBar(){
         }
       }
     }
-  }
 
+  } //end progressBar function
+
+
+/*
+check_Star function simply checks the goal vs the foodLog count and determines
+if the goal has been met.  If so, create an img element and assign it the star.png
+source and append to the div
+*/
 // check_Star function simply checks the goal vs the foodLog count and determines
 // if the goal has been met.  If so, create an img element and assign it the star.png
 // source and append to the div
@@ -118,7 +128,7 @@ function progressBar(){
             showFood[i].className = showFood[i].className.replace(" w3-show", "");
         }
       }
-      
+
       for (j=0; j < col.length; j++){
         if (col[j].className.indexOf("w3-show") == -1 && col[j].className.indexOf(cat) !== -1) {
           col[j].className += " w3-show"
@@ -155,15 +165,17 @@ function progressBar(){
             showNutrition[i].className += " w3-show";
             //hide the other category and any food items 
           } else { 
+
               showNutrition[i].className = showNutrition[i].className.replace(" w3-show", "");
           }
       }
     })
-  }
+  } // end showNutrition function
+
 //below functions need to make sure the page loads first prior to running
 window.onload = function(){
   showNutrition();
-  showTableElems();  
+  showTableElems();
   progressBar();
   carousel();
   /*
@@ -178,3 +190,4 @@ window.onload = function(){
     source and append to the div
   */
 } 
+

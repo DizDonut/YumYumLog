@@ -35,6 +35,12 @@ body:before {
   text-align: left;
 }
 
+.showNutrition{
+  color: chocolate;
+  font-size: small;
+  text-align: justify;
+}
+
 footer{
   background: lightgray;
   position: fixed;
@@ -143,5 +149,3 @@ width: 50%;
 .modalBtn {
   z-index: 10;
 }
-
-

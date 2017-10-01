@@ -1,4 +1,4 @@
-<table id="myDashboard" class="w3-table-all w3-hoverable">
+<table id="myDashboard" class="w3-table-all w3-hoverable w3-centered">
     <thead>
         <tr class="w3-gray">
             <th>Food Track</th>
@@ -27,14 +27,14 @@
                 <td class="star_complete {{this.category}}" id="{{this.category}}" onload="check_Star()"></td>
             </tr>
                 <tr>
-                    <th class="w3-hide showFoodCol {{this.category}}">Item <i>(Date Logged)</i></th>
+                    <th class="w3-center w3-hide showFoodCol {{this.category}}">Item <i> (Date Logged)</i></th>
                 </tr>
                 {{#each logs}}
 
                     <tr class="none">
-                        <th class="showNutrition w3-hide {{../category}}" value="{{this.item}}">{{this.item}}<i>(Logged</i> <i class="convert">{{this.createdAt}}</i></th>
+                        <th class="showNutrition w3-hide {{../category}}" value="{{this.item}}">{{this.item}}<i>  (Logged</i> <i class="convert">{{this.createdAt}}</i></th>
                     </tr>
-                    
+
                 {{/each}}
         {{/each}}
     {{/if}}
@@ -50,4 +50,3 @@
         {{/each}}
     {{/each}}
 {{/if}}
-
