@@ -42,6 +42,9 @@ module.exports = function(app) {
                 arr.push(dblog[i].week)
             }
         }
+        arr.sort(function(a, b) {
+          return a - b;
+        });
         res.json(arr);
         })
     });
