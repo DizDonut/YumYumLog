@@ -3,7 +3,7 @@
         <tr class="w3-gray">
             <th>Food Track</th>
             <th>Servings Goal</th>
-            <th>Week Logged</th>
+            <th>Goal Since (week no.)</th>
             <th>Progress</th>
             <th>Completed</th>
         </tr>
@@ -41,7 +41,7 @@
     </tbody>
 </table>
 {{#unless dashboard.goals}}
-    <h2>No logs yet. Get Started by clicking on Hammy Hamster!</h2>
+    <h2>No logs yet. Get Started by clicking on Hammy Hamster hamburger menu!</h2>
 {{/unless}}
 {{#if dashboard}}
     {{#each dashboard.goals}}

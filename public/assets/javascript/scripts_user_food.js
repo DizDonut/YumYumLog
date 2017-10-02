@@ -23,7 +23,7 @@ function checkTracks() {
     var id = document.getElementById("user_Id").value
         $.ajax({url: currentURL + "/getTracks/" + id,method:"GET"}).done(function(data) {
 
-            console.log(data);
+            // console.log(data);
             var done = 0;
            
             //if veggies or fruits, disable in options
@@ -70,6 +70,39 @@ function convertTime() {
     }
 }
 
+function displayWeeks() {
+    // debugger;
+    var currentURL = window.location.origin
+    var name = document.getElementById("username").value
+    // var id = document.getElementById("user_Id").value
+        $.ajax({url: currentURL + "/getWeeks",method:"GET"}).done(function(data) {
+            console.log(data);
+            var done = 0; 
+            for (var i=0; i < data.length; i++) {
+                var option = document.createElement("option")
+                option.innerHTML = `Week ${data[i]}`
+                option.className = "w3-center"
+                option.setAttribute("value", data[i])
+                // option.setAttribute("name", data[i].category)
+                var select = document.getElementById("getWeek")
+                select.append(option);
+            }  
+        })
+}
+
+function changeFormAction () {
+    $("#getWeek").change(function() {
+        var val = $("option:selected").val()
+        //on select of week, update the form action to the week selected 
+        //get the username
+        var name = document.getElementById("username").innerHTML
+        var curForm = document.getElementById("userDashForm")   
+        curForm.action = window.location.origin + "/users/" + name + "/" + val;
+    })
+}
+
+changeFormAction();
+displayWeeks();
 convertTime();
 setMoment();
 checkTracks();

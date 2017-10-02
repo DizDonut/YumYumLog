@@ -2,10 +2,11 @@
   <button class="w3-bar-item w3-button w3-large" onclick="sideBar_Close()">Close &times;</button>
     {{#if user.username}}
       <a href="/users/{{user.username}}" class="w3-bar-item w3-button">Back to My Dashboard</a>
+      <a href="/trackPage/{{user.username}}" class="w3-bar-item w3-button">Choose a Track</a>
       <a href="/addLog/{{user.username}}" class="w3-bar-item w3-button">Log your Data</a>
     {{/if}}
     <a href="/logout" class="w3-bar-item w3-button">Logout</a>
-    <a href="/signup" class="w3-bar-item w3-button">Register</a>
+    {{!-- <a href="/signup" class="w3-bar-item w3-button">Register</a> --}}
 </div>
 
 <div zclass="w3-main" id="sidebar">
@@ -23,19 +24,19 @@
 
 
   <div class="w3-container main-content">
-
     <div class="w3-row">
       <form action="/dashboard/" method="get">
         <label for="currentWeek"></label>
         {{!-- get the weekArr numbers for all logged items, display here --}}
+        {{!-- for the array of week options, create option elements with value and text equal to that week; add current week to the end of the array. --}}
         <select name="week" id="getWeek">
           <option value="" disabled selected id="optMsg">Filter By Week</option>
-          <option value="37">week 37</option>
-          <option value="38">week 38</option>
-          <option value="39">week 39</option>
         </select>
         <span><button type="submit">Go</button></span>
       </form>
+    </div>
+    <div class="w3-row">
+      <h2 id="weekHeader">Week {{week}}</h2>
     </div>
     <div class="w3-row">
       <div class="w3=responsive">

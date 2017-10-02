@@ -19,7 +19,8 @@ module.exports = function(app) {
             dashboard: dbgoal,
             user: {
                 username : userName
-            }
+            },
+            week : weekNum
           }
           //count per week
           //for a given goal, given week, calculate the sum of the food log counts that match that week
@@ -27,6 +28,23 @@ module.exports = function(app) {
         })
 
     })
+
+    app.get("/getWeeks",application.IsAuthenticated, function(req,res) {
+        var userName = req.user.username
+        var weekInput = moment().format();
+        var weekNum = req.query.week || moment(weekInput).isoWeek();
+        db.log.findAll().done(function(dblog) {
+            var arr =[];
+            // debugger;
+        for (var i=0; i< dblog.length; i++) {
+            // arr.include(dblog[i]) === false
+            if (!arr.includes(dblog[i].week)) {
+                arr.push(dblog[i].week)
+            }
+        }
+        res.json(arr);
+        })
+    });
     // When eager loading we can also filter the associated model using where. This will return all Users in which the where clause of Tool model matches rows.
     
     // User.findAll({

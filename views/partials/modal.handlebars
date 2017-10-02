@@ -1,7 +1,7 @@
-<div id="{{this.id}}" class="w3-modal w3-mobile nutrition-modal {{this.item}} w3-animate-zoom" >
+<div id="modal-{{this.id}}" class="w3-modal w3-mobile nutrition-modal {{this.item}} w3-animate-zoom" >
     <div class="w3-modal-content w3-card-4 modal">
         <header class="w3-container">
-            <button onclick="document.getElementById('{{this.id}}').style.display='none'" class="w3-button modalBtn w3-display-topright">&times;</button>
+            <button onclick="document.getElementById('modal-{{this.id}}').style.display='none'" class="w3-button modalBtn w3-display-topright">&times;</button>
         </header>
         {{!-- w3-hover-opacity --}}
         <div class="w3-display-container" id="modalData">

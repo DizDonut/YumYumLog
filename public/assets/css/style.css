@@ -55,7 +55,7 @@ footer a, footer ul {
 }
 
 div.bloodhound {
-  margin-bottom: 10%;
+  margin-bottom: 25%;
 }
 
 #register{
@@ -105,9 +105,9 @@ div.bloodhound {
   margin-top: 5%
 }
 
-#myDashboard{
+/* #myDashboard{
   margin-bottom: 10%;
-}
+} */
 
 #foodInput, #log, #register, #displayLogConfirmation,#logConfirmation{
   width: 50%;
@@ -116,7 +116,7 @@ div.bloodhound {
 }
 
 .w3-main, .main-content {
-  margin-bottom: 10%;
+  margin-bottom: 15%;
 }
 
 .index-header{
@@ -150,5 +150,5 @@ width: 50%;
   z-index: 10;
 }
 #bloodhound {
-  margin-bottom: 10%;
+  margin-bottom: 15%;
 }

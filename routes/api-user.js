@@ -43,7 +43,8 @@ module.exports = function(app) {
                     username :userName,
                     firstname : userObj.first_name,
                     lastname : userObj.last_name
-                }
+                },
+                week : weekNum
             }
             console.log(handlebars)
             res.render("userDash",handlebars)
