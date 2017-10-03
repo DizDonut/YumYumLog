@@ -82,8 +82,10 @@ module.exports = function(app) {
                 }).then(function(dbfood) {
                     var hbsObj = {
                         foods: dbfood,
+                        userObject : userObj,
                         user: {
-                            username : userName
+                            username : userName,
+                            id : userObj.id
                         }
                     }
                     // console.log(hbsObj.foods);

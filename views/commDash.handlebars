@@ -56,7 +56,7 @@
               <td>{{this.User.username}}</td> <!-- {/{userObj.userID}/} -->
               <td>{{this.dataValues.category}}</td> <!-- {/{userObj.currTrack}/} -->
               <td>{{this.dataValues.week}}</td> <!-- {/{userObj.currWeek}/} -->
-              <td onload="progress_Bar()">
+              <td>
                 <div class="w3-light-grey">
                   <div class="w3-container w3-blue curr_prog" id="{{this.id}}" style="height:20px; width:0%">
                     <!-- {/{foodObj.count}/} -->
@@ -64,7 +64,7 @@
                   </div>
                 </div>
               </td>
-              <td class="star_complete {{this.id}}" onload="check_Star()"></td>
+              <td class="star_complete {{this.id}}"></td>
             </tr>
             {{/each}}
           </tbody>
