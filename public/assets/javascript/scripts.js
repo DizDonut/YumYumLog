@@ -166,6 +166,7 @@ source and append to the div
 
 //below functions need to make sure the page loads first prior to running
 window.onload = function(){
+  progressBar();
   check_Star()
   showNutrition();
   showTableElems();
