@@ -50,71 +50,57 @@ function progressBar(){
 
   var currentURL = window.location.pathname
   var name = document.getElementById("username").innerHTML
-  // debugger;
 
-    //if the url string includes dashboard or users
-    // var str = "The rain in SPAIN stays mainly in the plain"; 
-    // var res = str.match(/ain/g);
-    // var result = /hello/.test(str);
     if (/dashboard/.test(currentURL) || /users/.test(currentURL)) { 
-
-      //or userDash/:username
-
       var elems = document.getElementsByClassName("curr_prog");
-      //instead of doing an AJAX, pull the counts from the page and adjust progress bars accordingly?
       var countSpanArr = document.getElementsByClassName("count")
       var goalSpanArr = document.getElementsByClassName("goal")
-
-      //for the length of the arr, push values to an obj
-      //use the index postions to adjust the progress
+    
       for (var i = 0; i < goalSpanArr.length; i++) {
         var elem = elems[i];
-        var width = parseInt(document.getElementsByClassName("count")[i].innerHTML); // TODO: check status of assignment here
-        var goal = parseInt(document.getElementsByClassName("goal")[i].innerHTML); // TODO: check status of assignment here
+        var width = parseInt(document.getElementsByClassName("count")[i].innerHTML); 
+        var goal = parseInt(document.getElementsByClassName("goal")[i].innerHTML); 
 
         if(goal <= 0) {
           clearInterval(id);
         } else {
-          
-          //create a limit once progress is acheived (so that they can exceed the goal, but it doesn't affect the progress bar width)
           elem.style.width = getWidth()
+          var bool = false;
           function getWidth() {
-            if (width/goal > 1) {
+            if (width/goal >= 1) {
               return "100%" 
             } else {
               return ((width / goal) * 100) + "%"
             }
           }
-          check_Star(width,goal,elem)
         }
       }
     }
 
   } //end progressBar function
 
-
 /*
 check_Star function simply checks the goal vs the foodLog count and determines
 if the goal has been met.  If so, create an img element and assign it the star.png
 source and append to the div
 */
-// check_Star function simply checks the goal vs the foodLog count and determines
-// if the goal has been met.  If so, create an img element and assign it the star.png
-// source and append to the div
-  function check_Star(count,goal,elem){
-      var cnt = parseInt(count)
-      var goalCnt = parseInt(goal)
-     
-      if (cnt >= goalCnt ) {
-        var img = document.createElement("img");
-        img.src = ("/images/star")
-        var check = document.getElementsByClassName("star_complete")
-        for (var j=0; j< check.length; j++) {
-          if (check[j].className.indexOf(elem.id) !== -1) {
-            check[j].appendChild(img);
-          }
-        }
+  function check_Star(){
+    //get the goal, get the count
+    var countSpanArr = document.getElementsByClassName("count")
+    var goalSpanArr = document.getElementsByClassName("goal")
+    //for the length of the elems,
+    var check = document.getElementsByClassName("star_complete") 
+    //goal>= count do this
+    var img = document.createElement("img");
+    img.src = ("/images/star")
+    for (var j=0; j< check.length; j++) {
+      // var elem= check[j];
+      var count = parseInt(countSpanArr[j].innerHTML);
+      var goal = parseInt(goalSpanArr[j].innerHTML); 
+      if (count >= goal) {
+          check[j].appendChild(img);
       }
+    }
   }
   
   function showTableElems() {
@@ -180,6 +166,7 @@ source and append to the div
 
 //below functions need to make sure the page loads first prior to running
 window.onload = function(){
+  check_Star()
   showNutrition();
   showTableElems();
   progressBar();
