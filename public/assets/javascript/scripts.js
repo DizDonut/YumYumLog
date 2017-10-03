@@ -91,14 +91,17 @@ source and append to the div
     //for the length of the elems,
     var check = document.getElementsByClassName("star_complete") 
     //goal>= count do this
-    var img = document.createElement("img");
-    img.src = ("/images/star")
+
+    var count,goal;
     for (var j=0; j< check.length; j++) {
       // var elem= check[j];
-      var count = parseInt(countSpanArr[j].innerHTML);
-      var goal = parseInt(goalSpanArr[j].innerHTML); 
+      var img = document.createElement("img");
+      img.src = ("/images/star")
+      count = parseInt(countSpanArr[j].innerHTML);
+      goal = parseInt(goalSpanArr[j].innerHTML); 
       if (count >= goal) {
-          check[j].appendChild(img);
+        //will append to correct check[j], but goes away after the loop ends
+        document.getElementsByClassName("star_complete")[j].appendChild(img);
       }
     }
   }

@@ -20,9 +20,7 @@ function checkTracks() {
     var currentURL = window.location.origin
     //get the value of the username from the page run ajax on it to get the data
     var name = document.getElementById("username").value
-    if (document.getElementById("user_Id")) {
-        var id = document.getElementById("user_Id").value
-    }
+    var id = document.getElementById("user_Id").value
         $.ajax({url: currentURL + "/getTracks/" + id,method:"GET"}).done(function(data) {
 
             // console.log(data);
@@ -76,7 +74,10 @@ function displayWeeks() {
     // debugger;
     var currentURL = window.location.origin
     var name = document.getElementById("username").value
-    // var id = document.getElementById("user_Id").value
+
+    var location = window.location.pathname
+    if (/dashboard/.test(currentURL) || /users/.test(currentURL)) { 
+        // var id = document.getElementById("user_Id").value
         $.ajax({url: currentURL + "/getWeeks",method:"GET"}).done(function(data) {
             console.log(data);
             var done = 0; 
@@ -90,6 +91,7 @@ function displayWeeks() {
                 select.append(option);
             }  
         })
+    }
 }
 
 function changeFormAction () {
