@@ -69,8 +69,8 @@ function progressBar(){
       //use the index postions to adjust the progress
       for (var i = 0; i < goalSpanArr.length; i++) {
         var elem = elems[i];
-        var width = document.getElementsByClassName("count")[i].innerHTML; // TODO: check status of assignment here
-        var goal = document.getElementsByClassName("goal")[i].innerHTML; // TODO: check status of assignment here
+        var width = parseInt(document.getElementsByClassName("count")[i].innerHTML); // TODO: check status of assignment here
+        var goal = parseInt(document.getElementsByClassName("goal")[i].innerHTML); // TODO: check status of assignment here
 
         if(goal <= 0) {
           clearInterval(id);
@@ -102,16 +102,12 @@ source and append to the div
 // if the goal has been met.  If so, create an img element and assign it the star.png
 // source and append to the div
   function check_Star(count,goal,elem){
-    var bool = false;
-    // if (db.User.count >= db.User.goal) {
       var cnt = parseInt(count)
       var goalCnt = parseInt(goal)
-      //cat comes from the this.category, comes from the iterated obj tha
+     
       if (cnt >= goalCnt ) {
-        bool =true;
         var img = document.createElement("img");
         img.src = ("/images/star")
-        //get the class with bool true and append an image
         var check = document.getElementsByClassName("star_complete")
         for (var j=0; j< check.length; j++) {
           if (check[j].className.indexOf(elem.id) !== -1) {
