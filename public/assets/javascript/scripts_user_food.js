@@ -20,14 +20,16 @@ function checkTracks() {
     var currentURL = window.location.origin
     //get the value of the username from the page run ajax on it to get the data
     var name = document.getElementById("username").value
-    var id = document.getElementById("user_Id").value
+    if (document.getElementById("user_Id")) {
+        var id = document.getElementById("user_Id").value
+    }
         $.ajax({url: currentURL + "/getTracks/" + id,method:"GET"}).done(function(data) {
 
             // console.log(data);
             var done = 0;
-           
+        var location = window.location.pathname
             //if veggies or fruits, disable in options
-        if (window.location.pathname === "/trackPage/" + name || window.location.pathname === "/addTrack/" + name) {
+        if (/trackPage/.test(location) || /addTrack/.test(location)) {
             for (var i=0; i < data.length; i++) {
                 if (data[i].category === "vegetables") {
                     document.getElementById("vegetables").disabled = true
@@ -43,7 +45,7 @@ function checkTracks() {
                     update.innerHTML = "You're already tracking both goals!"
                 }
             }
-        } else if (window.location.pathname === "/addLog/" + name || window.location.pathname === "/addItem/" + name ) {
+        } else if (/addLog/.test(location) || /addItem/.test(location) ) {
            
             for (var i=0; i < data.length; i++) {
                 var option = document.createElement("option")
@@ -54,7 +56,7 @@ function checkTracks() {
                 var select = document.getElementById("trackName")
                 select.append(option);
             }
-        } else if (window.location.pathname === "/submitLog/" + name) {
+        } else if (/submitLog/.test(location)) {
         }
         })
 }
