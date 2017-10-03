@@ -33,7 +33,7 @@ module.exports = function(app) {
             //if category
             //if food item
             if (req.body.q) {
-                // console.log(req.body.q);
+            
                 db.food.findAll({
                     where: {
                         item: {
@@ -68,12 +68,12 @@ module.exports = function(app) {
                             id : userObj.id
                         }
                     }
-                    console.log(hbsObj);
+                
                    res.render("userInputs",hbsObj)
                 });
             //if the query is category, return an object of the category to use for the food search
             } else if (req.body.category) {
-                // console.log(req.body.category)
+                
                 db.food.findAll({
                     attributes: ['item'],
                     where: { 
@@ -88,7 +88,7 @@ module.exports = function(app) {
                             id : userObj.id
                         }
                     }
-                    // console.log(hbsObj.foods);
+                  
                    res.render("userInputs",hbsObj)
                 });
             } 
