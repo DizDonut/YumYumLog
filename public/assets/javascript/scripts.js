@@ -52,7 +52,11 @@ function progressBar(){
   var name = document.getElementById("username").innerHTML
   // debugger;
 
-    if (currentURL === "/dashboard" || currentURL === "/users/" + name ) { 
+    //if the url string includes dashboard or users
+    // var str = "The rain in SPAIN stays mainly in the plain"; 
+    // var res = str.match(/ain/g);
+    // var result = /hello/.test(str);
+    if (/dashboard/.test(currentURL) || /users/.test(currentURL)) { 
 
       //or userDash/:username
 
@@ -71,8 +75,16 @@ function progressBar(){
         if(goal <= 0) {
           clearInterval(id);
         } else {
+          
           //create a limit once progress is acheived (so that they can exceed the goal, but it doesn't affect the progress bar width)
-          elem.style.width = ((width / goal) * 100) + "%";
+          elem.style.width = getWidth()
+          function getWidth() {
+            if (width/goal > 1) {
+              return "100%" 
+            } else {
+              return ((width / goal) * 100) + "%"
+            }
+          }
           check_Star(width,goal,elem)
         }
       }
