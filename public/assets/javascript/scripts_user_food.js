@@ -23,7 +23,7 @@ function checkTracks() {
     var id = document.getElementById("user_Id").value
         $.ajax({url: currentURL + "/getTracks/" + id,method:"GET"}).done(function(data) {
 
-            // console.log(data);
+           
             var done = 0;
         var location = window.location.pathname
             //if veggies or fruits, disable in options
@@ -71,15 +71,14 @@ function convertTime() {
 }
 
 function displayWeeks() {
-    // debugger;
     var currentURL = window.location.origin
     var name = document.getElementById("username").value
 
     var location = window.location.pathname
-    if (/dashboard/.test(currentURL) || /users/.test(currentURL)) { 
+    if (/dashboard/.test(location) || /users/.test(location)) { 
         // var id = document.getElementById("user_Id").value
         $.ajax({url: currentURL + "/getWeeks",method:"GET"}).done(function(data) {
-            console.log(data);
+           
             var done = 0; 
             for (var i=0; i < data.length; i++) {
                 var option = document.createElement("option")
