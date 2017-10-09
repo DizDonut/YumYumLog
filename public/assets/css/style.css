@@ -54,7 +54,7 @@ footer a, footer ul {
   margin: 2px;
 }
 
-div.bloodhound {
+div#bloodhound {
   margin-bottom: 25%;
 }
 
@@ -149,6 +149,6 @@ width: 50%;
 .modalBtn {
   z-index: 10;
 }
-#bloodhound {
-  margin-bottom: 15%;
+.index-main {
+  margin-bottom:25%;
 }

@@ -1,52 +1,54 @@
-<table id="myDashboard" class="w3-table-all w3-hoverable w3-centered">
-    <thead>
-        <tr class="w3-gray">
-            <th>Food Track</th>
-            <th>Servings Goal</th>
-            <th>Goal Since (week no.)</th>
-            <th>Progress</th>
-            <th>Completed</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="w3-row">
+    <table id="myDashboard" class="w3-table-all w3-hoverable">
+        <thead>
+            <tr class="w3-gray">
+                <th>Food Track</th>
+                <th>Servings Goal</th>
+                <th>Goal Since (week no.)</th>
+                <th>Progress</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#if dashboard}}
+            {{#each dashboard.goals}}
+                <tr>
+                    <td class="show-food w3-show w3-hide">{{this.category}}</td> <!-- {/{userObj.userID}/} -->
+                    {{!-- clickable button on click display object data --}}
+                    <td>{{this.goal}}</td> <!-- {/{userObj.currTrack}/} -->
+                    <td>{{this.week}}</td> <!-- {/{userObj.currWeek}/} -->
+                    <td>
+                        <div class="w3-light-grey">
+                        <div class="w3-container w3-blue curr_prog" id="{{this.id}}" style="height:20px; width:0px">
+                            <!-- {/{foodObj.count}/} -->
+                            <span class="count">{{this.logs.length}}</span>/<span class="goal">{{this.goal}}</span>
+                        </div>
+                        </div>
+                    </td>
+                    <td class="star_complete {{this.id}}"></td>
+                </tr>
+                    <tr>
+                        <th class="w3-center w3-hide showFoodCol {{this.category}}">Item <i> (Date Logged)</i></th>
+                    </tr>
+                    {{#each logs}}
+
+                        <tr class="none">
+                            <th class="showNutrition w3-hide {{../category}}" value="{{this.item}}-{{this.id}}">{{this.item}}<i>  (Logged</i> <i class="convert">{{this.createdAt}}</i></th>
+                        </tr>
+
+                    {{/each}}
+            {{/each}}
+        {{/if}}
+        </tbody>
+    </table>
+    {{#unless dashboard.goals}}
+        <h2>No logs yet. Get Started by clicking on the Hammy Hamster hamburger menu!</h2>
+    {{/unless}}
     {{#if dashboard}}
         {{#each dashboard.goals}}
-            <tr>
-                <td class="show-food w3-show w3-hide">{{this.category}}</td> <!-- {/{userObj.userID}/} -->
-                {{!-- clickable button on click display object data --}}
-                <td>{{this.goal}}</td> <!-- {/{userObj.currTrack}/} -->
-                <td>{{this.week}}</td> <!-- {/{userObj.currWeek}/} -->
-                <td>
-                    <div class="w3-light-grey">
-                    <div class="w3-container w3-blue curr_prog" id="{{this.id}}" style="height:20px; width:0px">
-                        <!-- {/{foodObj.count}/} -->
-                        <span class="count">{{this.logs.length}}</span>/<span class="goal">{{this.goal}}</span>
-                    </div>
-                    </div>
-                </td>
-                <td class="star_complete {{this.id}}"></td>
-            </tr>
-                <tr>
-                    <th class="w3-center w3-hide showFoodCol {{this.category}}">Item <i> (Date Logged)</i></th>
-                </tr>
-                {{#each logs}}
-
-                    <tr class="none">
-                        <th class="showNutrition w3-hide {{../category}}" value="{{this.item}}">{{this.item}}<i>  (Logged</i> <i class="convert">{{this.createdAt}}</i></th>
-                    </tr>
-
-                {{/each}}
+            {{#each logs}}
+                {{> modal}}
+            {{/each}}
         {{/each}}
     {{/if}}
-    </tbody>
-</table>
-{{#unless dashboard.goals}}
-    <h2>No logs yet. Get Started by clicking on Hammy Hamster hamburger menu!</h2>
-{{/unless}}
-{{#if dashboard}}
-    {{#each dashboard.goals}}
-        {{#each logs}}
-            {{> modal}}
-        {{/each}}
-    {{/each}}
-{{/if}}
+</div>

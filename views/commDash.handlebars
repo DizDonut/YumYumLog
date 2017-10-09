@@ -39,37 +39,35 @@
       <h2 id="weekHeader">Week {{week}}</h2>
     </div>
     <div class="w3-row">
-      <div class="w3=responsive">
-        <table class="w3-table-all w3-hoverable">
-          <thead>
-            <tr class="w3-gray">
-              <th>User</th>
-              <th>Track</th>
-              <th>Week</th>
-              <th>Progress</th>
-              <th>Completed</th>
-            </tr>
-            </thead>
-            <tbody></tbody>
-            {{#each dashboard}}
-            <tr>
-              <td>{{this.User.username}}</td> <!-- {/{userObj.userID}/} -->
-              <td>{{this.dataValues.category}}</td> <!-- {/{userObj.currTrack}/} -->
-              <td>{{this.dataValues.week}}</td> <!-- {/{userObj.currWeek}/} -->
-              <td>
-                <div class="w3-light-grey">
-                  <div class="w3-container w3-blue curr_prog" id="{{this.id}}" style="height:20px; width:0%">
-                    <!-- {/{foodObj.count}/} -->
-                    <span class="count">{{this.logs.length}}</span>/<span class="goal {{this.category}}">{{this.dataValues.goal}}</span>
-                  </div>
+      <table class="w3-table-all w3-hoverable">
+        <thead>
+          <tr class="w3-gray">
+            <th>User</th>
+            <th>Track</th>
+            <th>Week</th>
+            <th>Progress</th>
+            <th>Completed</th>
+          </tr>
+          </thead>
+          <tbody></tbody>
+          {{#each dashboard}}
+          <tr>
+            <td>{{this.User.username}}</td> <!-- {/{userObj.userID}/} -->
+            <td>{{this.dataValues.category}}</td> <!-- {/{userObj.currTrack}/} -->
+            <td>{{this.dataValues.week}}</td> <!-- {/{userObj.currWeek}/} -->
+            <td>
+              <div class="w3-light-grey">
+                <div class="w3-container w3-blue curr_prog" id="{{this.id}}" style="height:20px; width:0%">
+                  <!-- {/{foodObj.count}/} -->
+                  <span class="count">{{this.logs.length}}</span>/<span class="goal {{this.category}}">{{this.dataValues.goal}}</span>
                 </div>
-              </td>
-              <td class="star_complete {{this.id}}"></td>
-            </tr>
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
+              </div>
+            </td>
+            <td class="star_complete {{this.id}}"></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
     </div>
   </div>
 </div> <!-- end zclass sidebar -->
