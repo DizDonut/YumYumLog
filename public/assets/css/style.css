@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body,h1,h2,div,form,input,label,h3,a,h4,th {
   font-family: 'Dosis', sans-serif;
   color: #005580;
@@ -152,6 +155,6 @@ width: 50%;
 .index-main {
   margin-bottom:35%;
 }
-.bgimg {
+/* .bgimg {
   margin-bottom:30%;
-}
+} */  

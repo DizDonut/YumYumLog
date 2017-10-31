@@ -5,9 +5,7 @@ exports.IsAuthenticated = function(req, res, next){
 		next();
 	} else {
 		console.log("IsAuthenticated failed");
-		//do something here to redirect or kindly tell the user to login first. or display a nice error page
-		next(new Error(401));
-		// next(res.status(401).send('not logged in!'));
+		next(res.redirect("/"));
 	}
 }
 

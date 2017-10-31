@@ -18,7 +18,6 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/assets/javascript/scripts.js"));
   });
   //all our images
-
   app.get("/images/:image", function(req, res) {
     if (req.params.image === "giphy") {
       res.sendFile(path.join(__dirname, "../public/assets/images/giphy.gif"));
@@ -28,8 +27,6 @@ module.exports = function(app) {
     }
     if (req.params.image === "yyLogo") {
       res.sendFile(path.join(__dirname, "../public/assets/images/hamster.svg"));
-    }
-    
+    }  
   });
-
 };
