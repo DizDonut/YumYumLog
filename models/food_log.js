@@ -9,7 +9,6 @@ module.exports = function(sequelize, DataTypes) {
         count: {
             type: DataTypes.INTEGER, 
         },
-        //will populate this at the time of entry with the current week (provided from the timeline table);
         week: {
             type: DataTypes.INTEGER,
         }
@@ -34,7 +33,6 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false,
             }
         })
-        // Log.belongsTo(models.timeline);
     }
       return Log;
   };

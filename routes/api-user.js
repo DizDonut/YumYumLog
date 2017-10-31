@@ -9,18 +9,16 @@ module.exports = function(app) {
     function hasProp (obj, prop) {
         return Object.prototype.hasOwnProperty.call(obj, prop);
       }
-    //renders the landing page (no authentication needed)
+    //renders the landing page
     app.get("/", function(req,res) {
         if (hasProp(req, 'user')) {
-            // console.log(req.user.username);
             var hbsObj = {
                 username: req.user.username
             }
         }
         res.render("index",hbsObj)
     })
-
-    //generates user data  and handlebars for the user dash page
+    //generate user dash page
     app.get("/users/:username/:week?",application.IsAuthenticated, function(req, res) {
         var userObj = req.user;
         var userName = req.user.username
@@ -36,7 +34,6 @@ module.exports = function(app) {
                 ]}
             ]
         }).then(function(dbgoal) {
-            // res.json(dbgoal);
             var handlebars = {
                 dashboard : dbgoal,
                 user : {
@@ -49,33 +46,24 @@ module.exports = function(app) {
             console.log(handlebars)
             res.render("userDash",handlebars)
         })
-        // res.render("userDash",hbsObj)
     })
-
-    //generates user data and handlebars for the userInputs page
+    // userInputs page
     app.get("/addLog/:username", function(req,res) {
-        // console.log(req.user.username);
         var handleBars = {
             user: req.user
         }
-
         res.render("userInputs",handleBars)
     })
-
-    //renders tracks page and current tracks (for use in the form)
+    //renders tracks page
     app.get("/trackPage/:username",application.IsAuthenticated, function(req,res) {
-            //find all of the users tracks and deliver them to the page in an object
         db.User.findOne({
             where: {username: req.params.username},
             include: [{model: db.goal}]
         }).then(function(dbUser) {
-            // console.log(dbUser)
             var hbsObj = {
                 user: dbUser
             }
             res.render("userTracks",hbsObj)
         })
-
     })
-
 }

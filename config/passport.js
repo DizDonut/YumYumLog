@@ -20,14 +20,6 @@ passport.deserializeUser(function(user, done){
 passport.use(new LocalStrategy(
   function(username, password, done){
       db.User.findOne({where: {username: username}}).then(function(user){
-          // console.log(user);
-        //   meaning of confusing ternary expression
-        // var passwd;
-        // if (user) {
-        //       passwd = user.password
-        //   } else {
-        //       passwd = ''
-        //   }
           passwd = user ? user.password : ''
           isMatch = db.User.validPassword(password, passwd, done, user)
       });
